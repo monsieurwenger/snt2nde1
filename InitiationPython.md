@@ -4,9 +4,9 @@
 
 Un langage de programmation permet de donner des instructions plus ou moins complexes à une machine pour qu'elle effectue ce qu'on désire.
 
-Même si vous n'avez jamais programmé sur ordinateur, vous avez déjà utilisé des langages de programmation sans le savoir : rentrer un calcul dans une calculatrice est une sorte (rudimentaire) de donner des instructions à une machine.
+Même si vous n'avez jamais programmé sur ordinateur, vous avez déjà utilisé des langages de programmation sans le savoir : rentrer un calcul dans une calculatrice est une manière (rudimentaire) de donner des instructions à une machine.
 
-Vous avez aussi au collège fait du Scratch qui est une manière visuelle de donner des instructions à une machine.
+Vous avez aussi fait du Scratch au collège, c'est une manière visuelle de donner des instructions à une machine.
 
 Le Python est un langage de programmation, mais qui s'exprime sous la forme d'un texte, et non pas d'images (ou d'une série d'appuis sur des touches). Cela permet sa transmission et sa sauvegarde simple.
 
@@ -66,10 +66,10 @@ On veut effectuer l'opération  `5+3` dans python
 Pour cela, tapez 5+3 dans la console. Vous devriez voir afficher le résultat 8. 
 
 
-Vous pouvez essayez avec d'autres chiffres, et aussi en rajoutant des espaces dans le texte :  Que donne `5 + 3` ? Que donne `5+   3` ?
+Vous pouvez essayez avec d'autres nombres, et aussi en rajoutant des espaces dans le texte :  Que donne `5 + 3` ? Que donne `5+   3` ?
 
 
-Dans python, il existe de nombreuses opérations qui permettent de mettre en jeu deux nombres. Certaines sont intuitives comme le +, d'autres un peu plus bizarres.
+Dans python, il existe de nombreuses opérations qui permettent de mettre en jeu deux nombres. Certaines sont intuitives comme le +, d'autres un peu moins :
 
 Que font les opérations suivantes ?      Donner ce qu'effectue l'ordinateur en langage mathématiques, puis donner le nom de l'opération :
 
