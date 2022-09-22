@@ -75,7 +75,7 @@ Que font les opérations suivantes ?      Donner ce qu'effectue l'ordinateur en 
 
 |Instruction | En langage maths | Nom de l'opération |
 |----------|------------|----------|
-`5 + 3`| ||
+`5 + 3`| 5 + 3 = 8| Addition|
 `5 - 3`| ||
 `5 * 3`| ||
 `5 / 3`| ||
