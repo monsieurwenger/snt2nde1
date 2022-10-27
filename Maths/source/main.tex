@@ -1,0 +1,910 @@
+\documentclass[10pt,a4paper]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+%\renewcommand\sfdefault{phv}
+\usepackage[left=2cm, right=2cm, bottom=1.85cm, top=1.5cm]{geometry}
+
+\usepackage{fancyhdr}
+\usepackage{framed}
+\pagestyle{fancy}
+\usepackage{hyperref}
+%\renewcommand{\headrulewidth}{1pt}
+%\fancyhead[C]{\textbf{page \thepage}} 
+\fancyhead[L]{Cours}
+\fancyhead[R]{Seconde}
+\usepackage[skip=15pt plus1pt, indent=15pt]{parskip}
+
+\renewcommand{\footrulewidth}{1pt}
+\fancyfoot[C]{\textbf{page \thepage}} 
+\fancyfoot[L]{Lycée Jacques Brel}
+\fancyfoot[R]{Année 2022-2023}
+
+
+
+\usepackage{pgfplots}
+
+\pgfplotsset{compat=newest}
+\pgfplotsset{every axis/.append style={
+                    axis x line=middle,
+                    axis y line=middle,
+                    axis line style={->},
+                    xlabel={$x$},
+                    ylabel={$y$},
+                    label style={font=\scriptsize},
+                    tick label style={font=\tiny},
+                    unit vector ratio*=1 1 1,
+   					xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+   					ylabel style={at={(ticklabel* cs:1)},anchor=south west}
+                    }}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newcommand{\TDoc}[1]{
+%\begin{center}
+%{\setlength{\fboxsep}{10pt}  % Ecart texte-boite
+%\shadowbox{\textbf{\Large{#1}}}}
+%\end{center}
+%\vspace{1.5cm}}
+    
+ \usepackage{fancybox}   %pour l'encadré du titre shadowbox
+ \usepackage{stmaryrd}   %pour utiliser correctement les crochets pour les ensembles de définitions
+ \usepackage[normalem]{ulem}
+ \usepackage{graphicx}
+ %\usepackage{wrapfig} %texte coulé autour d'une image
+ \usepackage{soul} % souligné
+ \usepackage{nonfloat}
+ \usepackage[standard]{ntheorem}
+ \usepackage{array}
+ \usepackage{arydshln}
+ \usepackage{graphicx}
+%MATHEMATIQUES
+\usepackage{amsmath,amsfonts} 
+
+\usepackage{tikz}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\F}{\mathbb{F}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%% debut fichier boiboites.sty %%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{xkeyval}
+\RequirePackage{tikz}
+\usetikzlibrary{intersections}
+\usetikzlibrary{positioning}
+\usetikzlibrary{3d}
+\RequirePackage{amssymb}
+
+\define@key{boxedtheorem}{titlecolor}{\def\titlecolor{#1}}
+\define@key{boxedtheorem}{titlebackground}{\def\titlebackground{#1}}
+\define@key{boxedtheorem}{background}{\def\background{#1}}
+\define@key{boxedtheorem}{titleboxcolor}{\def\titleboxcolor{#1}}
+\define@key{boxedtheorem}{boxcolor}{\def\boxcolor{#1}}
+\define@key{boxedtheorem}{thcounter}{\def\thcounter{#1}}
+\define@key{boxedtheorem}{size}{\def\size{#1}}
+\presetkeys{boxedtheorem}{titlecolor = black, titlebackground = white, background = white,%
+                         titleboxcolor = black, boxcolor = black, thcounter=, size = .9\textwidth}{}
+
+\newcommand{\couleurs}[1][]{%
+    \setkeys{boxedtheorem}{#1}
+    \tikzstyle{fancytitle} =[draw=\titleboxcolor, rounded corners, fill=\titlebackground,
+                            text= \titlecolor]
+    \tikzstyle{mybox} = [draw=\boxcolor, fill=\background, very thick,
+                        rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+}
+
+
+%Commande generique pour faire un joli encadre
+\newsavebox{\boiboite}
+\newcommand{\titre}{Titre}
+\newenvironment{boite}[2][]%
+    {%
+    \renewcommand{\titre}{#2}
+    \couleurs[#1]
+    \begin{lrbox}{\boiboite}%
+     \begin{minipage}[!h]{\size}
+    }%
+    {%
+     \end{minipage}
+    \end{lrbox}
+    \begin{center}
+    \begin{tikzpicture}
+    \node [mybox] (box){\usebox{\boiboite}};
+    \node[fancytitle, right=10pt] at (box.north west) {\titre};
+    \end{tikzpicture}
+    \end{center}
+    }
+
+\newcommand{\newboxedtheorem}[4][]{%
+    \couleurs[#1]
+    \@ifnotempty{#4}{%
+      \@ifundefined{the#4}{\@ifundefined{\thcounter}{\newcounter{#4}}{%
+      \newcounter{#4}[\thcounter ] } } { }%
+    }
+    \newenvironment{#2}[1][]{%
+    \@ifnotempty{#4}{\refstepcounter{#4}}
+    \begin{boite}[#1]{\textbf{#3\@ifnotempty{#4}{ \csname the#4\endcsname}}\@ifnotempty{##1}{
+    (##1)}}
+    }%
+    {%
+    \end{boite}
+    }
+}
+
+\newcommand{\newboxedtheoreme}[4][]{%
+    \couleurs[#1]
+    \@ifnotempty{#4}{%
+      \@ifundefined{the#4}{\@ifundefined{}{}{%
+      } } { }%
+    }
+    \newenvironment{#2}[1][]{%
+    \@ifnotempty{#4}{\refstepcounter{#4}}
+    \begin{boite}[#1]{\textbf{#3\@ifnotempty{#4}{ \csname the#4\endcsname}}\@ifnotempty{##1}{
+    (##1)}}
+    }%
+    {%
+    \end{boite}
+    }
+}
+%%%%%%%%%%%%%%%%%%%% end fichier boiboites.sty %%%%%%%%%%%%%%%%%%%%%%
+
+
+\newboxedtheorem{theo}{Théorème}{theorem}
+\newboxedtheorem{de}{D\'efinition}{theorem}
+\newboxedtheorem{prop}{Propriété}{theorem}
+\newboxedtheorem{pro}{Proposition}{theorem}
+\newboxedtheorem{nota}{Notation}{theorem}
+\newtheorem{exo}{Exercice}
+\newboxedtheorem{exe}{Exemple}{theorem}
+\newboxedtheorem{cor}{Corolaire}{theorem}
+\newboxedtheoreme{conc}{Conclusion}{theorem*}
+\newboxedtheoreme{demo}{\textbf{Démonstration guidée}}{theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\longA}
+\newlength{\longB}
+\newenvironment{BoiteShadow}[3][\linewidth]{%
+\addtolength{\longA}{#2}
+\addtolength{\longB}{#3}
+\begin{Sbox}\begin{minipage}{#1}}%
+{\end{minipage}\end{Sbox}%
+\setlength{\fboxsep}{\longA}
+\setlength{\shadowsize}{\longB}
+\shadowbox{\unhbox\@Sbox}\par}
+\makeatother
+%\author{Augustin WENGER}
+
+\title{Cours de Seconde 1 2022-2023}
+\date{}
+
+%%%% fin du préambule, on passe au contenu : tout le texte entre
+%%%% \begin{document} et \end{document} 
+
+\begin{document}
+\maketitle
+\tableofcontents
+\chapter{Ensembles de nombres}
+
+\section{Ensemble : vocabulaire et notations}
+
+\begin{de}
+    Un \underline{ensemble} est une collection d'objets, appelés \underline{éléments}, qu'il contient. 
+\end{de}
+
+Quand on peut décrire tous les éléments contenus dans un ensemble, on peut noter ces éléments séparés par des points-virgules (ou des virgules si on ne peut pas prendre les éléments pour des nombres décimaux) entre des $\{\}$
+
+Exemples : 
+\begin{itemize}
+    \item L'ensemble des nombres premiers plus petits que $10$ est $\{2;3;5;7\}$
+    \item L'ensemble qui ne contient aucun élément s'appelle l'ensemble vide et est noté $\emptyset$
+    \item L'ensemble des jours de la semaine peut être noté $\{lundi, mardi, mercredi, jeudi, vendredi, samedi, dimanche\}$  (On peut faire des ensembles d'autre chose que de nombres)
+\end{itemize}
+
+
+\begin{de}
+    Si un élément est contenu dans un ensemble, on dit qu'il \underline{appartient} à cet ensemble, que l'on note $\in$.
+    Si un élément n'appartient pas à un ensemble, on note $\notin$ 
+\end{de}
+
+
+
+Exemples : 
+\begin{itemize}
+    \item $2 \in \{2;3;5;7\}$ 
+    \item $4 \notin \{2;3;5;7\}$
+    \item $\{2;7\} \notin \{2;3;5;7\}$  (L'ensemble de droite contient des nombres, pas des ensembles)
+    \item Cette notation avait déjà été vue en $6$-ème : on disait qu'un point appartient à une droite. En effet, une droite est un ensemble de points (des ensembles de points qui vérifient une certaine équation, cf les équations de droite)
+    \item On a $A=\{2;3;5;9\}$, $B=\{0;1;2;3;4;5;6;7;8;9\}$ et $C=\{1;12\}$ alors $A\subset B$ 
+  et mais $C$ n'est pas inclus dans $B$, ni dans $A$.
+\end{itemize}
+
+Remarques : 
+\begin{itemize}
+\item Un ensemble est entièrement caractérisé par les éléments qu'il contient. Deux ensembles contenant exactement les mêmes éléments sont égaux. Ainsi, l'ordre des éléments n'importe pas dans un ensemble et on pourrait aussi noter $\{7;2;5;3\}$ au lieu de $\{2;3;5;7\}$
+\item Comme tous les objets mathématiques, on peut donner un nom à un ensemble pour généraliser ou l'écrire plus rapidement. Par exemple si on note $E$ l'ensemble $\{2;3;5;7\}$, $2 \in E$
+\end{itemize}
+
+
+\begin{de}
+     Si un ensemble $E$ contient exclusivement des éléments contenus dans un autre ensemble $F$, on dit que $E$ est \underline{inclus} dans $F$ et l'on note $E \subset F$.
+\end{de}
+
+Remarques :
+\begin{itemize}
+    \item Si un ensemble $E$ n'est pas inclus dans un ensemble $F$, on écrit $E \not\subset F$
+    \item Comme pour le signe $<$, le signe $\subset$ se transmet dans le sens où Si E est inclus dans F qui est inclus dans G, alors E est inclus dans G. Ou sous la forme de formule : Si $E \subset F$ et $F \subset G$, alors $E \subset G$. On dit que \textit{la relation d'inclusion est transitive}
+\end{itemize}
+    
+
+Exemples : 
+\begin{itemize}
+    \item $\{2;7\} \subset \{2;3;5;7\}$
+    \item $\{2;7;9\} \not\subset \{2;3;5;7\}$
+    \item Un ensemble $E$ est toujours par définition inclus dans lui même : $E \subset E$.
+    \item Attention : ne jamais écrire $2 \subset \{2;3;5;7\}$, $2$ est un élément qui appartient à l'ensemble, mais seul un ensemble peut-être inclus dans un autre. Il faudrait écrire $\{2\} \subset \{2;3;5;7\}$ ou $2 \in \{2;3;5;7\}$
+\end{itemize}
+
+On peut dessiner des ensembles, on appelle cela des diagrammes de Venn. On représente souvent deux ensembles inclus l'un dans l'autre par deux sacs inclus l'un dans l'autre, comme dans la figure \ref{fig:Ensembles}
+
+
+
+\begin{exo}
+    \begin{itemize}
+        \item Représenter graphiquement sous forme de diagramme de Venn (en respectant les inclusions) les ensembles suivants :
+        \begin{itemize}
+            \item Mammifères
+            \item Canidés
+            \item Animaux
+            \item Chiens
+            \item Chats
+        \end{itemize}
+    \item Placez correctement dans les ensembles les animaux suivants :
+        \begin{itemize}
+            \item Hélène la baleine
+            \item Igor le labrador
+            \item Sacha le chat
+            \item Edgar le renard
+            \item Miche-Miche le caniche
+            \item Régine la sardine
+    \item Dites si les expressions suivantes sont vraies ou fausses :
+        \begin{itemize}
+            \item Igor $\in$ Chiens
+            \item Régine $\in$ Chats
+            \item Igor $\in$ Canidés
+            \item Chats $\subset$ Mammifères
+            \item Mammifères $\not\subset$ Chiens
+            \item Chats $\subset$ Mammifères
+        \end{itemize} 
+        \end{itemize}    
+    \end{itemize}
+\end{exo}
+
+
+
+\section{Les ensembles de nombres}
+Les nombres utilisés en mathématiques, suivant leurs caractéristiques, sont regroupés 
+dans des ensembles. On distingues six grandes familles de nombres:
+\subsection{Les entiers naturels $\N$}
+Les entiers naturels sont les nombres entiers positifs c'est à dire, en notant $\N$ 
+(notation) l'ensemble des entiers naturels, on a:
+
+$$\N=\{0;1;2;3;\cdots\}$$
+\subsection{Les entiers relatifs $\Z$}
+Les entiers relatifs sont les nombres entiers positifs ou négatifs c'est à dire, en notant $\Z$ 
+(notation) l'ensemble des entiers relatifs, on a:
+$$\Z=\{\cdots;-3;-2;-1;0;1;2;3;\cdots\}$$
+
+\subsection{Les nombres décimaux $\D$}
+Les nombres décimaux sont les nombres qui s'écrivent avec un nombre fini de chiffres après la virgule,
+ c'est à dire, en notant $\D$ 
+(notation) l'ensemble des nombres décimaux, on a:
+$$\D=\{\cdots;-0{,}5;-16{,}15;0;1{,}125;2{,}4567;3{,}00017;\cdots\}$$
+Remarque : les nombres entiers sont tous des nombres décimaux : ils ont zéro chiffres après la virgule, ce qui rentre bien dans la définition notée plus haut.
+\begin{prop}
+  Un nombre $x\in\D$ si et seulement il existe $n\in\N$ tel que $x\times 10^{n}\in\Z$.
+\end{prop}
+Cette propriétée signifie que tout nombre décimal $x$ peut s'écrire sous la forme: 
+$$x=\frac{a}{10^{n}}$$
+Où $a\in\Z$. De plus, tout nombre pouvant s'écrire sous cette forme est décimal.
+
+\subsection{Les nombres rationnels $\Q$}
+Les nombres rationnels sont les quotients d'entiers relatifs, c'est à dire, en notant $\Q$ 
+(notation) l'ensemble des nombres rationnels, on a:
+
+
+$$\Q=\{\cdots;-\frac{7}{5};-\frac{1}{3};-\frac{12}{151};0;\frac{17}{13};\frac{2}{7};\frac{3}{8};\cdots\}$$
+
+Remarque : Les nombres décimaux sont tous des nombres rationnels, puisque l'on a vu que tout nombre décimal pouvait s'écrire comme une fraction d'entiers.
+
+\subsection{Les nombres réels $\R$}
+
+Les nombres réels sont tous les nombres, c'est à dire, en notant $\R$ 
+(notation) l'ensemble des nombres réels, $\R$ contient tous les nombres cités précédement et aussi ceux 
+qui n'entrent pas dans les familles précédentes (qu'on appelle nombres irrationnels). On a:
+
+$$\R=\{\cdots;-\frac{7}{5};-\frac{\pi}{3};-\frac{12}{\sqrt{2}};0;\sqrt{3};\pi;127;\cdots\}$$
+
+On peut remarquer les inclusions suivantes:
+$$\N\subset\Z\subset\D\subset\Q\subset\R$$
+On peut aussi visualiser cela ainsi:
+
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=1.0\textwidth]{Ensemble.png}
+\caption{Les ensembles de nombres}
+\label{fig:Ensembles}
+\end{figure}
+
+
+
+\section{La droite des réels}
+
+On peut représenter chaque réel$x\in\R$ sur une droite graduée. C'est à dire 
+qu'à tout point de la droite graduée on peut associer un réel $x$:
+
+\begin{center}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\begin{tikzpicture}[line cap=round,line join=round,x=1.0cm,y=1.0cm]
+\clip(-4.,-1.) rectangle (5.,1.);
+\draw [domain=-5.4:6.2] plot(\x,{(-0.-0.*\x)/6.16});
+\draw (1.56,-0.02) node[anchor=north west] {$x$};
+\begin{scriptsize}
+\draw [fill=uuuuuu] (0.,0.) circle (1.5pt);
+\draw[color=uuuuuu] (0.14,0.28) node {$O$};
+\draw [fill=xdxdff] (1.66,0.) circle (1.5pt);
+\draw[color=xdxdff] (1.8,0.28) node {$M$};
+\end{scriptsize}
+\end{tikzpicture}
+\end{center}
+On dit que le point $M$ a pour abscisse $x$. Le point $O$ d'abscisse $0$ est appelé origine de la droite.  
+\begin{de}[Valeur absolue]
+  On appelle valeur absolue d'un réel $x$ la distance entre le point $M$ et 
+  l'origine $O$ de la droite des réels. La valeur absolue de $x$ se note $|x|$. 
+  C'est un nombre positif ou nul.
+\end{de}
+
+Un nombre est donc toujours égal à sa valeur absolue multipliée par $1$ ou $-1$. En fait, un nombre est constitué de deux parties :
+\begin{itemize}
+    \item Son signe, qui peut être $+$ ou $-$
+    \item Sa valeur absolue, qui est donc en quelque sorte la "valeur quantitative" d'un nombre.
+\end{itemize}
+
+
+
+\begin{exe}
+  On considère les points $M$ et $C$ ci-dessous:
+  \begin{center}
+    \definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+\definecolor{xdxdff}{rgb}{0.49019607843137253,0.49019607843137253,1.}
+\definecolor{uuuuuu}{rgb}{0.26666666666666666,0.26666666666666666,0.26666666666666666}
+\begin{tikzpicture}[line cap=round,line join=round,x=1.0cm,y=1.0cm]
+\clip(-4.,-1.) rectangle (5.,1.);
+\draw [domain=-4.:5.] plot(\x,{(-0.-0.*\x)/6.16});
+\draw (1.56,-0.02) node[anchor=north west] {$x=1,7$};
+\draw (-2.84,-0.18) node[anchor=north west] {$y=-2,6$};
+\begin{scriptsize}
+\draw [fill=uuuuuu] (0.,0.) circle (1.5pt);
+\draw[color=uuuuuu] (0.14,0.28) node {$O$};
+\draw [fill=xdxdff] (1.66,0.) circle (1.5pt);
+\draw[color=xdxdff] (1.8,0.28) node {$M$};
+\draw [fill=xdxdff] (-2.48,0.) circle (1.5pt);
+\draw[color=xdxdff] (-2.34,0.28) node {$C$};
+\end{scriptsize}
+\end{tikzpicture}
+  \end{center}
+  
+  On a alors $|y|=2,6$ et $|x|=1,7$.
+\end{exe}
+
+\begin{prop}[Distance entre deux points] On considère le point $A$ d'abscisse $a$ 
+  et le point $B$ d'abscisse $b$. La distance $AB$ est la valeur absolue de la 
+  différence entre $a$ et $b$. C'est à dire $AB=|b-a|$. 
+\end{prop}
+  \section{Intervalles de $\R$}
+  
+  \begin{de}[Symbole de l'infini]
+    En mathématiques on note $\infty$ pour dire l'infini.
+  \end{de}
+  
+
+  \begin{de}[Ordre]
+    Soient $x$ et $y$ deux nombre réels on a alors forcément une (et seulement une) des trois situations suivantes :
+    \begin{enumerate}
+      \item $x$ est égal à $y$. On note classiquement $x=y$.
+      \item $x$ est plus petit que $y$. On note $x\leq y$ ou $x<y$ (strictement plus petit). 
+      \item $x$ est plus grand que $y$. On note $y\geq x$ ou $y>x$ (strictement plus 
+      grand). 
+    \end{enumerate}
+  \end{de}
+  
+  \subsection{Les intervalles}
+  
+  \begin{de}[intervalle]
+    Un \underline{intervalle} de $\R$ est l'ensemble des nombres compris entre deux valeurs 
+    fixées. Ces deux valeurs peuvent-être infinies. 
+  \end{de}
+  
+  \subsection*{Les huit types d'intervalles}
+  Soient $a$ et $b$ deux réels. On donne les différentes définitions sous forme 
+  d'équivalences. Le symbole $\Longleftrightarrow$ signifie équivalent. 
+  \begin{enumerate}
+    \item Les intervalles bornés
+    \begin{enumerate}
+      \item Intervalle fermé borné $[a;b]$: 
+      $$x\in[a;b]\Longleftrightarrow a\leq x\leq b$$
+      Ici $x$ peut être égal à $a$ ou à $b$.
+      \item Intervalle semi ouvert borné $]a;b]$ ou $[a;b[$: 
+      $$x\in]a;b]\Longleftrightarrow a<x\leq b$$
+      $$x\in[a;b[\Longleftrightarrow a\leq x< b$$
+      Dans un cas $x$ ne peut pas être égal à $a$ et dans l'autre $x$ ne peut 
+      pas être égal à $b$. 
+       \item Intervalle ouvert borné $]a;b[$: 
+      $$x\in]a;b[\Longleftrightarrow a< x< b$$
+      Ici $x$ ne peut pas être égal à $a$ et à $b$.
+    \end{enumerate}
+    \begin{de}
+      Les réels $a$ et $b$ s'appellent les bornes de l'intervalle.
+    \end{de}
+    \item Intervalles non bornés:
+    \begin{enumerate}
+      \item $$x\in[a;+\infty[\Longleftrightarrow x\geq a$$
+      \item $$x\in]-\infty;a]\Longleftrightarrow x\leq a$$
+      \item $$x\in]a;+\infty[\Longleftrightarrow x<a$$
+      \item $$x\in]-\infty;a[\Longleftrightarrow x> a$$
+    \end{enumerate}
+  \end{enumerate}
+   Remarques : \begin{itemize}
+      \item On peut définir $\R$ comme un intervalle :  $]-\infty;+\infty[$
+      \item L'infini n'étant pas un nombre réel, un intervalle est toujours ouvert en l'infini (plus ou moins)
+  \end{itemize}
+  
+  
+  \subsection*{Réels compris dans un intervalle de longueur donnée}
+  On considère un intervalle \textbf{borné} (ouvert ou fermé). 
+  \begin{de}
+    Soient $a<b$ deux réels. La \underline{longueur} d'un intervalle borné entre $a$ et $b$ 
+    est le réel $b-a$. On l'appelle aussi \underline{amplitude} de l'intervalle.
+  \end{de}
+
+\section{Les dernières notations du chapitre}
+
+\subsection{Equivalence}
+
+Un \underline{prédicat} est une proposition qui peut être vraie ou fausse, elle peut dépendre d'une variable. 
+
+Exemples :
+\begin{itemize}
+    \item $1=0$ est un prédicat qui est toujours faux.
+    \item $3 = \frac{6}{2}$ est un prédicat qui est toujours vrai.
+    \item $x - 1 = 0$ est un prédicat qui sera vrai ou faux selon la valeur de $x$.
+\end{itemize}
+
+\begin{de}
+    Deux prédicats sont dits équivalents si les situations où ils sont vrais sont les mêmes. On note cette relation $\Leftrightarrow$
+\end{de}
+
+Exemples :
+\begin{itemize}
+    \item On a vu dans le chapitre sur les équations que $x-3 = 0 \Leftrightarrow x = 3$ : les deux prédicats auront le même statut (vrai ou faux) quel que soit x
+    \item Dès qu'on a plusieurs manières d'écrire un prédicat, on peut dire que les prédicats sont équivalents. Par exemple pour les intervalles : $x \in [3,5] \Leftrightarrow  3 \leq x \leq 5$
+\end{itemize}
+
+\subsection{Union et intersections d'ensembles}
+
+\begin{de}
+    Soient deux ensembles $E$ et $F$ :
+    \begin{itemize}
+        \item $E \cup F$ (on dit "$E$ union $F$") représente l'union de $E$ et de $F$. C'est l'ensemble des éléments qui appartiennent à $E$ \textbf{ou} à $F$
+        \item $E \cap F$ (on dit "$E$ inter $F$") représente l'ensemble des éléments qui appartiennent à $E$ \textbf{et} à $F$
+        \item $E \setminus F$ (on dit "$E$ privé de $F$) représente l'ensemble des éléments qui appartiennent à $E$ \textbf{mais pas} à $F$
+    \end{itemize}
+\end{de}
+
+
+
+Exemple : \begin{itemize}
+    \item Soient $E = \{1;2;4;8\}$ et $F = \{2;4;6;8\}$. $E \cup F = \{1;2;4;6;8\}$ et $E \cap F = \{2;4;8\}$
+    \item Mettre une étoile $*$ à côté d'un ensemble comme $\N$ ou $\R$, c'est lui enlever l'élément $0$ :  $\R^* = \R \setminus \{0\}$
+\end{itemize}
+
+    
+
+\begin{figure}
+    \centering
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{Venn0111.png} 
+        \caption{Union :  $E \cup F$}
+    \end{minipage}
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{Venn0001.png} 
+        \caption{Intersection :  $E \cap F$}
+    \end{minipage}
+    \begin{minipage}{0.3\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{Venn0100.png}
+        \caption{Différence : E \setminus F}
+    \end{minipage}
+\end{figure}
+   
+ 
+\begin{figure}
+ \begin{tabular}{|c|p{0.3\linewidth}|p{0.5\linewidth}|}
+    \hline
+    Notation & Comment le lire & Comment l'utiliser  \\\hline
+    $\emptyset$ & "Ensemble vide" & Désigne l'ensemble qui ne contient aucun élément (il est unique!) \\ \hline
+    $\in, \notin$ & "Appartient à" / "N'appartient pas à" & Signale que l'élément à gauche du signe appartient (ou non) à l'ensemble à droite du signe. \\ \hline
+    $\subset, \not\subset$ & "Est inclus dans" / "N'est pas inclus dans" & Signale que l'ensemble de gauche est inclus dans l'ensemble de droite. \\ \hline
+    $\N, \Z, \D, \Q, \R$ & "Grand N" (etc...) & Désigne l'ensemble de nombre correspondant dans le cours : entiers naturels, entiers relatifs, décimaux, rationnels et réels \\ \hline
+    $\left[2,3\right]$ & "L'intervalle 2, 3 fermé" & Tous les nombres contenus entre le nombre de gauche de l'intervalle et le nombre de droite, bornes incluses\\ \hline
+    $\left]2,3\right[$ & "L'intervalle 2, 3 ouvert" & Tous les nombres contenus entre le nombre de gauche de l'intervalle et le nombre de droite, bornes non incluses\\ \hline
+    $\lvert x \rvert$ & "Valeur absolue de $x$" & Désigne la valeur absolue d'un nombre (c'est à dire sa valeur numérique à laquelle on a retiré le signe s'il est négatif). \\ \hline
+    $\infty, + \infty$ & "L'infini", "plus l'infini" & Désigne le concept d'infini : une grandeur plus grande que n'importe quel nombre réel. \\ \hline
+    $A \cup B$ & "A union B" & Pour noter tous les éléments contenus dans \textbf{n'importe quel} ensemble à gauche ou à droite du signe \\ \hline
+    $A \cap B$ & "A inter B" & Pour noter tous les éléments contenus dans \textbf{les deux} ensembles décrits à gauche et à droite du signe. \\ \hline
+    $A \setminus B$ & "A privé de B" & Pour noter tous les éléments contenus dans l'ensemble de gauche mais pas l'ensemble de droite. \\ \hline
+    
+    $\Leftrightarrow$ & "est équivalent à" & Signale que la proposition de droite est équivalente à la proposition de gauche : L'une est vraie si et seulement si l'autre est vraie \\ \hline
+    $\{1;2;4\}$ & "L'ensemble contenant les nombres 1, 2 et 4" & Désigne l'ensemble constitué des éléments situés entre les $\{\}$\\ \hline 
+    $\R^*$ & "Grand R étoile" & Signale qu'on a retiré le nombre 0 de l'ensemble de nombre à gauche. Ici, on a tous les réels non nuls \\ \hline
+    $\R^+$ & "Grand R +" & Signale qu'on considère seulement les nombres positifs de l'ensemble à gauche du "+". Ici on désigne tous les réels positifs ou nuls.\\ \hline
+
+ \end{tabular}
+\caption{Les (nombreuses) notations vues dans le chapitre}
+\label{fig:Notations}
+\end{figure}
+
+
+\chapter{Fonctions : généralités}
+
+\section{Définition}
+
+Les objets mathématiques ont chacun un rôle. Le rôle d'une fonction est d'\textbf{associer}. Associer, cela veut dire transformer un objet en un autre. Cette année, on verra surtout les fonctions qui transforment un nombre réel en un autre nombre réel, mais une fonction peut techniquement associer n'importe quel type d'objet à n'importe quel autre :
+\begin{itemize}
+    \item Fonction qui associe à une chaîne de caractère son initiale
+    \item Fonction qui associe un point à un autre. Par exemple, on peut associer chaque point qui se trouve sur une carte de la ville au point auquel il correspond dans la vraie vie. Plus mathématiquement, une symétrie est un point qui va associer à chaque point un autre.
+\end{itemize}
+
+Dans le cours de mathématiques, on utilisera presque exclusivement des fonctions d'un intervalle réel dans les nombres réels.  Il est à noter qu'en python, on utilisera des fonctions dans un sens plus large.
+
+\begin{de}[Fonction d'un intervalle de $\R$]
+    Soit $I$ un intervalle de $\R$. On dit que $f$ est une \underline{fonction} de $I$ dans $\R$ si à tout élément $x$ de $I$,  $f$ associe un et un seul élément de $\R$, qu'on note $f(x)$.
+    On note :
+        \[
+        \begin{array}{ccccc}
+        f & : & I & \to & \R \\
+         & & x & \mapsto & f(x) \\
+        \end{array}
+        \]
+\end{de}
+
+$x$ est appelée la \underline{variable} de la fonction $f$. On l'appelle variable tant qu'on ne lui fixe pas de valeur. Ce terme sera seulement utilisé pour : \begin{itemize}
+    \item Dire que $x$ n'a pas encore été fixé et qu'il peut donc varier
+    \item Décrire le nombre de variables d'une fonction.
+\end{itemize}
+
+Dans l'année, on étudiera beaucoup de fonctions à une variable, mais il y a aussi des fonctions à deux variables (ou encore plus), et vous avez même probablement vu des fonctions à deux variables avant les fonctions à une variable : l'addition par exemple, est une fonction qui prend deux nombres en entrée, et qui ressort un nombre en sortie. On pourrait aussi bien déclarer que l'addition est une fonction à deux variables, qui prend en entrée deux nombres réels, et qui leur associe un nombre réel : leur somme.
+
+
+
+Exemple :  la fonction carré : à tout nombre réel $x$, elle associe $x^2$. Si on appelle g cette fonction, on note :
+\[
+\begin{array}{ccccc}
+f & : & \R & \to & \R \\
+ & & x & \mapsto & x^2 \\
+\end{array}
+\]
+
+
+\subsection{Image et antécédent, tableau de valeurs}
+
+\begin{de}
+        $f(x)$ s'appelle l' \underline{image} de $x$. On dit que $x$ est \underline{un antécédent} de $f(x)$.
+\end{de}
+
+La manière de présenter la fonction qui apparaît ci-dessus est une des manières standard de le faire quand il existe une formule. (On peut aussi noter un peu abusivement La fonction $f$ telle que $f(x)=x^2$ pour tout $x\in \R$.
+
+Mais il n'existe pas toujours de formule simple pour décrire la valeur que prend une fonction selon la valeur prise par sa variable. Une manière de la présenter dans ces cas là est de faire appel à un tableau de valeurs.
+
+\begin{de}
+    Un tableau de valeurs d'une fonction $f$ est un tableau dans lequel apparaît sur une ligne certaines valeurs prises par la variable, et sur la ligne du dessous l'image de chacune de ces valeurs par la fonction.
+\end{de}
+
+Pour la fonction carré, présentée ci-dessus, un tableau de valeur se présenterait ainsi :
+
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+         $x$ & $-1$ & $0$ & $1$ & $2$&$3$ & $4$ \\
+    \hline
+         $f(x)$ & $1$ & $0$ &$1$&$4$&$9$&$16$ \\
+    \hline
+    \end{tabular}
+\end{center}
+
+
+
+
+
+\section{Représentation graphique}
+
+Avant de pouvoir tracer la courbe représentative d'une fonction, il nous faut savoir associer à des coordonnées un point du plan, et vice-versa. Pour cela, on utilise un repère.
+
+\begin{de}[Repère]
+Pour repérer un point dans le plan, on trace deux droites (les axes) sécants en un point $O$, origine du repère. Sur un axe, on place un point $I$ et la distance $OI$ sert de référence. De même sur l'autre axe on place un point $J$ et la distance $OJ$ sert de référence. $(O;I,J)$ défini un repère du plan. 
+
+ Soit $M$ un point quelconque. On trace les parallèles aux axes passant par $M$. Elles coupent ces deux axes en $M'$ et $M"$.
+
+$M'$ est repéré par un nombre $x_{M}$ sur l'axe $[OI)$ et $M"$ par un nombre $y_{M}$ sur l'axe $[OJ)$.
+
+On dit que $x_{M}$ et $y_{M}$ sont les coordonnées de M dans le repère $(O;I;J)$. $x_{M}$ est l’abscisse de $M$ et $y_{M}$ l’ordonnée de $M$.
+\end{de}
+
+
+On représente en règle générale les fonctions dans un repère orthonormé, c'est à dire que les droites $(OI)$ et $(OJ)$ seront perpendiculaires, et que les longueurs $OI$ et $OJ$ seront égales.
+
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+         Axe & Nom & Lettre associée  \\
+        \hline
+        Horizontal & Abscisse & x \\
+        \hline
+        Vertical & Ordonnées & y \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\begin{de}[Courbe représentative d'une fonction]
+    La courbe représentative d'une fonction $f$ est l'ensemble des points $(x,f(x))$, où $x$ parcourt l'ensemble des points où la fonction est définie, qu'on a placé sur un repère orthonormé.
+\end{de}
+
+\begin{minipage}{0.6\textwidth}
+    Concrètement, pour représenter une fonction, on commence par faire un tableau de valeurs pour calculer l'image de certains points qui seront situés dans la partie de l'axe des abscisses que l'on représente. Puis on place ces points sur le repère. Enfin, on relie ces points par une courbe, dont l'allure dépend de la manière dont la fonction est définie (Elle ne va pas en ligne droite entre les points du tableau de valeur, sauf si la fonction est affine sur l'intervalle entre les deux points). Pour cette dernière partie, on peut s'aider de la représentation graphique sur une calculatrice, de son expérience, ou rajouter des valeurs supplémentaires dans le tableau de valeur pour voir ce que la courbe fait entre les points qu'on a tracé.
+    \begin{enumerate}
+        \item Tracer un repère
+        \item Préparer un tableau de valeurs de la fonction
+        \item Placer les points du tableau de valeur sur le repère
+        \item Tracer une courbe qui passe par ces points
+    \end{enumerate}
+    
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+  \begin{tikzpicture}
+   \begin{axis}[
+	 name = graph1,
+     ytick distance = 1,
+     xtick distance = 1,
+     ymin=-1.1, ymax=9.1,
+     xmin=-4.1, xmax=4.1,
+     grid=both,
+     grid style={line width=.1pt,draw=brown!20},
+     major grid style={line width=.2pt,draw=brown!40},
+     minor tick num=9,
+     tick style={draw=none},
+   ]
+
+     \addplot [domain=-10:10, samples=500, color=gray!90]
+        {x^2};
+    \addplot[domain=-10:10,samples=21,only marks, mark=x, blue] {x^2}; 
+   \end{axis}
+   \node[anchor=north] at (graph1.south) {\scriptsize Courbe représentative de $f(x)= x^ 2$  };
+  \end{tikzpicture}
+\end{minipage}
+
+\section{Fonctions et équations}
+
+Soit $f$ une fonction définie sur un sous-ensemble des réels, et $a$ un nombre.
+
+\begin{minipage}{0.5\textwidth}  
+Résoudre $f(x)=a$ c'est trouver tous les antécédents de $a$ par la fonction $f$.  
+\newline ~ \newline
+Graphiquement, c'est trouver toutes les abscisses en lesquelles la courbe représentative de la fonction croise la droite horizontale d'ordonnée $a$.
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+  \begin{tikzpicture}
+   \begin{axis}[
+	 name = graph1,
+     ytick distance = 1,
+     xtick distance = 1,
+     ymin=-1.1, ymax=6.1,
+     xmin=-3.1, xmax=3.1,
+     grid=both,
+     grid style={line width=.1pt,draw=brown!20},
+     major grid style={line width=.2pt,draw=brown!40},
+     minor tick num=9,
+     tick style={draw=none},
+   ]
+     \addplot [domain=-10:10, samples=500, color=gray!90]
+        {x^2};
+     \addplot [domain=-10:10, samples=500, color=blue]
+        {3};
+     \addplot[only marks, mark=x]coordinates{ (1.73205,3)
+		(-1.73205,3)};
+      \draw [thick,dashed] (1.73205,0) -- (1.73205,3);
+      \draw [thick,dashed] (-1.73205,0) -- (-1.73205,3);
+   \end{axis}
+   \node[anchor=north][text width=\textwidth][align=center] at (graph1.south) {\scriptsize Résolution graphique de $x^2=3$ :  les deux solutions valent environ $-1.7$ et $1.7$ };
+  \end{tikzpicture}
+\end{minipage}
+
+\subsection{Inéquation}
+
+\begin{de}
+    Une \underline{inéquation}, c'est une inégalité entre deux expressions qui s'expriment chacune en fonction d'une même inconnue. Comme dans le cadre d'une équation, \underline{résoudre une inéquation} c'est trouver toutes les valeurs de l'inconnue qui rendent l'équation vraie.
+\end{de}
+
+On peut appliquer cela à toutes les équations : Les équations à une inconnue, qu'on notera ici $x$, sont toujours de la forme $A(x)=B(x)$ où A et B sont des fonctions, puisque les deux membres de l'égalité sont calculables pour un $x$ donné.
+On peut donc toujours la transformer en une égalité de la forme $f(x)=0$, où $f(x)=A(x)-B(x)$  ($f$ est la différence de deux fonctions, c'est elle même une fonction)
+
+
+\begin{minipage}{0.5\textwidth}  
+Résoudre $f(x) \geq a$ c'est trouver tous les antécédents de nombres plus petits que $a$ par la fonction $f$.
+\newline ~ \newline
+Graphiquement, c'est trouver toutes les abscisses en lesquelles la courbe représentative de la fonction est \textbf{en dessous} de l'ordonnée $a$ (c'est à dire en dessous de la droite d'équation $y=a$.
+\newline ~ \newline
+A l'inverse, Résoudre $f(x) \geq a$ c'est trouver tous les antécédents de nombres plus grands que $a$ par la fonction $f$.
+Graphiquement, c'est trouver toutes les abscisses en lesquelles la courbe représentative de la fonction est \textbf{au dessus} de la droite d'équation $y=a$.
+
+
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+  \begin{tikzpicture}
+   \begin{axis}[
+	 name = graph1,
+     ytick distance = 1,
+     xtick distance = 1,
+     ymin=-1.1, ymax=2.1,
+     xmin=-3.1, xmax=3.1,
+     grid=both,
+     grid style={line width=.1pt,draw=brown!20},
+     major grid style={line width=.2pt,draw=brown!40},
+     minor tick num=9,
+     tick style={draw=none},
+   ]
+     \addplot [domain=-10:10, samples=500, color=gray!90]
+        {x^2};
+     \addplot [domain=-10:10, samples=500, color=blue]
+        {1};
+     \addplot[only marks, mark=x]coordinates{ (1,1)
+		(-1,1)};
+      \draw [thick,dashed] (1,0) -- (1,1);
+      \draw [thick,dashed] (-1,0) -- (-1,1);
+      \draw[red, line width = 3pt] (-1,0) --(1,0); 
+        \node[red, line width = 3pt] at (-1,0) {$\Big[$};
+        \node[red, line width = 3pt] at (1,0) {$\Big]$};
+   \end{axis}
+   \node[anchor=north][text width=\textwidth][align=center] at (graph1.south) {\scriptsize Résolution graphique de $x^2 \leq 1$ :  Les solutions valides sont les $x$ de $[-1;1]$ };
+\end{tikzpicture}  \begin{tikzpicture}
+   \begin{axis}[
+	 name = graph1,
+     ytick distance = 1,
+     xtick distance = 1,
+     ymin=-1.1, ymax=2.1,
+     xmin=-3.1, xmax=3.1,
+     grid=both,
+     grid style={line width=.1pt,draw=brown!20},
+     major grid style={line width=.2pt,draw=brown!40},
+     minor tick num=9,
+     tick style={draw=none},
+   ]
+     \addplot [domain=-10:10, samples=500, color=gray!90]
+        {x^2};
+     \addplot [domain=-10:10, samples=500, color=blue]
+        {1};
+     \addplot[only marks, mark=x]coordinates{ (1,1)
+		(-1,1)};
+      \draw [thick,dashed] (1,0) -- (1,1);
+      \draw [thick,dashed] (-1,0) -- (-1,1);
+      \draw[red, line width = 3pt] (-3.1,0) --(-1,0);
+      \draw[red, line width = 3pt] (1,0) --(3.1,0); 
+        \node[red, line width = 3pt] at (-1,0) {$\Big]$};
+        \node[red, line width = 3pt] at (1,0) {$\Big[$};
+   \end{axis}
+   \node[anchor=north][text width=\textwidth][align=center] at (graph1.south) {\scriptsize Les solutions valides de $x^2 \geq 1$ sont les $x$ de $]-\infty;1] \cup [1;+\infty[$ };
+  \end{tikzpicture}
+\end{minipage}
+
+
+
+\section{Sens de variation}
+
+\begin{de}
+    Une fonction $f$ est dite croissante sur un intervalle $I$ si pour deux nombres $a$ et $b$ de cet intervalle :
+    \vspace{0.3cm}
+    \begin{center}
+    si $a \leq b$,  alors $f(a) \leq f(b)$
+    \end{center}
+\end{de}
+
+Remarques :
+\begin{itemize}
+    \item On dit souvent qu'une fonction croissante sur un intervalle conserve l'ordre : Comparer (au sens de "se demander quel nombre est le plus grand") les images de deux éléments donnera le même résultat que comparer ces deux éléments.
+    \item Graphiquement, la courbe représentative sur un intervalle "montera" : en parcourant la courbe de gauche à droite, l'image en ordonnée devient de plus en plus haute.
+\end{itemize}
+
+Une fonction décroissante, c'est le contraire :
+
+\begin{de}
+    Une fonction est dite décroissante sur un intervalle $I$ si pour deux nombres $a$ et $b$ de cet intervalle :
+    \vspace{0.3cm}
+    \begin{center}
+    si $a \leq b$,  alors $f(a) \geq f(b)$
+    \end{center}
+\end{de}
+
+\begin{itemize}
+    \item On dit souvent qu'une fonction croissante sur un intervalle inverse l'ordre : Comparer (au sens de "se demander quel nombre est le plus grand") les images de deux éléments donnera le résultat inverse que comparer ces deux éléments.
+    \item Graphiquement, la courbe représentative sur un intervalle "descend" : en parcourant la courbe de gauche à droite, l'image en ordonnée devient de plus en plus basse.
+\end{itemize}
+
+Contrairement aux fonctions affines que vous aviez vu jusqu'à présent, qui gardaient toujours le même sens de variation, une fonction peut être croissante sur certains intervalles et décroissante sur d'autres. 
+
+La fonction carrée est croissante sur $\R^+=[0;+\infty[$ c'est à dire sur les réels positifs et décroissante sur $]-\infty;0]$
+
+\section{Parité d'une fonction}
+
+Ces propriétés permettent notamment de tracer le graphique d'une fonction sur les entiers négatifs, elles divisent donc la quantité de travail par 2.
+
+\begin{de}
+    Une fonction $f$ est dite paire si l'image de l'opposé de tout nombre de son ensemble de définition est égale à l'image de ce nombre. Pour tout nombre $x$ tel que $f(x)$ est défini  alors $f(-x)$ est défini et 
+    \vspace{0.3cm}
+    \begin{center}
+    \newline $f(x)=f(-x)$
+    \end{center}
+\end{de}
+
+Graphiquement, la courbe représentative d'une fonction paire sera symétrique par rapport à l'axe des ordonnées dans un repère orthonormé. (Donc par rapport à  \textbf{une droite})
+
+Par exemple, la fonction carré est paire : pour tout $x$ réel, $x^2=(-x)^2$
+
+
+\begin{de}
+    Une fonction $f$ est dite impaire si l'image de l'opposé de tout nombre de son ensemble de définition est égale à l'opposé de l'image de ce nombre. Pour tout nombre $x$ tel que $f(x)$ est défini  alors $f(-x)$ est défini et 
+    \vspace{0.3cm}
+    \begin{center}
+    \newline $f(-x)=-f(x)$
+    \end{center}
+\end{de}
+
+Graphiquement, la courbe représentative d'une fonction impaire sera symétrique par rapport à l'origine dans un repère orthonormé (Donc par rapport à  \textbf{un point})
+
+Par exemple, la fonction inverse, qui à tout $x$ non nul associe $\frac{1}{x}$  est impaire : pour tout $x$ réel, $x^2=(-x)^2$
+\begin{center}
+  \begin{tikzpicture}
+   \begin{axis}[
+	 name = graph1,
+     ytick distance = 1,
+     xtick distance = 1,
+     ymin=-3.1, ymax=3.1,
+     xmin=-3.1, xmax=3.1,
+     grid=both,
+     grid style={line width=.1pt,draw=brown!20},
+     major grid style={line width=.2pt,draw=brown!40},
+     minor tick num=9,
+     tick style={draw=none},
+   ]
+
+     \addplot [domain=-10:10, samples=500, color=gray!90]
+        {1/x};
+   \end{axis}
+   \node[anchor=north] at (graph1.south) {\scriptsize La Courbe représentative de $g(x)= \frac{1}{x}$ est impaire  };
+  \end{tikzpicture}
+\end{center}
+
+\end{document}
+
