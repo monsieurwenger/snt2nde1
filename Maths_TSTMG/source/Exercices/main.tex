@@ -1,0 +1,612 @@
+%%%%%MISE EN PAGE%%%%%%%
+    
+
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{multicol}
+\usepackage[left=2cm, right=2cm, bottom=1.85cm, top=1.5cm]{geometry}
+\usepackage{tikz}
+\usetikzlibrary{intersections}
+\usetikzlibrary{positioning}
+\usetikzlibrary{3d}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+%\renewcommand{\headrulewidth}{1pt}
+%\fancyhead[C]{\textbf{page \thepage}} 
+\fancyhead[L]{Chapitre 1}
+\fancyhead[R]{Terminale STMG}
+
+\renewcommand{\footrulewidth}{1pt}
+\fancyfoot[C]{\textbf{page \thepage}} 
+\fancyfoot[L]{Lycée Jacques Brel}
+\fancyfoot[R]{Année 2022-2023}
+
+
+%\newcommand{\TDoc}[1]{
+%\begin{center}
+%{\setlength{\fboxsep}{10pt}  % Ecart texte-boite
+%\shadowbox{\textbf{\Large{#1}}}}
+%\end{center}
+%\vspace{1.5cm}}
+    
+ \usepackage{fancybox}   %pour l'encadré du titre shadowbox
+ \usepackage{stmaryrd}   %pour utiliser correctement les crochets pour les ensembles de définitions
+ \usepackage[normalem]{ulem}
+ \usepackage{graphicx}
+ %\usepackage{wrapfig} %texte coulé autour d'une image
+ \usepackage{soul} % souligné
+ \usepackage{nonfloat}
+%MATHEMATIQUES
+\usepackage{amsmath,amsfonts} 
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\everymath{\displaystyle}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\F}{\mathbb{F}}
+
+
+\newtheorem{de}{Définition} % les définitions et les théorèmes sont
+\newtheorem{theo}{Théorème}    % numérotés par section
+\newtheorem{prop}[theo]{Proposition} 
+\newtheorem{pro}[theo]{Propriété} 
+\newtheorem{exe}{Exemple} 
+\newtheorem{exo}{Exercice}  
+\newtheorem{qe}{Question de cours}
+%%%%%%%%%%%%
+\makeatletter
+\newlength{\longA}
+\newlength{\longB}
+\newenvironment{BoiteShadow}[3][\linewidth]{%
+\addtolength{\longA}{#2}
+\addtolength{\longB}{#3}
+\begin{Sbox}\begin{minipage}{#1}}%
+{\end{minipage}\end{Sbox}%
+\setlength{\fboxsep}{\longA}
+\setlength{\shadowsize}{\longB}
+\shadowbox{\unhbox\@Sbox}\par}
+\makeatother
+%%%%%%%
+
+\title{}
+
+%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{BoiteShadow}{10pt}{8pt}
+\Huge{Feuille d'exercice $n^{\circ}1$: Suites}
+ \end{BoiteShadow}
+%\section{Connaissance du cours}
+%Vous avez cinq minutes pour répondre aux questions suivantes. \textbf{Dans votre cahier}, répondre aux questions suivantes \textbf{sans regarder le cours}. Si vous n'arrivez pas à répondre au bout des cinq minutes, répondez aux question en allant voir le cours. 
+
+%\begin{enumerate}
+%\item Je connais l'ensemble des nombres entiers naturels, des nombres entiers relatifs, des nombres décimaux et des nombres rationnels? Les décrire.  
+%\item Comment sont caractérisés les nombres décimaux? 
+%\item Comment additionner et multiplier des nombres rationnels?
+%\item Comment multiplier ou diviser par une puissance de $10$?	
+%\end{enumerate}
+
+\section{Suites : les bases}
+
+\subsection{Calcul de termes}
+
+\begin{exo}
+    Calculez le terme demandé des suites dont on donne le terme général
+    \begin{enumerate}
+        \item Que vaut $u_3$ dans la suite de terme général $u_n = 4n-3$ ?
+        \item Que vaut $v_5$ dans la suite de terme général $v_n = 13-3n$ ?
+        \item Que vaut $w_7$ dans la suite de terme général $w_n = n^2$ ?
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Calculez le terme demandé des suites dont on donne le terme général
+    \begin{enumerate}
+        \item Que vaut $u_3$ dans la suite de terme général $u_n = \frac{1}{3}n + 2$ ?
+        \item Que vaut $v_5$ dans la suite de terme général $v_n = n-(\frac{1}{n}-1)$ ?
+        \item Que vaut $w_7$ dans la suite de terme général $w_n = 2n^2 - 6n - 14$ ?
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Faites un tableau de valeur des 6 premiers termes des suites $u,v$ et $w$ définies récursivement :
+    \begin{enumerate}
+        \item $u_1=6$ et, pour $n> 0$, $u_{n+1}=u_n-1$
+        \item $v_1=3$ et, pour $n> 0$, $v_{n+1}=18-v_n$
+        \item $w_1=1$ et, pour $n> 0$, $w_{n+1}=2w_{n}$ 
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Faites un tableau de valeur des 6 premiers termes des suites $u,v$ et $w$ définies récursivement :
+    \begin{enumerate}
+        \item $u_1=0$ et, pour $n> 0$, $u_{n+1}=2u_n - \frac{1}{3}$
+        \item $v_1=\frac{8}{3}$ et, pour $n> 0$, $v_{n+1}=\frac{3v_n}{2}$
+        \item $w_1=1$, $w_2=1$ et, pour $n> 0$, $w_{n+2}=w_{n}+w_{n+1}$ (Suite de Fibonacci)
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Faites un tableau de valeur des 6 premiers termes des suites $u,v$ et $w$ définies récursivement :
+    \begin{enumerate}
+        \item $u_1=1$ et, pour $n> 0$, $u_{n+1}=2u_n-1$
+        \item $v_1=2$ et, pour $n> 0$, $v_{n+1}=2v_n-1$
+        \item $w_1=1$, et, pour $n> 0$, $w_{n+1}=\frac{w_{n}}{2}+\frac{1}{w_{n}}$
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Soit $u$ la suite définie par $u_1=1$, et dont chaque terme est égal à la somme de tous les termes qui précèdent. Calculer les 6 premiers termes de la suite.
+    \begin{enumerate}
+        \item Cet énoncé permet-il de calculer chaque terme de la suite $u$
+        \item Calculer les 6 premiers termes de la suite $u$ en utilisant la formule récursive.
+        \item Pourriez vous conjecturer, sans nécessairement la montrer ou la calculer, une formule pour $u_{20}$ ?
+        \item Comparer (sans les effectuer) le nombre d'opérations nécessaires au calcul de $u_{20}$ en utilisant la formule récursive, et en utilisant la formule conjecturée à la question précédente.
+    \end{enumerate}
+\end{exo}
+
+
+\begin{exo}[Algorithme]
+    A l'aide d'un tableur ou d'un langage de programmation, calculez et donnez (sous une forme adaptée) l'expression du $10$-ième, $20$-ième, et $100$-ième terme de la suite de Fibonacci définie à l'exercice précédent.
+\end{exo}
+
+\begin{exo}[Algorithme]
+Implémentez en Python un programme permettant de calculer la $10000000$-ème valeur de la suite $u$ utilisée en exemple en utilisant la formule récursive. Combien de temps met-il à s'exécuter ? Et en utilisant la formule du terme général ? 
+\end{exo}
+
+
+\subsection{Sens de variation}
+
+
+\begin{exo}
+Déterminez le sens de variation des suites :
+    \begin{itemize}
+        \item $u$ où pour $n> 0$, $u_{n}=n^2$
+        \item $v$ où pour $n> 0$, $v_{n}=4 + \frac{1}{n}$
+        \item $w$ où $w_1=1$, et, pour $n> 0$, $w_{n+1}=w_{n}+\frac{1}{w_{n}}$
+    \end{itemize}
+\end{exo}
+
+ 
+\begin{exo}
+Déterminez le sens de variation des suites :
+    \begin{itemize}
+        \item $u$ où pour $n> 0$, $u_{n}=n^2 - 2n + 1$
+        \item $v$ où pour $n> 0$, $v_{n}=165 - \frac{1}{n} - n^2$
+        \item $w$ où $w_1=1$, et l'on a un certain réel $r$ tel que pour $n> 0$, $w_{n+1}=w_{n}+r$ en fonction du signe de $r$.
+    \end{itemize}
+\end{exo}
+
+
+
+\section{Suites arithmétiques}
+
+\subsection{Reconnaître une suite arithmétique, moyenne arithmétique}
+
+\newcommand{\insertph}[1]{%
+ \tikz[remember picture] \node[inner sep=0pt,minimum height=10pt](#1){};} 
+
+
+\vspace {10 mm}
+\begin{exo}
+    Dans chacun des cas suivants, on donne une liste de nombres. Indiquer si les nombres peuvent être les premiers termes d'une suite arithmétique
+    \begin{enumerate}
+        \item (Exemple) $4;5;6$ peuvent être les premiers termes d'une suite arithmétique de premier terme $4$ et de raison $1$    
+        \item   $12;17;22$
+        \item   $10;13;18;21$
+        \item   $5;5;5$
+        \item   $2; -2; -6$
+        \item   $33;44;55;77$
+        \item  $\frac{3}{2};2{,}5; \frac{7}{2}$
+    \end{enumerate}
+\end{exo}
+
+
+\begin{exo}
+    Déterminer la moyenne arithmétique de $a$ et $b$ dans les cas suivants :
+    \begin{enumerate}
+        \item $a=5$ et $b=13$
+        \item $a=-\frac{3}{7}$ et $b=\frac{3}{7}$
+        \item $a=108$ et $b=-208$
+        \item $a=\frac{1}{4}$ et $b=-\frac{2}{3}$
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Dire si chacune des suites suivantes est arithmétique. Si oui, préciser leur raison
+        \begin{enumerate}
+            \item pour tout entier $n$ : $u_n = -3+6n$
+            \item pour tout entier $n$ : $v_n = n^2 + 3n + 1$
+            \item pour tout entier $n$ : $w_n = 4(n-3) - 3n$
+        \end{enumerate}
+\end{exo}
+
+
+
+\subsection{Caractériser une suite arithmétique à partir de deux informations}
+
+\begin{exo}
+Dans chacun de ces exemples, la suite présentée est arithmétique.
+
+Compléter les tableaux suivants :
+
+
+\begin{multicols}{2}
+\item{
+\centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $u_1$ & $u_2$ & $u_3$ & $u_4$  & $u_5$ \\
+        \hline
+         $3\insertph{n1}$ & $\insertph{n2}8\insertph{n3}$ & $\insertph{n4}\ldots\insertph{n5}$ & $\insertph{n6}\ldots\insertph{n7}$ &   $\insertph{n8}\ldots$ \\ 
+        \hline
+    \end{tabular}\par
+}
+
+\tikz[remember picture,overlay]\draw[->,blue] ([yshift=-2mm] n1.south) to  [out=-45,in=-150] node[below]{La raison de la suite est \ldots} ([yshift=-2mm] n2.south) ; 
+\vspace{10mm}
+\item
+{
+\centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $u_1$ & $u_2$ & $u_3$ & $u_4$  & $u_5$ \\
+        \hline
+         $2\insertph{n1}$ & $\insertph{n2}\ldots\insertph{n3}$ & $\insertph{n4}\ldots\insertph{n5}$ & $\insertph{n6}\ldots\insertph{n7}$ &   $\insertph{n8}\ldots$ \\ 
+        \hline
+    \end{tabular}\par
+}
+
+\tikz[remember picture,overlay]\draw[->,blue] ([yshift=-2mm] n1.south) to  [out=-45,in=-150] node[below]{La raison de la suite est 4} ([yshift=-2mm] n2.south) ; 
+
+\vspace{10mm}
+\item
+{
+\centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $u_1$ & $u_2$ & $u_3$ & $u_4$  & $u_5$ \\
+        \hline
+         $\ldots\insertph{n1}$ & $\insertph{n2}\ldots\insertph{n3}$ & $\insertph{n4}7\insertph{n5}$ & $\insertph{n6}9\insertph{n7}$ &   $\insertph{n8}\ldots$ \\ 
+        \hline
+    \end{tabular}\par
+}
+
+\tikz[remember picture,overlay]\draw[->,blue] ([yshift=-2mm] n1.south) to  [out=-45,in=-150] node[below]{La raison de la suite est \ldots} ([yshift=-2mm] n2.south) ; 
+\vspace{10mm}
+\item
+{
+\centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $u_1$ & $u_2$ & $u_3$ & $u_4$  & $u_5$ \\
+        \hline
+         $\ldots\insertph{n1}$ & $\insertph{n2}\ldots\insertph{n3}$ & $\insertph{n4}7\insertph{n5}$ & $\insertph{n6}\ldots\insertph{n7}$ &   $\insertph{n8}\ldots$ \\ 
+        \hline
+    \end{tabular}\par
+}
+
+\tikz[remember picture,overlay]\draw[->,blue] ([yshift=-2mm] n1.south) to  [out=-45,in=-150] node[below]{La raison de la suite est $-3$} ([yshift=-2mm] n2.south) ; 
+\vspace{10mm}
+\item
+{
+\centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $u_1$ & $u_2$ & $u_3$ & $u_4$  & $u_5$ \\
+        \hline
+         $3\insertph{n1}$ & $\insertph{n2}\ldots\insertph{n3}$ & $\insertph{n4}\ldots\insertph{n5}$ & $\insertph{n6}\ldots\insertph{n7}$ &   $\insertph{n8}19$ \\ 
+        \hline
+    \end{tabular}\par
+}
+
+\tikz[remember picture,overlay]\draw[->,blue] ([yshift=-2mm] n1.south) to  [out=-45,in=-150] node[below]{La raison de la suite est $\ldots$} ([yshift=-2mm] n2.south) ; 
+
+\vspace{10mm}
+\item
+{
+\centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $u_1$ & $u_2$ & $u_3$ & $u_4$  & $u_5$ \\
+        \hline
+         $\ldots\insertph{n1}$ & $\insertph{n2}4\insertph{n3}$ & $\insertph{n4}\ldots\insertph{n5}$ & $\insertph{n6}\ldots\insertph{n7}$ &   $\insertph{n8}14$ \\ 
+        \hline
+    \end{tabular}\par
+}
+
+\tikz[remember picture,overlay]\draw[->,blue] ([yshift=-2mm] n1.south) to  [out=-45,in=-150] node[below]{La raison de la suite est $\ldots$} ([yshift=-2mm] n2.south) ; 
+\end{multicols}
+\end{exo}
+
+
+\begin{exo}
+    \begin{enumerate}
+        \item Quelle est la raison d'une suite arithmétique $u$ telle que $u_4=7$ et $u_{11}=49$ ?
+        \item Quelle est la raison d'une suite arithmétique $u$ telle que $u_4=30$ et $u_{12}=-8$ ?
+    \end{enumerate}
+\end{exo}
+
+\subsection{Somme de termes consécutifs d'une suites arithmétiques}
+
+\begin{exo}
+    On considère $u_n$ une suite arithmétique de premier terme $u_0=12$ et de raison $7$.
+    \begin{enumerate}
+        \item Exprimer $u_n$ en fonction de $n$ pour tout entier $n$
+        \item Calculer $ S = \sum_{i=4}^{15} u_i = u_4 + u_5 + \ldots + u_{15}$
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Chaque jour, un élève fait 2500 pas pour aller au lycée (il vient même le week-end et les vacances prenez en de la graine). Cette année, il décide de faire le trajet normal le premier jour, qui est le 1er septembre, puis de prendre chaque jour un détour qui augmente de 100 pas la durée du trajet. 
+    On modélise la situation par une suite $p_n$ (pour $n$ \geq 1) où $p_n$ est le nombre de pas effectués le $n$-ième jour.
+    \begin{enumerate}
+        \item Que valent $p_1$ et $p_2$ ?
+        \item Exprimer $p_n$ en fonction de $n$
+        \item Combien de pas l'élève devra-t-il faire le  dernier jour de l'année, le 31 août ?
+        \item Au total, combien de pas l'élève aura-t-il fait dans l'année?
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Vous êtes embauchés dans une entreprise pour un contrat de 3 ans. Cette entreprise vous propose de choisir entre deux contrats :
+    \begin{itemize}
+        \item Contrat A : Un salaire de 1000 € par mois, et une augmentation de 20 € par mois
+        \item Contrat B : Un salaire de 1000 € par mois, et une augmentation de 300 € par an (c'est à dire qu'à chaque anniversaire annuel, le salaire augmente de 300 euros et reste à ce niveau jusqu'au prochain anniversaire).
+    \end{itemize}
+    
+    \begin{enumerate}
+        \item On appelle $u_n$ le salaire reçu le $n$-ième mois dans le contrat A  ($n$ va de $1$ à $36$). Montrer que $u_n$ est une suite arithmétique dont on précisera la raison. Quel est le montant reçu lors du mois $15$ ? Lors du mois $m$ où $m$ est un mois quelconque entre $1$ et $36$ ?
+        \item On appelle $v_n$ le salaire reçu la $n$-ième année dans le contrat B  ($n$ va de $1$ à $3$). $v_n$ est-elle une suite arithmétique ? Si oui, quelle est sa raison?
+        \item Quel contrat rapportera plus d'argent au total au cours des $3$ années ? 
+        \item On demande au service RH de préparer un contrat C, formulé de la même manière que le contrat B, mais avec une augmentation annuelle différente : Contrat C : Un salaire de 1000 € par mois, et une augmentation de $X$ € par an.  Que doit valoir $X$ pour que ce contrat rapporte exactement autant en 3 ans que le contrat A ? 
+        
+    \end{enumerate}
+\end{exo}
+
+
+\newpage
+
+\setcounter{exo}{20}
+\section{Suites géométriques}
+
+
+\subsection{Evolutions et pourcentages}
+
+\begin{exo} Questions Flash : 
+\item Complétez les phrases suivantes :
+    \begin{enumerate}
+        \item Augmenter de $3\%$, c'est multiplier par \ldots
+        \item Augmenter de $150\%$, c'est multiplier par \ldots
+        \item Diminuer de $0{,}5\%$, c'est multiplier par \ldots
+        \item Diminuer de $92\%$, c'est multiplier par \ldots
+        \item Augmenter de $\ldots\%$, c'est multiplier par $1{,}2$
+        \item Diminuer de $\ldots\%$, c'est multiplier par $0{,}94$
+        \item Augmenter de $\ldots\%$, c'est multiplier par $2$
+        \item Diminuer de $\ldots \%$, c'est multiplier par $0$
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+ Calculez dans ces situations :
+    \begin{enumerate}
+        \item Un téléphone qui coûte 320 € voit son prix réduit de $15\%$. Quel est le prix final ?
+        \item Le montant du Smic Brut est de 1680€ par mois. Pour obtenir le montant net, on lui retire $20\%$. Quel est le montant net du Smic ?
+        \item les ventes de stylos d'une entreprise augmentent de $5\%$ par an. En $2022$, $6300$ stylos ont été vendus. Combien seront vendus en 2023?
+        \item Combien de stylos ont été vendus en 2021 ? (toujours pour l'entreprise de la question précédente)
+        \item Une marque de chips vend $100$ grammes de chips pour $24$€. Elle augmente le prix de vente au kilo de $10\%$, mais diminue la quantité de chips dans le paquet de $15\%$. Quel est le nouveau prix d'un paquet de chips?
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Une suite peut-elle être à la fois géométrique et arithmétique ? Si oui, donnez un exemple, sinon, prouvez que c'est impossible.
+\end{exo}
+\vspace{20mm}
+\begin{exo}
+    On donne les premiers termes d'une suite. Cette suite peut elle être géométrique ? Si oui, quelle est sa raison?
+    \begin{enumerate}
+    \item   $1;3;6;9$
+    \item   $1;3;9;27; 81$
+    \item   $5;5;5$
+    \item $4;-6;9;-\frac{27}{2}$
+    \item $320;160;80;40$
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Pour chacune de ces suites, dites si elle est géométrique, et si oui, préciser le terme d'indice $1$ (par exemple $u_1$ si la suite s'appelle $(u_n)$) et la raison de la suite. 
+    \begin{enumerate}
+        \item La suite $(u_n)$ est définie pour tout entier $n$ par $u_n = 2 \times 4^{n+1}$.
+        \item La suite $(v_n)$ est définie pour tout entier $n$ par $v_n = 3n$.
+        \item La suite $(w_n)$ est définie par $w_1=2$ et pour tout entier $n$ $w_{n+1} = \frac{1}{5}w_n$.
+        \item La suite $(t_n)$ est définie par $t_1=2$ et pour tout entier $n$, $t_{n+1} = \frac{1}{2}t_1$.
+    \end{enumerate}
+\end{exo}
+
+
+\newpage
+
+
+\begin{exo}
+Dans chacun de ces exemples, la suite présentée est \textbf{géométrique}.
+
+Recopier et compléter les tableaux suivants :
+
+\begin{multicols}{2}
+\item{
+\centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $u_1$ & $u_2$ & $u_3$ & $u_4$  & $u_5$ \\
+        \hline
+         $2\insertph{n1}$ & $\insertph{n2}6\insertph{n3}$ & $\insertph{n4}\ldots\insertph{n5}$ & $\insertph{n6}\ldots\insertph{n7}$ &   $\insertph{n8}\ldots$ \\ 
+        \hline
+    \end{tabular}\par
+}
+
+\tikz[remember picture,overlay]\draw[->,blue] ([yshift=-2mm] n1.south) to  [out=-45,in=-150] node[below]{La raison de la suite est \ldots} ([yshift=-2mm] n2.south) ; 
+\vspace{10mm}
+\item
+{
+\centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $u_1$ & $u_2$ & $u_3$ & $u_4$  & $u_5$ \\
+        \hline
+         $24\insertph{n1}$ & $\insertph{n2}\ldots\insertph{n3}$ & $\insertph{n4}\ldots\insertph{n5}$ & $\insertph{n6}\ldots\insertph{n7}$ &   $\insertph{n8}\ldots$ \\ 
+        \hline
+    \end{tabular}\par
+}
+
+\tikz[remember picture,overlay]\draw[->,blue] ([yshift=-2mm] n1.south) to  [out=-45,in=-150] node[below]{La raison de la suite est $0{,}5$} ([yshift=-2mm] n2.south) ; 
+
+\vspace{10mm}
+\item
+{
+\centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $u_1$ & $u_2$ & $u_3$ & $u_4$  & $u_5$ \\
+        \hline
+         $\ldots\insertph{n1}$ & $\insertph{n2}\ldots\insertph{n3}$ & $\insertph{n4}2\insertph{n5}$ & $\insertph{n6}3\insertph{n7}$ &   $\insertph{n8}\ldots$ \\ 
+        \hline
+    \end{tabular}\par
+}
+
+\tikz[remember picture,overlay]\draw[->,blue] ([yshift=-2mm] n1.south) to  [out=-45,in=-150] node[below]{La raison de la suite est \ldots} ([yshift=-2mm] n2.south) ; 
+\vspace{10mm}
+\item
+{
+\centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $u_1$ & $u_2$ & $u_3$ & $u_4$  & $u_5$ \\
+        \hline
+         $\ldots\insertph{n1}$ & $\insertph{n2}\ldots\insertph{n3}$ & $\insertph{n4}7\insertph{n5}$ & $\insertph{n6}\ldots\insertph{n7}$ &   $\insertph{n8}\ldots$ \\ 
+        \hline
+    \end{tabular}\par
+}
+
+\tikz[remember picture,overlay]\draw[->,blue] ([yshift=-2mm] n1.south) to  [out=-45,in=-150] node[below]{La raison de la suite est $-1$} ([yshift=-2mm] n2.south) ; 
+\vspace{10mm}
+\item
+{
+\centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $u_1$ & $u_2$ & $u_3$ & $u_4$  & $u_5$ \\
+        \hline
+         $100\insertph{n1}$ & $\insertph{n2}\ldots\insertph{n3}$ & $\insertph{n4}121\insertph{n5}$ & $\insertph{n6}\ldots\insertph{n7}$ &   $\insertph{n8}\ldots$ \\ 
+        \hline
+    \end{tabular}\par
+}
+
+\tikz[remember picture,overlay]\draw[->,blue] ([yshift=-2mm] n1.south) to  [out=-45,in=-150] node[below]{La raison de la suite est $\ldots$} ([yshift=-2mm] n2.south) ; 
+
+\vspace{10mm}
+\item
+{
+\centering
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $u_1$ & $u_2$ & $u_3$ & $u_4$  & $u_5$ \\
+        \hline
+         $\ldots\insertph{n1}$ & $\insertph{n2}2\insertph{n3}$ & $\insertph{n4}\ldots\insertph{n5}$ & $\insertph{n6}\ldots\insertph{n7}$ &   $\insertph{n8}54$ \\ 
+        \hline
+    \end{tabular}\par
+}
+
+\tikz[remember picture,overlay]\draw[->,blue] ([yshift=-2mm] n1.south) to  [out=-45,in=-150] node[below]{La raison de la suite est $\ldots$} ([yshift=-2mm] n2.south) ; 
+\end{multicols}
+\end{exo}
+\vspace{10mm}
+\begin{exo}
+    Complétez les phrases suivantes :
+    \begin{itemize}
+        \item Soit $u$ une suite géométrique de premier terme $u_1=2$ et de raison $2$. $u_{10}= \ldots$
+        \item Soit $v$ une suite géométrique de premier terme $v_1=2$ et de raison $1{,}07$. $v_{31} \approx \ldots$
+        \item Soit $w$ une suite géométrique de premier terme $w_0=4$ et de raison $3$. $w_{20}= \ldots$
+        \item Soit $t$ une suite géométrique de premier terme $t_0= \ldots$ et de raison $2$. $t_{10}=3072$
+    \end{itemize}
+\end{exo}
+
+\begin{exo}
+    Chaque année, le prix du dernier Iphone augmente de $7,25\%$. Chaque année, le SMIC augmente de $1.25\%$. 
+    En $2022$, l'Iphone et le SMIC mensuel valent tous les deux environ $1600$ €. On suppose que ces valeurs continuent de suivre cette même évolution dans le futur.
+    \begin{enumerate}
+        \item Combien l'Iphone vaudra-t-il (au centime près) en 2032 s'il suit l'évolution de l'énoncé?
+        \item Combien le SMIC vaudra-t-il (au centime près) en 2032 s'il suit l'évolution de l'énoncé ?
+        \item Combien de mois de SMIC brut faudra-t-il pour se payer le dernier Iphone en 2032 ? En 2042 ?
+        \item En quelle année une année de SMIC devient-elle insuffisante pour se payer le dernier Iphone?
+    \end{enumerate}
+\end{exo}
+\begin{exo}
+    Les suites présentées dans ce tableau sont géométriques.  Complétez le tableau de manière cohérente, la colonne "sens de variation" doit contenir une des propositions suivantes :\begin{multicols}{3}
+        \begin{itemize}
+            \item croissante
+            \item décroissante
+            \item strictement croissante
+            \item strictement décroissante
+            \item ni croissante ni décroissante
+            \item constante
+        \end{itemize}
+    \end{multicols}
+    \renewcommand*{\arraystretch}{2.5}
+    \centering
+    \begin{tabular}{|c|c|c||c|c|c|}
+        \hline
+             premier terme de  & raison &\texttt{      }sens de variation\texttt{      }& premier terme de  & raison &\texttt{      }sens de variation\texttt{      }\\
+             la suite : $u_1$ & $q$ & &la suite : $u_1$ & $q$ & \\
+         \hline
+             $1$ & $3$ & &
+             $2$ & $0$ & \\
+         \hline
+             $10$ & $\frac{3}{2}$ & &
+             $-1$ & $3$ & \\
+         \hline
+             $8$ & $\frac{3}{5}$ & &
+             $3$ & $-1$ & \\
+         \hline
+             $16$ & $1$ &  &
+             $-2$ & $0$ &\\
+         \hline
+    \end{tabular}
+\end{exo}
+
+\begin{exo}
+    \underline{Le problème le plus classique du monde sur les suites géométriques} : Comme récompense pour avoir inventé le jeu d'échecs, on raconte que son inventeur avait demandé au roi d'Inde la chose suivante : Il veut un grain de riz sur la 1ere case de l'échiquier, 2 sur la deuxième case, 4 sur la troisième case, et ainsi de suite, en doublant à chaque case le nombre de grains de riz par rapport à la case précédente.  \begin{enumerate}
+        \item On appelle $(u_n)$ le nombre de grains sur la n-ième case de l'échiquier.  Quelle est la nature de la suite $u$ ?
+        \item Donner la formule du nombre de grains de riz qui seront sur la 64ème case (un échiquier compte 64 cases en tout)
+        \item Donner la formule du nombre de grains de riz qui devront être au total donnés par le roi
+        \item Sachant qu'un grain de riz vaut $0{,}04$ grammes, quel est le poinds total de riz qui devra être donné à l'inventeur des échecs ? 
+        \item Combien de temps faudrait-il aujourd'hui pour produire une telle quantité sachant que la production mondiale de riz est de 450 millions de tonnes?
+    \end{enumerate}
+\end{exo}
+
+
+\begin{exo}
+    Vous vous faites embaucher dans une entreprise pour un contrat à durée déterminée de 3 ans. On vous donne encore le choix entre deux contrats différents : 
+    \begin{itemize}
+        \item Contrat A : Un salaire de 1500 € par mois, et une augmentation de 150 € par mois
+        \item Contrat B : Un salaire de 1200 € par mois, et une augmentation de $8\%$ par mois 
+    \end{itemize}
+    
+    
+    \begin{enumerate}
+        \item Pour le contrat A, calculer la relation entre le salaire du mois $n$ et le salaire du mois $n+1$. En déduire la nature de la suite $u$ telle que $u_1$ soit le salaire perçu dans le contrat A le premier mois, $u_2$ le deuxième mois, etc.
+        \item Même question pour le contrat B, en appelant $v_n$ le montant reçu le n-ième mois dans le contrat B
+        \item Calculer le montant reçu le dernier mois du contrat dans les deux cas
+        \item Calculer la somme totale perçue au cours des trois ans pour chacun des deux contrats. 
+        \item Conclure : quel contrat préférez vous?
+    \end{enumerate}
+\end{exo}
+
+\end{document}
