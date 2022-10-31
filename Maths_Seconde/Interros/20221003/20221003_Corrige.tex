@@ -1,0 +1,258 @@
+\documentclass[10pt,a4paper]{exam}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+%\renewcommand\sfdefault{phv}
+\usepackage[left=2cm, right=2cm, bottom=1.85cm, top=1.5cm]{geometry}
+
+\usepackage{fancyhdr}
+\usepackage{framed}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage{multicol}
+
+\usepackage[skip=13 pt plus1pt]{parskip}
+%\renewcommand{\headrulewidth}{1pt}
+%\fancyhead[C]{\textbf{page \thepage}} 
+\fancyhf{} 
+\fancyhead[L]{Nom :}
+\fancyhead[R]{2nde 1 - Interrogation rapide (10 minutes) - 2022-10-03}
+\renewcommand{\footrulewidth}{1pt}
+%\fancyfoot[C]{\textbf{page \thepage}} 
+\fancyfoot[L]{Nom :}
+\fancyfoot[R]{2nde 1 - Interrogation rapide (10 minutes) - 2022-10-03}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newcommand{\TDoc}[1]{
+%\begin{center}
+%{\setlength{\fboxsep}{10pt}  % Ecart texte-boite
+%\shadowbox{\textbf{\Large{#1}}}}
+%\end{center}
+%\vspace{1.5cm}}
+    
+ \usepackage{fancybox}   %pour l'encadré du titre shadowbox
+ \usepackage{stmaryrd}   %pour utiliser correctement les crochets pour les ensembles de définitions
+ \usepackage[normalem]{ulem}
+ \usepackage{graphicx}
+ %\usepackage{wrapfig} %texte coulé autour d'une image
+ \usepackage{soul} % souligné
+ \usepackage{nonfloat}
+ \usepackage[standard]{ntheorem}
+ \usepackage{array}
+ \usepackage{arydshln}
+ \usepackage{graphicx}
+%MATHEMATIQUES
+\usepackage{amsmath,amsfonts} 
+
+\usepackage{tikz}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\F}{\mathbb{F}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%% debut fichier boiboites.sty %%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{xkeyval}
+\RequirePackage{tikz}
+\usetikzlibrary{intersections}
+\usetikzlibrary{positioning}
+\usetikzlibrary{3d}
+\RequirePackage{amssymb}
+
+\define@key{boxedtheorem}{titlecolor}{\def\titlecolor{#1}}
+\define@key{boxedtheorem}{titlebackground}{\def\titlebackground{#1}}
+\define@key{boxedtheorem}{background}{\def\background{#1}}
+\define@key{boxedtheorem}{titleboxcolor}{\def\titleboxcolor{#1}}
+\define@key{boxedtheorem}{boxcolor}{\def\boxcolor{#1}}
+\define@key{boxedtheorem}{thcounter}{\def\thcounter{#1}}
+\define@key{boxedtheorem}{size}{\def\size{#1}}
+\presetkeys{boxedtheorem}{titlecolor = black, titlebackground = white, background = white,%
+                         titleboxcolor = black, boxcolor = black, thcounter=, size = .9\textwidth}{}
+
+\newcommand{\couleurs}[1][]{%
+    \setkeys{boxedtheorem}{#1}
+    \tikzstyle{fancytitle} =[draw=\titleboxcolor, rounded corners, fill=\titlebackground,
+                            text= \titlecolor]
+    \tikzstyle{mybox} = [draw=\boxcolor, fill=\background, very thick,
+                        rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+}
+
+
+%Commande generique pour faire un joli encadre
+\newsavebox{\boiboite}
+\newcommand{\titre}{Titre}
+\newenvironment{boite}[2][]%
+    {%
+    \renewcommand{\titre}{#2}
+    \couleurs[#1]
+    \begin{lrbox}{\boiboite}%
+     \begin{minipage}[!h]{\size}
+    }%
+    {%
+     \end{minipage}
+    \end{lrbox}
+    \begin{center}
+    \begin{tikzpicture}
+    \node [mybox] (box){\usebox{\boiboite}};
+    \node[fancytitle, right=10pt] at (box.north west) {\titre};
+    \end{tikzpicture}
+    \end{center}
+    }
+
+\newcommand{\newboxedtheorem}[4][]{%
+    \couleurs[#1]
+    \@ifnotempty{#4}{%
+      \@ifundefined{the#4}{\@ifundefined{\thcounter}{\newcounter{#4}}{%
+      \newcounter{#4}[\thcounter ] } } { }%
+    }
+    \newenvironment{#2}[1][]{%
+    \@ifnotempty{#4}{\refstepcounter{#4}}
+    \begin{boite}[#1]{\textbf{#3\@ifnotempty{#4}{ \csname the#4\endcsname}}\@ifnotempty{##1}{
+    (##1)}}
+    }%
+    {%
+    \end{boite}
+    }
+}
+
+\newcommand{\newboxedtheoreme}[4][]{%
+    \couleurs[#1]
+    \@ifnotempty{#4}{%
+      \@ifundefined{the#4}{\@ifundefined{}{}{%
+      } } { }%
+    }
+    \newenvironment{#2}[1][]{%
+    \@ifnotempty{#4}{\refstepcounter{#4}}
+    \begin{boite}[#1]{\textbf{#3\@ifnotempty{#4}{ \csname the#4\endcsname}}\@ifnotempty{##1}{
+    (##1)}}
+    }%
+    {%
+    \end{boite}
+    }
+}
+%%%%%%%%%%%%%%%%%%%% end fichier boiboites.sty %%%%%%%%%%%%%%%%%%%%%%
+\makeatother
+\newboxedtheorem{theo}{Théorème}{theorem}
+\newboxedtheorem{de}{D\'efinition}{theorem}
+\newboxedtheorem{prop}{Propriété}{theorem}
+\newboxedtheorem{pro}{Proposition}{theorem}
+\newboxedtheorem{nota}{Notation}{theorem}
+\newtheorem{exo}{Exercice}
+\newboxedtheorem{exe}{Exemple}{theorem}
+\newboxedtheorem{cor}{Corolaire}{theorem}
+\newboxedtheoreme{conc}{Conclusion}{theorem*}
+\newboxedtheoreme{demo}{\textbf{Démonstration guidée}}{theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\longA}
+\newlength{\longB}
+\newenvironment{BoiteShadow}[3][\linewidth]{%
+\addtolength{\longA}{#2}
+\addtolength{\longB}{#3}
+\begin{Sbox}\begin{minipage}{#1}}%
+{\end{minipage}\end{Sbox}%
+\setlength{\fboxsep}{\longA}
+\setlength{\shadowsize}{\longB}
+\shadowbox{\unhbox\@Sbox}\par}
+\makeatother
+%\author{Augustin WENGER}
+
+\title{Cours de Seconde 1 2022-2023}
+\date{}
+
+%%%% fin du préambule, on passe au contenu : tout le texte entre
+%%%% \begin{document} et \end{document} 
+
+\begin{document}
+
+Question de cours : Qu'est ce qu'un nombre décimal ?\newline
+
+Corrigé : Un nombre décimal est un nombre qui a une écriture décimale avec un nombre fini de chiffres après la virgule. C'est aussi tous les nombres qui peuvent s'écrire comme le quotient d'un entier et d'une puissance de 10 : $\frac{a}{10^n}$ avec $a \in \Z$ et $n \in \N$
+ 
+Question de cours : Ecrivez les symboles des 5 grands ensembles de nombres vus en cours, avec les relations d'inclusion correspondantes\newline
+
+Corrigé : $\N \subset \Z \subset \D \subset \Q \subset \R$
+
+Parmi les ensembles vus en cours, quel est le plus petit qui contient chacun des nombres suivants ?
+\begin{multicols}{4}
+ \item $-3$ : $\Z$ 
+ \item $\frac{3}{4}$ :  $\D$
+ \item $\frac{4}{3}$ : $\Q$
+ \item $12{,}3$ : $\D$
+\end{multicols}
+ 
+ 
+Ecrire les nombres suivants sous forme d'une fraction de la forme 
+$\cfrac{a}{10^{n}}$. Où $a\in\Z$ et $n\in\N$.
+\begin{multicols}{4}
+ \item $2{,}32$ : $\frac{232}{10^2}$
+ \item $40{,}1$ : $\frac{401}{10^1}$
+ \item $0{,}0007$ : $\frac{7}{10^4}$
+ \item $\frac{3}{25}$ : $\frac{12}{10^2}$
+\end{multicols}
+ 
+
+
+Complétez les pointillés par un des symboles $\in$, $\notin$, $\subset$, $\not\subset$
+\begin{multicols}{4}
+    \item $\sqrt{2}\;\notin\;\mathbb{D}$
+    \item $\sqrt{25}\;\in\;\mathbb{Z}$
+    \item $\mathbb{N}\;\subset\;\mathbb{Z}$
+    \item $\mathbb{D}\;\subset\;\mathbb{R}$
+\end{multicols}
+ 
+ 
+ 
+\vspace{23mm}
+
+
+Question de cours : Qu'est ce qu'un nombre rationnel ?\newline
+
+Corrigé : Un nombre rationnel est un nombre qui peut s'écrire comme une fraction d'entiers non nuls. Formellement, c'est tous les nombres  $\frac{n}{d}$ avec $n \in \Z$ et $d \in \N$ avec $d$ non nul.
+
+  
+ 
+Question de cours : Ecrivez les symboles des 5 grands ensembles de nombres vus en cours, avec les relations d'inclusion correspondantes\newline
+
+Corrigé : $\N \subset \Z \subset \D \subset \Q \subset \R$
+
+Parmi les ensembles vus en cours, quel est le plus petit qui contient chacun des nombres suivants ?
+\begin{multicols}{4}
+ \item $-\frac{12}{4}$ : $\Z$
+ \item $0$ : $\N$
+ \item $\sqrt{25}$ : $\N$
+ \item $\sqrt{2}$ : $\R$
+\end{multicols}
+ 
+ 
+Ecrire les nombres suivants sous forme d'une fraction de la forme 
+$\cfrac{a}{10^{n}}$. Où $a\in\Z$ et $n\in\N$.
+\begin{multicols}{4}
+ \item $15{,}17$ : $\frac{1517}{10^2}$
+ \item $13{,}2$ : $\frac{132}{10^1}$
+ \item $0{,}004$ : $\frac{4}{10^3}$
+ \item $\frac{7}{20}$ : $\frac{35}{10^2}$
+\end{multicols}
+ 
+
+
+Complétez les pointillés par un des symboles $\in$, $\notin$, $\subset$, $\not\subset$
+\begin{multicols}{4}
+    \item $\frac{3}{4}\;\in \;\mathbb{D}$
+    \item $\frac{4}{3}\;\notin \;\mathbb{D}$
+    \item $\mathbb{Q}\;\not\subset \;\mathbb{Z}$
+    \item $\mathbb{N}\;\subset\;\mathbb{Q}$
+\end{multicols}
+ 
+ 
+\end{document}
+
