@@ -310,7 +310,7 @@ Dans la représentation graphique d'une suite arithmétique, tous les points rep
         xtick={1,...,10},
         domain={1:10},
         samples=10
-      ] 
+      ]
         \addplot[only marks, mark=x, blue] {2*x}; 
        % \addplot[only marks, red] {21-x}; 
       \end{axis}
@@ -512,7 +512,7 @@ Par exemple, si le prix d'un manteau passe de 100€ à 80€ dans une période 
 
 \subsubsection{Evolutions successives}
 
-Si deux évolutions successives ont lieu, l'évolution totale a pour coefficient multiplicateur le produit des coefficients multiplicateurs.
+Si deux évolutions successives ont lieu, \textbf{l'évolution totale a pour coefficient multiplicateur le produit des coefficients multiplicateurs.}
 
 Par exemple, une hausse du prix du gaz de 10\% (Coefficient multiplicateur de $1{,}1$) suivie d'une hausse de 50\% ((Coefficient multiplicateur de $1{,}5$) correspond à un coefficient multiplicateur total de $1{,}1 \times 1{,}5 = 1{,}65$ soit une hausse de 65\%
 
@@ -532,7 +532,30 @@ Par exemple, une hausse du prix du gaz de 10\% (Coefficient multiplicateur de $1
 \tikz[remember picture,overlay]\draw[->,blue] ([yshift=-2mm]n3.south) to[out=-45,in=-150] node[below]{$\times 1{,}5$}  ([yshift=-2mm]n4.south); 
 \tikz[remember picture,overlay]\draw[->,red,label = {Lutsa}] ([yshift=-2mm]n0.south) to[out=-100,in=-100] node[below]{$\times 1{,}65$} ([yshift=-2mm]n5.south); 
 
+\vspace{1cm}
 En particulier, si le coefficient multiplicateur $q$  est le même sur les $2$ périodes, le coefficient multiplicateur total sera de $q^2$. S'il y a $n$ périodes (avec $n \in \mathbb{N}$), et une multiplication par $q$ à chaque fois, on aura une augmentation totale de $q^n$.
+
+\subsubsection{Evolution réciproque}
+
+Pour calculer l'évolution inverse d'une augmentation en pourcentage, il est pratique de passer par la vision en coefficient multiplicateur. Par exemple, une augmentation de $25\%$ correspond à une multiplication par $1{,}25$. Pour faire l'évolution inverse, on divise par $1{,}25$, car la division par $1{,}25$ est l'opération réciproque d'une multiplication par ce même nombre. Or, une division par $1{,}25$ correspond à une multiplication par $0{,}8$ (car $\frac{1}{1{,}25}=0{,}8$. On repasse alors à la vision en pourcentage : une multiplication par $0{,}80$ correspond à une baisse de $20\%$. $-20\%$ est donc l'évolution réciproque de $+25\%$.
+
+
+
+{
+\centering
+    \begin{tabular}{|c|c|}
+        \hline
+        $\insertph{n0}100\insertph{n1}$ & $\insertph{n2}110\insertph{n3}$\\ 
+        \hline
+    \end{tabular}\par
+}
+
+\tikz[remember picture,overlay]\draw[->,blue] ([yshift=1mm] n1.north) to  [out=45,in=150] node[above]{\'Evolution de $+25\% = \times 1{,}25$} ([yshift=1mm] n2.north) ; 
+\tikz[remember picture,overlay]\draw[<-,red] ([yshift=-2mm] n1.south) to  [out=-45,in=-150] node[below]{$\div 1{,}25 = \times \frac{1}{1{,}25}= \times 0{,}8 =$ \'Evolution de $-20\%$} ([yshift=-2mm] n2.south) ; 
+
+\begin{de}
+    L'\underline{évolution réciproque} de l'évolution passant de $VI$ à $VF$ est l'évolution permettant de passer de $VF$ à $VI$. \textbf{L'évolution réciproque possède un coefficient multiplicateur inverse de celle dont elle est la réciproque}
+\end{de}
 
 \subsection{Définition d'une suite géométrique}
 
