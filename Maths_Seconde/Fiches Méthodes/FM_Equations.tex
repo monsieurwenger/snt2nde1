@@ -1,0 +1,326 @@
+\documentclass[10pt,a4paper]{book}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+%\renewcommand\sfdefault{phv}
+\usepackage[left=2cm, right=2cm, bottom=1.85cm, top=1.5cm]{geometry}
+
+\usepackage{fancyhdr}
+\usepackage{framed}
+\pagestyle{fancy}
+\usepackage{hyperref}
+%\renewcommand{\headrulewidth}{1pt}
+%\fancyhead[C]{\textbf{page \thepage}} 
+\fancyhead[L]{Fiche méthode : Equation}
+\fancyhead[R]{Seconde}
+
+\renewcommand{\footrulewidth}{1pt}
+%\fancyfoot[C]{\textbf{page \thepage}} 
+\fancyfoot[L]{Lycée Jacques Brel}
+\fancyfoot[R]{Année 2022-2023}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newcommand{\TDoc}[1]{
+%\begin{center}
+%{\setlength{\fboxsep}{10pt}  % Ecart texte-boite
+%\shadowbox{\textbf{\Large{#1}}}}
+%\end{center}
+%\vspace{1.5cm}}
+    
+ \usepackage{fancybox}   %pour l'encadré du titre shadowbox
+ \usepackage{stmaryrd}   %pour utiliser correctement les crochets pour les ensembles de définitions
+ \usepackage[normalem]{ulem}
+ \usepackage{graphicx}
+ %\usepackage{wrapfig} %texte coulé autour d'une image
+ \usepackage{soul} % souligné
+ \usepackage{nonfloat}
+ \usepackage[standard]{ntheorem}
+ \usepackage{array}
+ \usepackage{arydshln}
+ \usepackage{graphicx}
+%MATHEMATIQUES
+\usepackage{amsmath,amsfonts} 
+
+\usepackage{tikz}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\F}{\mathbb{F}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%% debut fichier boiboites.sty %%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{xkeyval}
+\RequirePackage{tikz}
+\usetikzlibrary{intersections}
+\usetikzlibrary{positioning}
+\usetikzlibrary{3d}
+\RequirePackage{amssymb}
+
+\define@key{boxedtheorem}{titlecolor}{\def\titlecolor{#1}}
+\define@key{boxedtheorem}{titlebackground}{\def\titlebackground{#1}}
+\define@key{boxedtheorem}{background}{\def\background{#1}}
+\define@key{boxedtheorem}{titleboxcolor}{\def\titleboxcolor{#1}}
+\define@key{boxedtheorem}{boxcolor}{\def\boxcolor{#1}}
+\define@key{boxedtheorem}{thcounter}{\def\thcounter{#1}}
+\define@key{boxedtheorem}{size}{\def\size{#1}}
+\presetkeys{boxedtheorem}{titlecolor = black, titlebackground = white, background = white,%
+                         titleboxcolor = black, boxcolor = black, thcounter=, size = .9\textwidth}{}
+
+\newcommand{\couleurs}[1][]{%
+    \setkeys{boxedtheorem}{#1}
+    \tikzstyle{fancytitle} =[draw=\titleboxcolor, rounded corners, fill=\titlebackground,
+                            text= \titlecolor]
+    \tikzstyle{mybox} = [draw=\boxcolor, fill=\background, very thick,
+                        rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+}
+
+
+%Commande generique pour faire un joli encadre
+\newsavebox{\boiboite}
+\newcommand{\titre}{Titre}
+\newenvironment{boite}[2][]%
+    {%
+    \renewcommand{\titre}{#2}
+    \couleurs[#1]
+    \begin{lrbox}{\boiboite}%
+     \begin{minipage}[!h]{\size}
+    }%
+    {%
+     \end{minipage}
+    \end{lrbox}
+    \begin{center}
+    \begin{tikzpicture}
+    \node [mybox] (box){\usebox{\boiboite}};
+    \node[fancytitle, right=10pt] at (box.north west) {\titre};
+    \end{tikzpicture}
+    \end{center}
+    }
+
+\newcommand{\newboxedtheorem}[4][]{%
+    \couleurs[#1]
+    \@ifnotempty{#4}{%
+      \@ifundefined{the#4}{\@ifundefined{\thcounter}{\newcounter{#4}}{%
+      \newcounter{#4}[\thcounter ] } } { }%
+    }
+    \newenvironment{#2}[1][]{%
+    \@ifnotempty{#4}{\refstepcounter{#4}}
+    \begin{boite}[#1]{\textbf{#3\@ifnotempty{#4}{ \csname the#4\endcsname}}\@ifnotempty{##1}{
+    (##1)}}
+    }%
+    {%
+    \end{boite}
+    }
+}
+
+\newcommand{\newboxedtheoreme}[4][]{%
+    \couleurs[#1]
+    \@ifnotempty{#4}{%
+      \@ifundefined{the#4}{\@ifundefined{}{}{%
+      } } { }%
+    }
+    \newenvironment{#2}[1][]{%
+    \@ifnotempty{#4}{\refstepcounter{#4}}
+    \begin{boite}[#1]{\textbf{#3\@ifnotempty{#4}{ \csname the#4\endcsname}}\@ifnotempty{##1}{
+    (##1)}}
+    }%
+    {%
+    \end{boite}
+    }
+}
+%%%%%%%%%%%%%%%%%%%% end fichier boiboites.sty %%%%%%%%%%%%%%%%%%%%%%
+\makeatother
+\newboxedtheorem{theo}{Théorème}{theorem}
+\newboxedtheorem{de}{D\'efinition}{theorem}
+\newboxedtheorem{prop}{Propriété}{theorem}
+\newboxedtheorem{pro}{Proposition}{theorem}
+\newboxedtheorem{ton}{Notation}{theorem}
+\newtheorem{exo}{Exercice}
+\newboxedtheorem{exe}{Exemple}{theorem}
+\newboxedtheorem{met}{Méthode}{theorem}
+\newboxedtheorem{cor}{Corolaire}{theorem}
+\newboxedtheoreme{conc}{Conclusion}{theorem*}
+\newboxedtheoreme{demo}{\textbf{Démonstration guidée}}{theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\longA}
+\newlength{\longB}
+\newenvironment{BoiteShadow}[3][\linewidth]{%
+\addtolength{\longA}{#2}
+\addtolength{\longB}{#3}
+\begin{Sbox}\begin{minipage}{#1}}%
+{\end{minipage}\end{Sbox}%
+\setlength{\fboxsep}{\longA}
+\setlength{\shadowsize}{\longB}
+\shadowbox{\unhbox\@Sbox}\par}
+\makeatother
+%\author{Augustin WENGER}
+
+%\title{Cours de Terminale STMG 2 2022-2023}
+%\date{}
+
+%%%% fin du préambule, on passe au contenu : tout le texte entre
+%%%% \begin{document} et \end{document} 
+\pagenumbering{gobble} % removes page numbering
+\begin{document}
+%\chapter{Suites arithmétiques et géométriques}
+
+\chapter{Fiche méthode : Equations}
+
+\section{Vocabulaire}
+
+\begin{de}
+    Une \underline{équation à une inconnue} est une  \textbf{égalité} entre deux expressions, chacune étant constituée de nombres et d'au plus une inconnue, que l'on symbolise par une lettre (le plus souvent $x$).
+    
+\end{de}
+
+Exemples d'équations:
+
+$x = 4$
+
+$4 = 8$
+
+$x = x^2$
+
+
+
+\begin{de}
+    Un nombre est dit \underline{solution} d'une équation si remplacer l'inconnue par ce nombre rend l'égalité vraie
+\end{de}
+
+Remarque : Une équation peut avoir zéro, une, plusieurs, ou même une infinité de solutions.
+
+Exemples d'équation à une inconnue :
+    \begin{enumerate}
+        \item N'admettant aucune solution :
+        \item Ayant une et une seule solution :
+        \item Ayant plusieurs solutions :
+        \item Ayant un nombre infini de solutions :
+        
+    \end{enumerate}
+
+
+
+\begin{exo} 
+Les équations apparaissent naturellement quand on essaye de résoudre des problèmes concrets. Sans les résoudre, exprimer des équations pour résoudre les différents problèmes, en précisant comment on définit l'inconnue.
+    \begin{enumerate}
+        \item Trois adultes et trente enfants se rendent à une sortie scolaire au théâtre. Une place enfant vaut 7 euros de moins qu'une place adulte. Le montant total payé par la classe est de 615 euros. Combien coûte une place adulte ?
+        \item Quelle est la longueur du côté d'un carré dont l'aire, en centimètres carrés, est égale à son périmètre en centimètres ?
+        \item Quel nombre augmenté de 1 est égal à son carré?
+    \end{enumerate}
+\end{exo}
+
+
+\section{Travailler avec une équation}
+
+La problématique générale en jeu est de déterminer \textbf{quelles valeurs numériques de l'inconnue rendent l'égalité vraie}.
+
+Pour cela, on sera amené à faire deux choses principalement :
+
+\begin{enumerate}
+    \item Vérifier si une valeur donnée de l'inconnue est solution de l'équation
+    \item Déterminer tous les nombres qui sont solutions de l'équation
+    
+    
+\end{enumerate}
+
+
+\subsection{Vérifier si une valeur donnée de l'inconnue est solution}
+
+
+
+\begin{met} 
+Pour vérifier si une valeur est solution de l'équation, on remplace l'inconnue par cette valeur, on effectue le calcul, et on vérifie si l'égalité est vérifiée.
+\end{met}
+
+\begin{exo} 
+Vérifier si $x=2$ est solution des équations suivantes :
+    \begin{enumerate}
+        \item $-x - 2 = 0$
+        \item $x^2 - 6x + 8 = 0$
+    \end{enumerate}
+\end{exo}
+
+\begin{exo} 
+Parmi les valeurs suivantes de $x$, lesquelles sont solutions de $x^3 - 7x^2 + 14x - 8 = 0$ ?
+    \begin{enumerate}
+        \item $x=1$
+        \item $x=2$
+        \item $x=3$
+        \item $x=4$
+    \end{enumerate}
+\end{exo}
+
+
+
+\subsection{Résoudre une équation}
+
+\begin{de}
+    \underline{Résoudre} une équation, c'est déterminer l'ensemble de ses solutions, c'est à dire \textbf{toutes} les valeurs de l'inconnue qui rendent l'égalité vraie.
+\end{de}
+
+Résoudre une équation est par définition beaucoup plus compliqué que de tester si une valeur donnée est solution. On ne sait résoudre que très peu d'équations.
+
+Pour cela, on utilise la stratégie générale de résolution des problèmes de mathématiques : on modifie l'énoncé \textbf{sans en changer le sens} jusqu'à faire apparaître une équation que l'on sait résoudre.
+
+\begin{prop}[Admise]
+    On peut modifier une équation sans en changer le sens en effectuant l'une des opérations suivantes :
+    \begin{enumerate}
+        \item On ajoute (ou on retranche) le même nombre à gauche et à droite de l'égalité.
+        \item On multiplie (ou on divise) par le même nombre \textbf{non nul} à gauche et à droite de l'égalité.
+    \end{enumerate}
+\end{prop}
+
+Initialement, on ne sait résoudre que les équations de la forme $x=a$ (où $a$ ne dépend pas de $x$).  Par exemple, la seule valeur de $x$ qui rende vraie l'égalité $x=8$, c'est ...  $x=8$.
+
+On veut donc, par une série d'opérations qui ne changent pas le sens de l'équation (c'est à dire qui conservent l'ensemble des solutions) obtenir une équation de cette forme.
+
+
+\begin{exo} Transformer en utilisant seulement les deux opérations autorisées chaque équation suivante en une équation de la forme $x=a$ sans en changer le sens:
+    \begin{enumerate}
+        \item $x - 4 = 0$
+        \item $-x + 2 = 0$
+        \item $ 3x - 7 = 8$
+        \item $ 5x + 2 = 3x + 6$
+        \item $ \frac{1}{x+2} = 3$
+    \end{enumerate}
+\end{exo}
+
+
+\begin{exo}[Préparation à la résolution générale] 
+    Résoudre les équations suivantes :
+    \begin{enumerate}
+        \item $x+6 = 0$
+        \item $3x+2 = 0$
+        \item $5x-3 = 0$
+        \item $-7x - 4 = 0$
+        \item $-9x + 1 = 0$
+    \end{enumerate}
+    Que remarquez vous dans l'expression des solutions par rapport aux équations de départ?
+\end{exo}
+
+
+\begin{prop}
+    Soit $a$ et $b$ deux nombres avec $a$ non nul, l'équation $ax+b=0$ est appelée \underline{\'Equation du premier degré}, et admet une unique solution : $x = -\frac{b}{a}$
+\end{prop}
+
+
+\begin{exo} 
+    \begin{enumerate}
+        \item Retrouver la solution de l'équation en utilisant la même technique qu'à l'exercice précédent.
+        \item On peut également montrer cette solution avec une méthode plus classique, si l'on connaît la formule de la solution : Montrer que $-\frac{b}{a}$ est une solution de l'équation.
+        \item Montrer que c'est la seule solution.
+    \end{enumerate}
+\end{exo}
+
+On sait désormais résoudre toutes les équations du type $ax+b=0$. On peut donc à partir de maintenant se contenter de se ramener à une équation du premier degré.
+
+\end{document}
