@@ -1,0 +1,200 @@
+\documentclass[10pt,a4paper]{exam}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+%\renewcommand\sfdefault{phv}
+\usepackage[left=2cm, right=2cm, bottom=1.85cm, top=1.5cm]{geometry}
+
+\usepackage{fancyhdr}
+\usepackage{framed}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage{multicol}
+
+\usepackage[skip=12 pt plus1pt]{parskip}
+%\renewcommand{\headrulewidth}{1pt}
+%\fancyhead[C]{\textbf{page \thepage}} 
+\fancyhf{} 
+\fancyhead[L]{Corrigé de devoir}
+\fancyhead[R]{TSTMG2 - Interrogation rapide (12 minutes) - 2022-10-03}
+\renewcommand{\footrulewidth}{1pt}
+%\fancyfoot[C]{\textbf{page \thepage}} 
+%\fancyfoot[L]{Nom :}
+%\fancyfoot[R]{2nde 1 - Interrogation rapide (10 minutes) - 2022-10-03}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newcommand{\TDoc}[1]{
+%\begin{center}
+%{\setlength{\fboxsep}{10pt}  % Ecart texte-boite
+%\shadowbox{\textbf{\Large{#1}}}}
+%\end{center}
+%\vspace{1.5cm}}
+    
+ \usepackage{fancybox}   %pour l'encadré du titre shadowbox
+ \usepackage{stmaryrd}   %pour utiliser correctement les crochets pour les ensembles de définitions
+ \usepackage[normalem]{ulem}
+ \usepackage{graphicx}
+ %\usepackage{wrapfig} %texte coulé autour d'une image
+ \usepackage{soul} % souligné
+ \usepackage{nonfloat}
+ \usepackage[standard]{ntheorem}
+ \usepackage{array}
+ \usepackage{arydshln}
+ \usepackage{graphicx}
+%MATHEMATIQUES
+\usepackage{amsmath,amsfonts} 
+
+\usepackage{tikz}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\F}{\mathbb{F}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%% debut fichier boiboites.sty %%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{xkeyval}
+\RequirePackage{tikz}
+\usetikzlibrary{intersections}
+\usetikzlibrary{positioning}
+\usetikzlibrary{3d}
+\RequirePackage{amssymb}
+
+\define@key{boxedtheorem}{titlecolor}{\def\titlecolor{#1}}
+\define@key{boxedtheorem}{titlebackground}{\def\titlebackground{#1}}
+\define@key{boxedtheorem}{background}{\def\background{#1}}
+\define@key{boxedtheorem}{titleboxcolor}{\def\titleboxcolor{#1}}
+\define@key{boxedtheorem}{boxcolor}{\def\boxcolor{#1}}
+\define@key{boxedtheorem}{thcounter}{\def\thcounter{#1}}
+\define@key{boxedtheorem}{size}{\def\size{#1}}
+\presetkeys{boxedtheorem}{titlecolor = black, titlebackground = white, background = white,%
+                         titleboxcolor = black, boxcolor = black, thcounter=, size = .9\textwidth}{}
+
+\newcommand{\couleurs}[1][]{%
+    \setkeys{boxedtheorem}{#1}
+    \tikzstyle{fancytitle} =[draw=\titleboxcolor, rounded corners, fill=\titlebackground,
+                            text= \titlecolor]
+    \tikzstyle{mybox} = [draw=\boxcolor, fill=\background, very thick,
+                        rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+}
+
+
+%Commande generique pour faire un joli encadre
+\newsavebox{\boiboite}
+\newcommand{\titre}{Titre}
+\newenvironment{boite}[2][]%
+    {%
+    \renewcommand{\titre}{#2}
+    \couleurs[#1]
+    \begin{lrbox}{\boiboite}%
+     \begin{minipage}[!h]{\size}
+    }%
+    {%
+     \end{minipage}
+    \end{lrbox}
+    \begin{center}
+    \begin{tikzpicture}
+    \node [mybox] (box){\usebox{\boiboite}};
+    \node[fancytitle, right=10pt] at (box.north west) {\titre};
+    \end{tikzpicture}
+    \end{center}
+    }
+
+\newcommand{\newboxedtheorem}[4][]{%
+    \couleurs[#1]
+    \@ifnotempty{#4}{%
+      \@ifundefined{the#4}{\@ifundefined{\thcounter}{\newcounter{#4}}{%
+      \newcounter{#4}[\thcounter ] } } { }%
+    }
+    \newenvironment{#2}[1][]{%
+    \@ifnotempty{#4}{\refstepcounter{#4}}
+    \begin{boite}[#1]{\textbf{#3\@ifnotempty{#4}{ \csname the#4\endcsname}}\@ifnotempty{##1}{
+    (##1)}}
+    }%
+    {%
+    \end{boite}
+    }
+}
+
+\newcommand{\newboxedtheoreme}[4][]{%
+    \couleurs[#1]
+    \@ifnotempty{#4}{%
+      \@ifundefined{the#4}{\@ifundefined{}{}{%
+      } } { }%
+    }
+    \newenvironment{#2}[1][]{%
+    \@ifnotempty{#4}{\refstepcounter{#4}}
+    \begin{boite}[#1]{\textbf{#3\@ifnotempty{#4}{ \csname the#4\endcsname}}\@ifnotempty{##1}{
+    (##1)}}
+    }%
+    {%
+    \end{boite}
+    }
+}
+%%%%%%%%%%%%%%%%%%%% end fichier boiboites.sty %%%%%%%%%%%%%%%%%%%%%%
+\makeatother
+\newboxedtheorem{theo}{Théorème}{theorem}
+\newboxedtheorem{de}{D\'efinition}{theorem}
+\newboxedtheorem{prop}{Propriété}{theorem}
+\newboxedtheorem{pro}{Proposition}{theorem}
+\newboxedtheorem{nota}{Notation}{theorem}
+\newtheorem{exo}{Exercice}
+\newboxedtheorem{exe}{Exemple}{theorem}
+\newboxedtheorem{cor}{Corolaire}{theorem}
+\newboxedtheoreme{conc}{Conclusion}{theorem*}
+\newboxedtheoreme{demo}{\textbf{Démonstration guidée}}{theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\longA}
+\newlength{\longB}
+\newenvironment{BoiteShadow}[3][\linewidth]{%
+\addtolength{\longA}{#2}
+\addtolength{\longB}{#3}
+\begin{Sbox}\begin{minipage}{#1}}%
+{\end{minipage}\end{Sbox}%
+\setlength{\fboxsep}{\longA}
+\setlength{\shadowsize}{\longB}
+\shadowbox{\unhbox\@Sbox}\par}
+\makeatother
+%\author{Augustin WENGER}
+
+\date{}
+
+%%%% fin du préambule, on passe au contenu : tout le texte entre
+%%%% \begin{document} et \end{document} 
+
+\begin{document}
+
+Interrogation : Les suites arithmétiques
+\begin{enumerate}
+    \item Question de cours : Qu'est ce que la raison d'une suite arithmétique ?
+    \item Rappeler la formule qui donne le terme général d'une suite arithmétique dont le premier terme vaut $u_1$ et la raison $r$, c'est à dire une formule qui exprime $u_n$ en fonction de $n$, de $r$ et de $u_1$.
+    \item On suppose que $n$ et $m$ sont deux entiers tels que $n\leq m$.  Rappelez la formule permettant de calculer la somme des termes entre $n$ et $m$ d'une suite arithmétique
+    \item On suppose $u_1 = 12$ et $r = 5$.  Calculer la valeur des termes $u_4$ et $u_{15}$ de cette suite
+    \item Calculer en utiblisant cette formule la somme :  $\sum_{i=4}^{15} u_i = u_4 + u_5 + ... + u_{15}$
+\end{enumerate}
+
+\vspace{10mm}
+
+
+Corrigé :
+\begin{enumerate}
+    \item La raison d'une suite arithmétique est le nombre réel qu'on ajoute à chaque terme pour obtenir le terme suivant. Formellement, si $r$ est la raison d'une suite $u$, on a pour tout entier $n \geq 1$ : $u_{n+1}=u_n + r$
+    \item La formule du terme général d'une suite arithmétique $u$ de raison $r$ est : pour tout entier $n \geq 1, u_n = u_1 + (n-1)\times r$
+    \item Soit $S$ la somme des termes entre $n$ et $m$ d'une suite arithmétique. On a d'après le cours la formule : $S = (m-n+1) \times \frac{u_n+u_m}{2}$, c'est à dire le produit du nombre de termes et de la moyenne arithmétique du premier et du dernier terme présent dans la somme.
+    \item On applique la formule de la question 2, en remplaçant $u_1$ par $12$, $r$ par $5$ : $u_n=12 + (n-1) \times 5$, puis $n$ par $4$ puis $15$ :   $u_4 = 12 + (4-1) \times 5 = 27$ et $u_{15} = 12 + (15-1) \times 5 = 82$
+    \item On applique la formule de la question 3, avec $n=4$ et $m=15$ : $\sum_{i=4}^{15} u_i = (15 -4+1) \times \frac{27 + 82}{2} = 654$
+\end{enumerate}
+
+Attention, peut être les nombres $u_1$ et $r$ étaient différents dans votre énoncé sur les questions 4 et 5, auquel cas il faut changer les valeurs utilisées dans les calculs de ces questions.
+
+\end{document}
+
