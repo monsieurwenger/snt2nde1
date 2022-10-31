@@ -1,0 +1,292 @@
+\documentclass[10pt,a4paper]{exam}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+%\renewcommand\sfdefault{phv}
+\usepackage[left=2cm, right=2cm, bottom=1.85cm, top=1.5cm]{geometry}
+
+\usepackage{fancyhdr}
+\usepackage{framed}
+\pagestyle{fancy}
+\usepackage{hyperref}
+\usepackage[skip=16 pt plus1pt]{parskip}
+%\renewcommand{\headrulewidth}{1pt}
+%\fancyhead[C]{\textbf{page \thepage}} 
+\fancyhead[L]{Nom :}
+\fancyhead[R]{TSTMG2 - Interrogation rapide (10 minutes) - 2022-09-19}
+
+\renewcommand{\footrulewidth}{1pt}
+%\fancyfoot[C]{\textbf{page \thepage}} 
+\fancyfoot[L]{Nom :}
+\fancyfoot[R]{TSTMG2 - Interrogation rapide (10 minutes) - 2022-09-19}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newcommand{\TDoc}[1]{
+%\begin{center}
+%{\setlength{\fboxsep}{10pt}  % Ecart texte-boite
+%\shadowbox{\textbf{\Large{#1}}}}
+%\end{center}
+%\vspace{1.5cm}}
+    
+ \usepackage{fancybox}   %pour l'encadré du titre shadowbox
+ \usepackage{stmaryrd}   %pour utiliser correctement les crochets pour les ensembles de définitions
+ \usepackage[normalem]{ulem}
+ \usepackage{graphicx}
+ %\usepackage{wrapfig} %texte coulé autour d'une image
+ \usepackage{soul} % souligné
+ \usepackage{nonfloat}
+ \usepackage[standard]{ntheorem}
+ \usepackage{array}
+ \usepackage{arydshln}
+ \usepackage{graphicx}
+%MATHEMATIQUES
+\usepackage{amsmath,amsfonts} 
+
+\usepackage{tikz}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\F}{\mathbb{F}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%% debut fichier boiboites.sty %%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{xkeyval}
+\RequirePackage{tikz}
+\usetikzlibrary{intersections}
+\usetikzlibrary{positioning}
+\usetikzlibrary{3d}
+\RequirePackage{amssymb}
+
+\define@key{boxedtheorem}{titlecolor}{\def\titlecolor{#1}}
+\define@key{boxedtheorem}{titlebackground}{\def\titlebackground{#1}}
+\define@key{boxedtheorem}{background}{\def\background{#1}}
+\define@key{boxedtheorem}{titleboxcolor}{\def\titleboxcolor{#1}}
+\define@key{boxedtheorem}{boxcolor}{\def\boxcolor{#1}}
+\define@key{boxedtheorem}{thcounter}{\def\thcounter{#1}}
+\define@key{boxedtheorem}{size}{\def\size{#1}}
+\presetkeys{boxedtheorem}{titlecolor = black, titlebackground = white, background = white,%
+                         titleboxcolor = black, boxcolor = black, thcounter=, size = .9\textwidth}{}
+
+\newcommand{\couleurs}[1][]{%
+    \setkeys{boxedtheorem}{#1}
+    \tikzstyle{fancytitle} =[draw=\titleboxcolor, rounded corners, fill=\titlebackground,
+                            text= \titlecolor]
+    \tikzstyle{mybox} = [draw=\boxcolor, fill=\background, very thick,
+                        rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+}
+
+
+%Commande generique pour faire un joli encadre
+\newsavebox{\boiboite}
+\newcommand{\titre}{Titre}
+\newenvironment{boite}[2][]%
+    {%
+    \renewcommand{\titre}{#2}
+    \couleurs[#1]
+    \begin{lrbox}{\boiboite}%
+     \begin{minipage}[!h]{\size}
+    }%
+    {%
+     \end{minipage}
+    \end{lrbox}
+    \begin{center}
+    \begin{tikzpicture}
+    \node [mybox] (box){\usebox{\boiboite}};
+    \node[fancytitle, right=10pt] at (box.north west) {\titre};
+    \end{tikzpicture}
+    \end{center}
+    }
+
+\newcommand{\newboxedtheorem}[4][]{%
+    \couleurs[#1]
+    \@ifnotempty{#4}{%
+      \@ifundefined{the#4}{\@ifundefined{\thcounter}{\newcounter{#4}}{%
+      \newcounter{#4}[\thcounter ] } } { }%
+    }
+    \newenvironment{#2}[1][]{%
+    \@ifnotempty{#4}{\refstepcounter{#4}}
+    \begin{boite}[#1]{\textbf{#3\@ifnotempty{#4}{ \csname the#4\endcsname}}\@ifnotempty{##1}{
+    (##1)}}
+    }%
+    {%
+    \end{boite}
+    }
+}
+
+\newcommand{\newboxedtheoreme}[4][]{%
+    \couleurs[#1]
+    \@ifnotempty{#4}{%
+      \@ifundefined{the#4}{\@ifundefined{}{}{%
+      } } { }%
+    }
+    \newenvironment{#2}[1][]{%
+    \@ifnotempty{#4}{\refstepcounter{#4}}
+    \begin{boite}[#1]{\textbf{#3\@ifnotempty{#4}{ \csname the#4\endcsname}}\@ifnotempty{##1}{
+    (##1)}}
+    }%
+    {%
+    \end{boite}
+    }
+}
+%%%%%%%%%%%%%%%%%%%% end fichier boiboites.sty %%%%%%%%%%%%%%%%%%%%%%
+\makeatother
+\newboxedtheorem{theo}{Théorème}{theorem}
+\newboxedtheorem{de}{D\'efinition}{theorem}
+\newboxedtheorem{prop}{Propriété}{theorem}
+\newboxedtheorem{pro}{Proposition}{theorem}
+\newboxedtheorem{nota}{Notation}{theorem}
+\newtheorem{exo}{Exercice}
+\newboxedtheorem{exe}{Exemple}{theorem}
+\newboxedtheorem{cor}{Corolaire}{theorem}
+\newboxedtheoreme{conc}{Conclusion}{theorem*}
+\newboxedtheoreme{demo}{\textbf{Démonstration guidée}}{theorem}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\longA}
+\newlength{\longB}
+\newenvironment{BoiteShadow}[3][\linewidth]{%
+\addtolength{\longA}{#2}
+\addtolength{\longB}{#3}
+\begin{Sbox}\begin{minipage}{#1}}%
+{\end{minipage}\end{Sbox}%
+\setlength{\fboxsep}{\longA}
+\setlength{\shadowsize}{\longB}
+\shadowbox{\unhbox\@Sbox}\par}
+\makeatother
+%\author{Augustin WENGER}
+
+%\title{Cours de Seconde 1 2022-2023}
+%\date{}
+
+%%%% fin du préambule, on passe au contenu : tout le texte entre
+%%%% \begin{document} et \end{document} 
+
+\begin{document}
+
+Remarque : Dans les questions à choix multiples, il peut y avoir plusieurs réponses correctes.
+
+
+On définit la suite $u$ comme étant la suite définie pour tout $n$ par $u_n = 1 + \frac{3}{n}$. Que vaut $u_6$? \newline
+\begin{oneparcheckboxes}
+   \choice $2,5$
+   \choice $3$
+   \choice $\frac{1}{2}$
+   \choice $\frac{3}{2}$
+\end{oneparcheckboxes}
+
+ 
+On définit la suite $v$ comme étant la suite définie pour tout $n$ par $v_n = n^2 - n +  2$. Que vaut $v_5$? \newline
+\begin{oneparcheckboxes}
+   \choice $32$
+   \choice $22$
+   \choice $28$
+   \choice $18$
+\end{oneparcheckboxes}
+ 
+
+
+La suite $w$ est définie par $w_1=2$  et pour $n\geq 1$, $u_{n+1} = 2u_n -1$. Remplir le tableau suivant avec les valeurs correspondantes de $w$ :
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+       \hline
+       $w_1$ & $w_2$ & $w_3$ & $w_4$ & $w_5$ \\
+       \hline
+       $2$ &   &  & & \\
+       \hline
+    \end{tabular}
+\end{center}
+
+
+
+
+La suite $u$ est définie par $u_1=6$  et pour $n\geq 1$, $u_{n+1} = \frac{u_n}{2} +1$. Remplir le tableau suivant avec les valeurs correspondantes de $u$ :
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+   \hline
+   $u_1$ & $u_2$ & $u_3$ & $u_4$ & $u_5$ \\
+   \hline
+   $6$ &   &  & & \\
+   \hline
+\end{tabular}
+\end{center}
+
+
+
+Donnez une définition sous forme de formule récursive pour la suite $v$ définie par  "Le premier terme de la suite vaut 8, puis chaque terme est égal à la moitié du terme précédent"
+
+
+.............................................................................................................................................................................\newline
+.............................................................................................................................................................................
+ 
+\vspace{25 mm}
+
+
+Remarque : Dans les questions à choix multiples, il peut y avoir plusieurs réponses correctes.
+
+
+On définit la suite $u$ comme étant la suite définie pour tout $n$ par $u_n = 1 + \frac{3}{n}$. Que vaut $u_6$? \newline
+\begin{oneparcheckboxes}
+   \choice $2,5$
+   \choice $3$
+   \choice $\frac{1}{2}$
+   \choice $\frac{3}{2}$
+\end{oneparcheckboxes}
+
+ 
+On définit la suite $v$ comme étant la suite définie pour tout $n$ par $v_n = n^2 - n +  2$. Que vaut $v_5$? \newline
+\begin{oneparcheckboxes}
+   \choice $32$
+   \choice $22$
+   \choice $28$
+   \choice $18$
+\end{oneparcheckboxes}
+ 
+
+
+La suite $w$ est définie par $w_1=2$  et pour $n\geq 1$, $u_{n+1} = 2u_n -1$. Remplir le tableau suivant avec les valeurs correspondantes de $w$ :
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|}
+       \hline
+       $w_1$ & $w_2$ & $w_3$ & $w_4$ & $w_5$ \\
+       \hline
+       $2$ &   &  & & \\
+       \hline
+    \end{tabular}
+\end{center}
+
+
+
+
+La suite $u$ est définie par $u_1=6$  et pour $n\geq 1$, $u_{n+1} = \frac{u_n}{2} +1$. Remplir le tableau suivant avec les valeurs correspondantes de $u$ :
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+   \hline
+   $u_1$ & $u_2$ & $u_3$ & $u_4$ & $u_5$ \\
+   \hline
+   $6$ &   &  & & \\
+   \hline
+\end{tabular}
+\end{center}
+
+
+
+Donnez une définition sous forme de formule récursive pour la suite $v$ définie par  "Le premier terme de la suite vaut 8, puis chaque terme est égal à la moitié du terme précédent"
+
+
+.............................................................................................................................................................................\newline
+.............................................................................................................................................................................
+ 
+
+\end{document}
+
