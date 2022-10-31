@@ -1,0 +1,369 @@
+\documentclass[11pt,a4paper]{exam}
+
+\usepackage[utf8]{inputenc}
+\usepackage{sansmathfonts}
+\usepackage[T1]{fontenc}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+
+\usepackage[french]{babel}
+%\renewcommand\sfdefault{phv}
+\usepackage[left=2cm, right=2cm, bottom=0.5cm, top=0.5cm]{geometry}
+
+
+\usepackage{fancyhdr}
+\usepackage{framed}
+\usepackage{multicol}
+\usepackage{parskip}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\newcommand{\TDoc}[1]{
+%\begin{center}
+%{\setlength{\fboxsep}{10pt}  % Ecart texte-boite
+%\shadowbox{\textbf{\Large{#1}}}}
+%\end{center}
+%\vspace{1.5cm}}
+    
+ \usepackage{fancybox}   %pour l'encadré du titre shadowbox
+ \usepackage{stmaryrd}   %pour utiliser correctement les crochets pour les ensembles de définitions
+ \usepackage[normalem]{ulem}
+ \usepackage{graphicx}
+ %\usepackage{wrapfig} %texte coulé autour d'une image
+ \usepackage{soul} % souligné
+ \usepackage{nonfloat}
+ \usepackage[standard]{ntheorem}
+ \usepackage{array}
+ \usepackage{arydshln}
+ \usepackage{graphicx}
+%MATHEMATIQUES
+\usepackage{amsmath,amsfonts} 
+
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Co}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\F}{\mathbb{F}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%% debut fichier boiboites.sty %%%%%%%%%%%%%%%%%%%%%%
+\RequirePackage{xkeyval}
+\RequirePackage{tikz}
+\usetikzlibrary{intersections}
+\usetikzlibrary{positioning}
+\usetikzlibrary{3d}
+\RequirePackage{amssymb}
+
+\define@key{boxedtheorem}{titlecolor}{\def\titlecolor{#1}}
+\define@key{boxedtheorem}{titlebackground}{\def\titlebackground{#1}}
+\define@key{boxedtheorem}{background}{\def\background{#1}}
+\define@key{boxedtheorem}{titleboxcolor}{\def\titleboxcolor{#1}}
+\define@key{boxedtheorem}{boxcolor}{\def\boxcolor{#1}}
+\define@key{boxedtheorem}{thcounter}{\def\thcounter{#1}}
+\define@key{boxedtheorem}{size}{\def\size{#1}}
+\presetkeys{boxedtheorem}{titlecolor = black, titlebackground = white, background = white,%
+                         titleboxcolor = black, boxcolor = black, thcounter=, size = .9\textwidth}{}
+
+\newcommand{\couleurs}[1][]{%
+    \setkeys{boxedtheorem}{#1}
+    \tikzstyle{fancytitle} =[draw=\titleboxcolor, rounded corners, fill=\titlebackground,
+                            text= \titlecolor]
+    \tikzstyle{mybox} = [draw=\boxcolor, fill=\background, very thick,
+                        rectangle, rounded corners, inner sep=10pt, inner ysep=20pt]
+}
+
+
+\newtheorem{exo}{Exercice}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newlength{\longA}
+\newlength{\longB}
+\newenvironment{BoiteShadow}[3][\linewidth]{%
+\addtolength{\longA}{#2}
+\addtolength{\longB}{#3}
+\begin{Sbox}\begin{minipage}{#1}}%
+{\end{minipage}\end{Sbox}%
+\setlength{\fboxsep}{\longA}
+\setlength{\shadowsize}{\longB}
+\shadowbox{\unhbox\@Sbox}\par}
+\makeatother
+%\author{Augustin WENGER}
+
+\date{}
+
+%%%% fin du préambule, on passe au contenu : tout le texte entre
+%%%% \begin{document} et \end{document} 
+
+\begin{document}
+
+\begin{minipage}{0.15\textwidth}
+    Nom : 
+\end{minipage}
+\begin{minipage}{0.8\textwidth}
+    \begin{flushright}
+        Contrôle - TSTMG2 - 21 octobre 2022
+    \end{flushright}
+\end{minipage}
+\vspace{3pt}
+\hline
+\vspace{3pt}
+\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{Dans chaque exercice, il est important de faire figurer vos étapes de calcul et pas seulement la réponse. Le soin apporté à la rédaction et à la présentation sera pris en compte dans la notation.}}
+
+\vspace{8pt}
+
+\begin{exo}
+    Répondez aux questions en cochant la case correspondante (Plusieurs réponses peuvent être correctes): 
+    \begin{enumerate}
+        \item Une suite \textbf{arithmétique} est telle que $u_3=10$ et $u_{12}=37$. Pour calculer sa raison, je fais le calcul : \newline
+        \begin{oneparcheckboxes}
+            \choice $\frac{12-3}{37-10}$
+            \choice $\frac{37-10}{12-3+1}$
+            \choice $-\frac{10-37}{12-3}$
+            \choice $\frac{37-10}{12-3}$
+        \end{oneparcheckboxes}
+        \item Une classe passe de $25$ à $23$ élèves. Le taux d'évolution du nombre d'élèves est de \newline
+        \begin{oneparcheckboxes}
+            \choice $-2\%$
+            \choice environ $-8{,}7\%$
+            \choice $-8\%$
+            \choice $+8\%$
+        \end{oneparcheckboxes}
+        \item Pour calculer le pourcentage de baisse d'un parfum qui vaut initialement $35$€ et baisse de $7$€, je fais le calcul : \newline
+        \begin{oneparcheckboxes}
+            \choice $\frac{35-7}{35}$
+            \choice $\frac{7}{35}$
+            \choice $-\frac{7}{35}$
+            \choice $-\frac{35-7}{35}$
+        \end{oneparcheckboxes}
+        \item Une suite \textbf{géométrique} est telle que $u_{4}=9$ et $u_2=1$. Sa raison peut-être de : \newline
+        \begin{oneparcheckboxes}
+            \choice $\frac{1}{3}$
+            \choice $3$
+            \choice $-\frac{1}{3}$
+            \choice $-3$
+        \end{oneparcheckboxes}
+        \item Le prix de chaussures baisse de $50\%$ entre 2020 et 2021, puis de $10\%$ entre 2021 et 2022. Au total, le prix a baissé de : \newline
+        \begin{oneparcheckboxes}
+            \choice $60\%$
+            \choice $65\%$
+            \choice environ $62{,}3\%$
+            \choice $55\%$
+        \end{oneparcheckboxes}
+    \end{enumerate}
+\end{exo}
+\vspace{0.5cm}
+\begin{exo}Calculez les premières valeurs des suites définies :
+
+\renewcommand{\arraystretch}{2}
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+          Définition de $u_n$&$\;u_1\;$&$\;u_2\;$&$\;u_3\;$&$\;u_4\;$&$\;u_5\;$\\
+          \hline
+         $u_n=n-\frac{3}{n}$ pour $n \geq 1$& & & & &\\
+          \hline
+         $u_n=3n^2+2$ pour $n \geq 1$& & & & &\\
+          \hline
+         $u_1=3$ pour $n \geq 1 u_{n+1} = -\frac{1}{u_n}$& & & & &\\
+          \hline
+         $u_1=6$ et pour $n \geq 1, u_{n+1}=\frac{u_n}{2} - 1$& & & & &\\
+          \hline
+    \end{tabular}
+\end{center}
+\end{exo} 
+\vspace{0.5cm}
+\begin{exo}
+    Pour chacune des situations présentées, donner le calcul que l'on doit effectuer pour trouver la réponse demandée, puis calculer cette réponse. 
+    \begin{enumerate}
+    \item Les émissions de CO$_2$ en France sont passées de $451$ mégatonnes à $441$ mégatonnes entre 2018 et 2019. Calculer le taux d'évolution $A$ des émissions de 2018 à 2019.\newline
+    	\fbox{
+        	\begin{minipage}[t][1.5cm][t]{0.965\linewidth}
+                A=
+        	\end{minipage}
+        }
+    \item Une entreprise augmente son chiffre d'affaires de $10\%$ par an. En 2022, elle a réalisé $264$ M€ de chiffre d'affaires. Quel a été son chiffre d'affaire $B$ en 2021?\newline
+    \fbox{
+    	\begin{minipage}[t][1.5cm][t]{0.965\linewidth}
+            B=
+    	\end{minipage}
+    }
+    \item Le prix d'une action en bourse, qui valait initialement $60$€, baisse de $50\%$ le lundi, puis augmente de $50\%$ le mardi. Quel est son prix $C$ à la fin de la journée du mardi? \newline
+    \fbox{
+    	\begin{minipage}[t][1.5cm][t]{0.965\linewidth}
+            C=
+    	\end{minipage}
+    }
+    \item Le coût du beurre vient d'augmenter de $20\%$. Une entreprise fabriquant des galettes avait des coûts totaux de $4$€ par paquet, et $25\%$ de ces coûts étaient liés à l'achat de beurre. Quel est la nouvelle part $D$ de coûts liés à l'achat du beurre, toutes choses égales par ailleurs?  \newline
+    \fbox{
+    	\begin{minipage}[t][1.5cm][t]{0.965\linewidth}
+            D=
+    	\end{minipage}
+    }
+    \end{enumerate}
+\end{exo}
+\vspace{1cm}
+
+\begin{exo}
+\begin{enumerate}
+    \item Une entreprise nommée "Aperture Science" vous propose de vous embaucher pour un salaire annuel de $20000$€ la première année, assorti d'une augmentation de $1000$€ par an.
+    \begin{enumerate}
+        \item On appelle $u_n$ la suite qui représente votre salaire la n-ième année. Quelle est la nature de la suite $u_n$ ? 
+        \item Calculez $u_2$ et $u_3$
+        \item Quel salaire recevriez-vous la $15$ème année si vous signez pour cette entreprise?
+        \item Calculez le montant total de salaire reçu dans cette entreprise, en supposant que vous restez y travailler pour 15 années complètes.
+    \end{enumerate}
+    \item L'équipe de recrutement d'une autre entreprise concurrente, "Batibox", vous fait une autre proposition : Un salaire annuel de $18000$€ la première année, et une augmentation annuelle de 6\%
+    \begin{enumerate}
+        \item On appelle $v_n$ la suite qui représente votre salaire la n-ième année. Quelle est la nature de la suite $v_n$ ? 
+        \item Calculez $v_2$ et $v_3$
+        \item Quel salaire recevriez-vous la $15$ème année si vous choisissez de signer avec Batibox ?
+        \item Calculez le montant total de salaire reçu dans cette entreprise, en supposant que vous restez y travailler pour 15 années complètes.
+    \end{enumerate}
+    \item Vous pensez vraiment travailler dans la même entreprise pendant les 15 prochaines années. Quel est le meilleur choix parmi les deux possibilités proposées, et pourquoi?  
+\end{enumerate}
+\end{exo}
+\fbox{
+	\begin{minipage}[t][18cm][t]{0.965\linewidth}
+      ~
+	\end{minipage}
+}
+\newpage
+\setcounter{exo}{0}
+\begin{minipage}{0.15\textwidth}
+    Nom : 
+\end{minipage}
+\begin{minipage}{0.8\textwidth}
+    \begin{flushright}
+        Contrôle - TSTMG2 - 21 octobre 2022
+    \end{flushright}
+\end{minipage}
+\vspace{3pt}
+\hline
+\vspace{3pt}
+\fbox{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule}{Dans chaque exercice, il est important de faire figurer vos étapes de calcul et pas seulement la réponse. Le soin apporté à la rédaction et à la présentation sera pris en compte dans la notation.}}
+
+\vspace{8pt}
+
+\begin{exo}
+    Répondez aux questions en cochant la case correspondante (Plusieurs réponses peuvent être correctes): 
+    \begin{enumerate}
+        \item Une classe passe de $23$ à $25$ élèves. Le taux d'évolution du nombre d'élèves est de \newline
+        \begin{oneparcheckboxes}
+            \choice environ $+8{,}7\%$
+            \choice $+8\%$
+            \choice $+2\%$
+            \choice $-8\%$
+        \end{oneparcheckboxes}
+        \item Pour calculer le pourcentage de baisse d'un parfum qui vaut initialement $48$€ et baisse de $3$€, je fais le calcul : \newline
+        \begin{oneparcheckboxes}
+            \choice $\frac{3}{48}$
+            \choice $-\frac{3}{48}$
+            \choice $\frac{48-3}{48}$
+            \choice $-\frac{48-3}{48}$
+        \end{oneparcheckboxes}
+        \item Une suite \textbf{arithmétique} est telle que $u_4=20$ et $u_{16}=48$. Pour calculer sa raison, je fais le calcul : \newline
+        \begin{oneparcheckboxes}
+            \choice $\frac{48-20}{16-4+1}$
+            \choice $\frac{16-4}{48-20}$
+            \choice $\frac{48-20}{16-4}$
+            \choice $-\frac{20-48}{16-4}$
+        \end{oneparcheckboxes}
+        \item Une suite \textbf{géométrique} est telle que $u_{5}=8$ et $u_3=2$. Sa raison peut-être de : \newline
+        \begin{oneparcheckboxes}
+            \choice $2$
+            \choice $-2$
+            \choice $\frac{1}{2}$
+            \choice $-\frac{1}{2}$
+        \end{oneparcheckboxes}
+        \item Le prix de chaussures augmente de $50\%$ entre 2020 et 2021, puis de $10\%$ entre 2021 et 2022. Au total, le prix a augmenté de : \newline
+        \begin{oneparcheckboxes}
+            \choice $60\%$
+            \choice $65\%$
+            \choice environ $62{,}3\%$
+            \choice $55\%$
+        \end{oneparcheckboxes}
+    \end{enumerate}
+\end{exo}
+\vspace{0.5cm}
+\begin{exo}Calculez les premières valeurs des suites définies :
+
+\renewcommand{\arraystretch}{2}
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+          Définition de $u_n$&$\;u_1\;$&$\;u_2\;$&$\;u_3\;$&$\;u_4\;$&$\;u_5\;$\\
+          \hline
+         $u_n=\frac{6}{n}+n$ pour $n \geq 1$& & & & &\\
+          \hline
+         $u_n=4n^2-7$ pour $n \geq 1$& & & & &\\
+          \hline
+         $u_1=2$ et pour $n \geq 1, u_{n+1}=\frac{u_n}{2} + 3$& & & & &\\
+          \hline
+         $u_1=6$ pour $n \geq 1 u_{n+1} = -\frac{1}{u_n}$& & & & &\\
+          \hline
+    \end{tabular}
+\end{center}
+\end{exo} 
+\vspace{0.5cm}
+\begin{exo}
+    Pour chacune des situations présentées, donner le calcul que l'on doit effectuer pour trouver la réponse demandée, puis calculer cette réponse. 
+    \begin{enumerate}
+    \item Les émissions de CO$_2$ en France sont passées de $441$ mégatonnes à $399$ mégatonnes entre 2019 et 2020. Calculer le taux d'évolution $A$ des émissions de 2019 à 2020.\newline
+    	\fbox{
+        	\begin{minipage}[t][1.5cm][t]{0.965\linewidth}
+                A=
+        	\end{minipage}
+        }
+    \item Une entreprise augmente son chiffre d'affaires de $10\%$ par an. En 2022, elle a réalisé $572$ M€ de chiffre d'affaires. Quel a été son chiffre d'affaire $B$ en 2021?\newline
+    \fbox{
+    	\begin{minipage}[t][1.5cm][t]{0.965\linewidth}
+            B=
+    	\end{minipage}
+    }
+    \item Le prix d'une action en bourse, qui valait initialement $80$€, augmente de $50\%$ le lundi, puis baisse de $50\%$ le mardi. Quel est son prix $C$ à la fin de la journée du mardi? \newline
+    \fbox{
+    	\begin{minipage}[t][1.5cm][t]{0.965\linewidth}
+            C=
+    	\end{minipage}
+    }
+    \item Le coût du beurre vient d'augmenter de $30\%$. Une entreprise fabriquant des galettes avait des coûts totaux de $3$€ par paquet, et $20\%$ de ces coûts étaient liés à l'achat de beurre. Quel est la nouvelle part $D$ de coûts liés à l'achat du beurre, toutes choses égales par ailleurs?  \newline
+    \fbox{
+    	\begin{minipage}[t][1.5cm][t]{0.965\linewidth}
+            D=
+    	\end{minipage}
+    }
+    \end{enumerate}
+\end{exo}
+\vspace{1cm}
+
+\begin{exo}
+\begin{enumerate}
+    \item Une entreprise nommée "Aperture Science" vous propose de vous embaucher pour un salaire annuel de $22000$€ la première année, assorti d'une augmentation de $1000$€ par an.
+    \begin{enumerate}
+        \item On appelle $u_n$ la suite qui représente votre salaire la n-ième année. Quelle est la nature de la suite $u_n$ ? 
+        \item Calculez $u_2$ et $u_3$
+        \item Quel salaire recevriez-vous la $15$ème année si vous signez pour cette entreprise?
+        \item Calculez le montant total de salaire reçu dans cette entreprise, en supposant que vous restez y travailler pour 15 années complètes.
+    \end{enumerate}
+    \item L'équipe de recrutement d'une autre entreprise concurrente, "Batibox", vous fait une autre proposition : Un salaire annuel de $20000$€ la première année, et une augmentation annuelle de 5\%
+    \begin{enumerate}
+        \item On appelle $v_n$ la suite qui représente votre salaire la n-ième année. Quelle est la nature de la suite $v_n$ ? 
+        \item Calculez $v_2$ et $v_3$
+        \item Quel salaire recevriez-vous la $15$ème année si vous choisissez de signer avec Batibox ?
+        \item Calculez le montant total de salaire reçu dans cette entreprise, en supposant que vous restez y travailler pour 15 années complètes.
+    \end{enumerate}
+    \item Vous pensez vraiment travailler dans la même entreprise pendant les 15 prochaines années. Quel est le meilleur choix parmi les deux possibilités proposées, et pourquoi?  
+\end{enumerate}
+\end{exo}
+\fbox{
+	\begin{minipage}[t][18cm][t]{0.965\linewidth}
+      ~
+	\end{minipage}
+}
+\end{document}
+
