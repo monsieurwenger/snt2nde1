@@ -33,17 +33,20 @@ def Randomvalues(liste_antecedents, valeur_min, valeur_max):
 
 def gen_random_xy(valmin=-7, valmax=7, nb_points_interm=5, maximage=7, minimage=-2, buffer=1, show=True):
     nbgen=0
-    tbase=[valmin,valmax]
-    Autresvalues=sample(list(range(valmin+1,valmax)),nb_points_interm)
-    tbase=sorted(tbase+Autresvalues)
     while True:
+        tbase=[valmin,valmax]
+        Autresvalues = sample(list(range(valmin+1,valmax)),nb_points_interm)
+        tbase=sorted(tbase+Autresvalues)
         nbgen+=1
         values=Randomvalues(tbase,minimage+buffer, maximage-buffer)
         x = np.array(tbase)
         y= np.array(values)
         poly = lagrange(x,y)
        # print(Polynomial(poly.coef[::-1]).coef)
-        x_new = np.arange(valmin-0.1, valmax+0.11, 0.1)
+        delta = 0
+        epsilon = 0.01
+        dt = 0.1
+        x_new = np.arange(valmin-delta, valmax+delta + epsilon, dt)
         y_new=Polynomial(poly.coef[::-1])(x_new)
         #print(values, max(abs(y_new)))
         if max(y_new)<=maximage and min(y_new)>=minimage:
@@ -93,8 +96,8 @@ def random_truefalse(nb_select=4):
     listquestions+=[(f"Si l'image de ${a}$ par la fonction $h$ est ${b}$, alors ${b}$ est un antécédent de ${a}$ par la fonction $h$",
                     f"Si l'image de ${a}$ par la fonction $h$ est ${b}$, alors ${a}$ est un antécédent de ${b}$ par la fonction $h$")]
     a,b=sample(list(range(0,10)),2)
-    listquestions+=[(f"Si l'image de ${a}$ par la fonction $h$ est ${b}$, alors $g({b})={a}$",
-                    f"Si l'image de ${a}$ par la fonction $h$ est ${b}$,  alors $g({a})={b}$")]
+    listquestions+=[(f"Si l'image de ${a}$ par la fonction $h$ est ${b}$, alors $h({b})={a}$",
+                    f"Si l'image de ${a}$ par la fonction $h$ est ${b}$,  alors $h({a})={b}$")]
     #Choisir nb_select questions parmi la liste
     preselection=sample(listquestions,nb_select)
     selection=[q[randint(0,1)] for q in preselection]
