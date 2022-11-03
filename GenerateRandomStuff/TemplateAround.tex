@@ -1,0 +1,51 @@
+\documentclass[12pt,a4paper]{exam}
+
+\usepackage{sansmathfonts}
+\usepackage[T1]{fontenc}
+\renewcommand*\familydefault{\sfdefault} %% Only if the base font of the document is to be sans serif
+
+\usepackage[french]{babel}
+\usepackage[left=2cm, right=2cm, bottom=0.5cm, top=0.5cm]{geometry}
+
+\usepackage{parskip}
+\setlength{\parskip}{0pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+ \usepackage{array}
+\usepackage{multicol}
+\usepackage{amsmath,amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+
+%Faire figurer correctement un graphe stylé.
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+
+\pgfplotsset{
+    every tick/.append style={color=black},
+    after end axis/.append code={
+        \pgfplotsset{
+            axis line style=opaque,
+            grid=none
+        }
+    },
+} % applies to major and minor ticks,
+
+%End Faire figurer correctement un graphe stylé.
+
+
+\newtheorem{exo}{Exercice}
+\newtheorem{que}{Question}
+\makeatother
+%\author{Augustin WENGER}
+
+\date{}
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+%%%% fin du préambule, on passe au contenu : tout le texte entre
+%%%% \begin{document} et \end{document} 
+
+\begin{document}
+    {w_body}
+\end{document}
+
