@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{book}
+\documentclass[10pt,a4paper,oneside]{book}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -73,6 +73,9 @@
 \newcommand{\K}{\mathbb{K}}
 \newcommand{\F}{\mathbb{F}}
 
+%%%%% Tableaux de variations
+\usepackage{tkz-tab}
+%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -537,7 +540,7 @@ Exemple : \begin{itemize}
     \begin{minipage}{0.3\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{Venn0100.png}
-        \caption{Différence : E \setminus F}
+        \caption{Différence : $E \setminus F$}
     \end{minipage}
 \end{figure}
    
@@ -819,43 +822,6 @@ Graphiquement, c'est trouver toutes les abscisses en lesquelles la courbe repré
   \end{tikzpicture}
 \end{minipage}
 
-
-
-\section{Sens de variation}
-
-\begin{de}
-    Une fonction $f$ est dite croissante sur un intervalle $I$ si pour deux nombres $a$ et $b$ de cet intervalle :
-    \vspace{0.3cm}
-    \begin{center}
-    si $a \leq b$,  alors $f(a) \leq f(b)$
-    \end{center}
-\end{de}
-
-Remarques :
-\begin{itemize}
-    \item On dit souvent qu'une fonction croissante sur un intervalle conserve l'ordre : Comparer (au sens de "se demander quel nombre est le plus grand") les images de deux éléments donnera le même résultat que comparer ces deux éléments.
-    \item Graphiquement, la courbe représentative sur un intervalle "montera" : en parcourant la courbe de gauche à droite, l'image en ordonnée devient de plus en plus haute.
-\end{itemize}
-
-Une fonction décroissante, c'est le contraire :
-
-\begin{de}
-    Une fonction est dite décroissante sur un intervalle $I$ si pour deux nombres $a$ et $b$ de cet intervalle :
-    \vspace{0.3cm}
-    \begin{center}
-    si $a \leq b$,  alors $f(a) \geq f(b)$
-    \end{center}
-\end{de}
-
-\begin{itemize}
-    \item On dit souvent qu'une fonction croissante sur un intervalle inverse l'ordre : Comparer (au sens de "se demander quel nombre est le plus grand") les images de deux éléments donnera le résultat inverse que comparer ces deux éléments.
-    \item Graphiquement, la courbe représentative sur un intervalle "descend" : en parcourant la courbe de gauche à droite, l'image en ordonnée devient de plus en plus basse.
-\end{itemize}
-
-Contrairement aux fonctions affines que vous aviez vu jusqu'à présent, qui gardaient toujours le même sens de variation, une fonction peut être croissante sur certains intervalles et décroissante sur d'autres. 
-
-La fonction carrée est croissante sur $\R^+=[0;+\infty[$ c'est à dire sur les réels positifs et décroissante sur $]-\infty;0]$
-
 \section{Parité d'une fonction}
 
 Ces propriétés permettent notamment de tracer le graphique d'une fonction sur les entiers négatifs, elles divisent donc la quantité de travail par 2.
@@ -864,7 +830,7 @@ Ces propriétés permettent notamment de tracer le graphique d'une fonction sur 
     Une fonction $f$ est dite paire si l'image de l'opposé de tout nombre de son ensemble de définition est égale à l'image de ce nombre. Pour tout nombre $x$ tel que $f(x)$ est défini  alors $f(-x)$ est défini et 
     \vspace{0.3cm}
     \begin{center}
-    \newline $f(x)=f(-x)$
+    $f(x)=f(-x)$
     \end{center}
 \end{de}
 
@@ -877,7 +843,7 @@ Par exemple, la fonction carré est paire : pour tout $x$ réel, $x^2=(-x)^2$
     Une fonction $f$ est dite impaire si l'image de l'opposé de tout nombre de son ensemble de définition est égale à l'opposé de l'image de ce nombre. Pour tout nombre $x$ tel que $f(x)$ est défini  alors $f(-x)$ est défini et 
     \vspace{0.3cm}
     \begin{center}
-    \newline $f(-x)=-f(x)$
+    $f(-x)=-f(x)$
     \end{center}
 \end{de}
 
@@ -905,6 +871,89 @@ Par exemple, la fonction inverse, qui à tout $x$ non nul associe $\frac{1}{x}$ 
    \node[anchor=north] at (graph1.south) {\scriptsize La Courbe représentative de $g(x)= \frac{1}{x}$ est impaire  };
   \end{tikzpicture}
 \end{center}
+
+\section{Sens de variation d'une fonction}
+
+\begin{de}
+    Une fonction $f$ est dite \underline{croissante} sur un intervalle $I$ si pour deux nombres $a$ et $b$ de cet intervalle :
+    \vspace{0.3cm}
+    \begin{center}
+    si $a \leq b$,  alors $f(a) \leq f(b)$
+    \end{center}
+\end{de}
+
+Remarques :
+\begin{itemize}
+    \item On dit souvent qu'une fonction croissante sur un intervalle conserve l'ordre : Comparer (au sens de "se demander quel nombre est le plus grand") les images de deux éléments donnera le même résultat que comparer ces deux éléments.
+    \item Graphiquement, la courbe représentative sur un intervalle "montera" : en parcourant la courbe de gauche à droite, l'image en ordonnée devient de plus en plus haute.
+\end{itemize}
+
+Une fonction décroissante, c'est le contraire :
+
+\begin{de}
+    Une fonction est dite \underline{décroissante} sur un intervalle $I$ si pour deux nombres $a$ et $b$ de cet intervalle :
+    \vspace{0.3cm}
+    \begin{center}
+    si $a \leq b$,  alors $f(a) \geq f(b)$
+    \end{center}
+\end{de}
+
+\begin{itemize}
+    \item On dit souvent qu'une fonction décroissante sur un intervalle inverse l'ordre : Comparer les images de deux éléments donnera le résultat inverse que comparer ces deux éléments.
+    \item Graphiquement, la courbe représentative sur un intervalle "descend" : en parcourant la courbe de gauche à droite, l'image en ordonnée devient de plus en plus basse.
+    \item Sur un intervalle donné, une fonction qui est soit décroissante, soit croissante est dite \underline{monotone}. Attention, la fonction doit garder le même sens de variation tout au long de l'intervalle.
+\end{itemize}
+
+Contrairement aux fonctions affines que vous aviez vu jusqu'à présent, qui gardaient toujours le même sens de variation, une fonction peut être croissante sur certains intervalles et décroissante sur d'autres. 
+
+La fonction carré est croissante sur $\R^+=[0;+\infty[$ c'est à dire sur les réels positifs et décroissante sur $]-\infty;0]$.  En revanche, on ne peut pas dire qu'elle est monotone sur $\R$, car elle ne reste pas monotone sur l'intervalle.
+
+\section{Tableau de variation d'une fonction}
+
+Un \underline{tableau de variation} résume en un seul schéma des informations importantes sur une fonction.
+
+\begin{minipage}{0.7\textwidth}
+    Ainsi, le tableau ci-dessous présente les variations de la fonction $f$ définie sur l'intervalle $[-3;3]$ par $f(x)=2x^3+3x^2-12x$, dont la courbe représentative apparaît à droite.
+    \newline
+    
+    \vspace{1 cm}
+    Tableau de variation de la fonction $f$ : \newline
+    
+    \begin{tikzpicture}
+       \tkzTabInit{$x$ / 1 , $f(x)$ / 2}{$-3$, $-2$, $1$, $3$}
+       \tkzTabVar{-/ $9$, +/ $20$, -/ $-7$ , +/ $45$ }
+    \end{tikzpicture}
+\end{minipage}
+\begin{minipage}{0.25\textwidth}
+    \centering
+    \includegraphics[width=0.9\textwidth]{20221101_CourbeRepTabloVariation.PNG} 
+\end{minipage}
+
+Sur la première ligne d'un tableau de variation d'une fonction figurent les antécédents remarquables par la fonction $f$ :\begin{itemize}
+    \item Les bornes de l'intervalle où la fonction est définie
+    \item Les bornes des intervalles où la fonction est monotone (Ce sont les points où la fonction change de sens de variation)
+\end{itemize}
+
+La deuxième partie d'un tableau de variations indique les intervalles croissants par une flèche qui va vers le haut, et les intervalles décroissants par une flèche qui va vers le bas. Puis, on écrit sous les valeurs de la première ligne leurs images par la fonction.
+
+\subsection{Extremums d'une fonction}
+
+Un extremum est une valeur extrême, prise par une fonction sur un intervalle donné. Cela peut être un minimum ou un maximum.
+
+\begin{de}
+    On dit que $f$ admet un \underline{maximum} sur l'intervalle $I$ en la valeur $a \in I$ si pour tout $x \in I,  f(x)\leq f(a)$.
+    On dit que $f$ admet un \underline{minimum} sur l'intervalle $I$ en la valeur $a \in I$ si pour tout $x \in I, f(x) \geq f(a)$. 
+\end{de}
+
+Si l'intervalle $I$ est l'ensemble sur lequel la fonction est défini, on parle de maximum (ou minimum) \textbf{global}. Sinon, on parle de maximum (ou minimum) \textbf{local}.
+
+Les valeurs au bord des intervalles fermés qui apparaissent dans des tableaux de variation sont des extremums locaux.
+
+Par exemple, dans le tableau ci-dessus\begin{itemize}
+    \item 
+$f(-2)=20$ est la valeur maximum prise par la fonction sur l'intervalle $[-3;1]$. $f$ admet un maximum local en $-2$ qui vaut $20$. 
+\item $f$ admet un minimum global en $1$, en lequel elle prend la valeur de $-7$.
+\end{itemize} 
 
 \end{document}
 
