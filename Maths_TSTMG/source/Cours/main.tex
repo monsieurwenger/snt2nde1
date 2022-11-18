@@ -56,6 +56,7 @@
 \newcommand{\F}{\mathbb{F}}
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \makeatletter
@@ -739,7 +740,225 @@ On peut résumer les enseignements de ce chapitre dans le tableau suivant :
      
 \end{tabular}
 
+\chapter{Fonctions}
 
+
+% Config pgfplot pour faire graphes stylés. Attention, il ne faut pas que ça contamine les autres pgfplot
+
+
+\pgfplotsset{compat=newest}
+\pgfplotsset{every axis/.append style={
+                    axis x line=middle,
+                    axis y line=middle,
+                    axis line style={->},
+                    xlabel={$x$},
+                    ylabel={$y$},
+                    label style={font=\scriptsize},
+                    tick label style={font=\tiny},
+                    unit vector ratio*=1 1 1,
+   					xlabel style={at={(ticklabel* cs:1)},anchor=north west},
+   					ylabel style={at={(ticklabel* cs:1)},anchor=south west}
+                    }}
+
+
+Le but final de ce cours est de présenter trois fonctions et leurs propriétés : \begin{itemize}
+    \item La fonction inverse, qui à un nombre non nul $x$ associe son inverse $\frac{1}{x}$.
+    \item La fonction exponentielle, qui est une sorte d'extension des suites géométriques (qui n'ont des valeurs que dans les nombres entiers) à tout nombre réel.
+    \item La fonction logarithme, qui est souvent utilisée dans la vie courante, et qui est, en un certain sens que nous clarifierons, le contraire de la fonction exponentielle.
+\end{itemize}
+
+Pour cela, on va commencer par revoir les fondamentaux des fonctions, principalement leur définition et la manière de créer et d'exploiter leur représentation graphique.
+
+\section{Rappels sur les fonctions}
+
+% Un subtil moyen de réactiver les compétences
+% Lecture graphique, équation graphique
+% Lire graphiquement une équation de droite 
+% Fonction carré
+
+%Définition d'une fonction
+%Plusieurs manières de créer une fonction : Algo, formule,
+%Représentation sous forme de tableau de valeurs, de graphique
+%Tableau de variation
+
+\subsection{Définition}
+
+Les objets mathématiques ont chacun un rôle. Le rôle d'une fonction est d'\textbf{associer}. Associer, cela veut dire transformer un objet en un autre.
+
+Dans ce cours, on étudiera principalement des fonctions qui à un nombre associent un autre nombre. 
+
+\begin{de}[Fonction réelle d'un ensemble de réels]
+    Soit $E$ un ensemble de nombres $\R$. On dit que $f$ est une \underline{fonction} de $E$ dans $\R$ si à tout élément $x$ de $I$,  $f$ associe un et un seul nombre réel, qu'on note $f(x)$.
+    On note :
+        \[
+        \begin{array}{ccccc}
+        f & : & E & \to & \R \\
+         & & x & \mapsto & f(x) \\
+        \end{array}
+        \]
+\end{de}
+
+Exemples : Pendant tous les rappels, on va se foncer sur deux fonctions vues dans les années précédentes.
+\begin{itemize}
+    \item Une fonction affine, c'est à dire une fonction de la forme $g(x)=ax+b$. Ici, on prendra $g(x)=2x+1$.
+    \item La fonction carré, c'est à dire la fonction $h(x)=x^2$.
+\end{itemize}
+
+Remarques :
+\begin{itemize}
+    \item On a eu besoin de parler de l'ensemble $E$, car nous verrons certaines fonctions qui ne prennent pas n'importe quel nombre pour des valeurs d'entrée. 
+    Exemple/Exercice : Quels nombres réels la fonction $x \mapsto \frac{1}{x}$ admet-elle en entrée ? et la fonction $x \mapsto \sqrt{x}$ ? 
+    On dit que ces valeurs d'entrée valides forment l'\underline{ensemble de définition} de la fonction.
+    \item $x$ est appelée la \underline{variable} de la fonction $f$. On l'appelle variable tant qu'on ne lui fixe pas de valeur. Ce terme sera seulement utilisé pour : 
+    \begin{itemize}
+        \item Dire que $x$ n'a pas encore été fixé et qu'il peut donc varier
+        \item Décrire le nombre de variables d'une fonction.
+    \end{itemize}
+\end{itemize}
+
+\begin{de}
+    $f(x)$ s'appelle l' \underline{image} de $x$. On dit que $x$ est \underline{un antécédent} de $f(x)$.
+\end{de}
+
+\subsection{Différentes manières de définir une fonction}
+
+Pour décrire exactement une fonction, il suffit de donner \begin{itemize}
+    \item l'ensemble des nombres $E$ qu'elle accepte en entrée
+    \item une procédure pour calculer la valeur de sortie à partir d'une valeur d'entrée
+\end{itemize}
+
+On peut décrire cette procédure de plusieurs manière :
+\begin{itemize}
+    \item comme une \textbf{formule} : On utilise souvent la notation $f(x) = $ [insérez ici une formule mathématique], parce qu'elle économise de l'écriture, parce qu'on traite de fonctions simples. 
+    \item comme un \textbf{algorithme} : On a vu des manières de décrire des fonctions qui sont trop complexes pour s'écrire sous la forme d'une formule ou pour lesquelles il n'existe pas de formule toute faite. 
+\end{itemize}
+
+Exemples :
+\begin{itemize}
+    \item On peut définir la fonctions $g$ comme "la fonction $g$ qui à un nombre $x$ associe $3x+2$", mais aussi comme "la fonction qui a un nombre associe ce nombre multiplié par $2$ et augmenté de $1$". C'est comme ça qu'on faisait jusqu'au XVIIIème siècle.
+    \item La fonction inventée par un élève qui nous prenait en entrée une lettre de l'alphabet et renvoyait la formule "Le numéro de la lettre dans l'alphabet diminué de $5$, le tout divisé par $2$". Il n'y a pas de manière mathématique standart d'écrire cette fonction
+\end{itemize}
+
+\subsection{Représenter une fonction}
+
+Sans forcément donner toute la formule de la fonction, on peut communiquer sur le comportement de la fonction, de plusieurs manières courantes :
+
+\subsubsection{Tableau de valeurs}
+
+
+\begin{de}
+    Un tableau de valeurs d'une fonction $f$ est un tableau dans lequel apparaît sur une ligne certaines valeurs prises par la variable, et sur la ligne du dessous l'image de chacune de ces valeurs par la fonction.
+\end{de}
+
+Voici le tableau de valeurs pour les deux fonctions qui sont nos exemples de la section.
+
+\begin{minipage}{0.45\textwidth}
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+             $x$ & $-1$ & $0$ & $1$ & $2$&$3$ & $4$ \\
+        \hline
+             $g(x)=2x+1$ & $-1$ & $1$ &$3$&$5$&$7$&$9$ \\
+        \hline
+        \end{tabular}
+    \end{center}
+    \end{minipage}
+\begin{minipage}{0.45\textwidth}
+\begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+         $x$ & $-1$ & $0$ & $1$ & $2$&$3$ & $4$ \\
+    \hline
+         $h(x) = x^2$ & $1$ & $0$ &$1$&$4$&$9$&$16$ \\
+    \hline
+    \end{tabular}
+\end{center}
+\end{minipage}
+
+\subsubsection{Représentation graphique}
+
+Avant de pouvoir tracer la courbe représentative d'une fonction, il nous faut savoir associer à des coordonnées un point du plan, et vice-versa. Pour cela, on utilise un repère.
+
+\begin{de}[Repère]
+Pour repérer un point dans le plan, on trace deux droites (les axes) sécants en un point $O$, origine du repère. Sur un axe, on place un point $I$ et la distance $OI$ sert de référence. De même sur l'autre axe on place un point $J$ et la distance $OJ$ sert de référence. $(O;I,J)$ défini un repère du plan. 
+
+ Soit $M$ un point quelconque. On trace les parallèles aux axes passant par $M$. Elles coupent ces deux axes en $M'$ et $M"$.
+
+$M'$ est repéré par un nombre $x_{M}$ sur l'axe $[OI)$ et $M"$ par un nombre $y_{M}$ sur l'axe $[OJ)$.
+
+On dit que $x_{M}$ et $y_{M}$ sont les coordonnées de M dans le repère $(O;I;J)$. $x_{M}$ est l’abscisse de $M$ et $y_{M}$ l’ordonnée de $M$.
+\end{de}
+
+
+On représente en règle générale les fonctions dans un repère orthonormé, c'est à dire que les droites $(OI)$ et $(OJ)$ seront perpendiculaires, et que les longueurs $OI$ et $OJ$ seront égales.
+
+\begin{center}
+    \begin{tabular}{|c|c|c|}
+        \hline
+         Axe & Nom & Lettre associée  \\
+        \hline
+        Horizontal & Abscisse & x \\
+        \hline
+        Vertical & Ordonnées & y \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\begin{de}[Courbe représentative d'une fonction]
+    La courbe représentative d'une fonction $f$ est l'ensemble des points $(x,f(x))$, où $x$ parcourt l'ensemble des points où la fonction est définie, qu'on a placé sur un repère orthonormé.
+\end{de}
+
+    Concrètement, pour représenter une fonction, on commence par faire un tableau de valeurs pour calculer l'image de certains points qui seront situés dans la partie de l'axe des abscisses que l'on représente. Puis on place ces points sur le repère. Enfin, on relie ces points par une courbe, dont l'allure dépend de la manière dont la fonction est définie (Elle ne va pas en ligne droite entre les points du tableau de valeur, sauf si la fonction est affine sur l'intervalle entre les deux points). Pour cette dernière partie, on peut s'aider de la représentation graphique sur une calculatrice, de son expérience, ou rajouter des valeurs supplémentaires dans le tableau de valeur pour voir ce que la courbe fait entre les points qu'on a tracés.
+    \begin{enumerate}
+        \item Tracer un repère
+        \item Préparer un tableau de valeurs de la fonction
+        \item Placer les points du tableau de valeur sur le repère
+        \item Tracer une courbe qui passe par ces points
+    \end{enumerate}
+
+    \begin{minipage}{0.475\textwidth}
+        \begin{tikzpicture}
+         \begin{axis}[
+           name = graph1,
+           ytick distance = 1,
+           xtick distance = 1,
+           ymin=-12.1, ymax=15.1,
+           xmin=-10.1, xmax=10.1,
+           grid=both,
+           grid style={line width=.1pt,draw=brown!20},
+           major grid style={line width=.2pt,draw=brown!40},
+           tick style={draw=none},
+         ]
+      
+           \addplot [domain=-10:10, samples=500, color=gray!90]
+              {2*x+1};
+          \addplot[domain=-10:10,samples=21,only marks, mark=x, blue] {2*x+1}; 
+         \end{axis}
+         \node[anchor=north] at (graph1.south) {\scriptsize Courbe représentative de $g(x)= 2x+1$  };
+        \end{tikzpicture}
+\end{minipage}
+\begin{minipage}{0.475\textwidth}
+    \begin{tikzpicture}
+     \begin{axis}[
+       name = graph1,
+       ytick distance = 1,
+       xtick distance = 1,
+       ymin=-1.1, ymax=9.1,
+       xmin=-4.1, xmax=4.1,
+       grid=both,
+       grid style={line width=.1pt,draw=brown!20},
+       major grid style={line width=.2pt,draw=brown!40},
+       minor tick num=9,
+       tick style={draw=none},
+     ]
+  
+       \addplot [domain=-10:10, samples=500, color=gray!90]
+          {x^2};
+      \addplot[domain=-10:10,samples=21,only marks, mark=x, blue] {x^2}; 
+     \end{axis}
+     \node[anchor=north] at (graph1.south) {\scriptsize Courbe représentative de $h(x)= x^ 2$  };
+    \end{tikzpicture}
+  \end{minipage}
 
 
 \end{document}
