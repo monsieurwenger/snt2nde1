@@ -639,10 +639,6 @@ Pour la fonction carré, présentée ci-dessus, un tableau de valeur se présent
     \end{tabular}
 \end{center}
 
-
-
-
-
 \section{Représentation graphique}
 
 Avant de pouvoir tracer la courbe représentative d'une fonction, il nous faut savoir associer à des coordonnées un point du plan, et vice-versa. Pour cela, on utilise un repère.
@@ -954,6 +950,101 @@ Par exemple, dans le tableau ci-dessus\begin{itemize}
 $f(-2)=20$ est la valeur maximum prise par la fonction sur l'intervalle $[-3;1]$. $f$ admet un maximum local en $-2$ qui vaut $20$. 
 \item $f$ admet un minimum global en $1$, en lequel elle prend la valeur de $-7$.
 \end{itemize} 
+
+\chapter{Vecteurs du plan}
+
+Dans un repère, on place deux points $A$ et $B$. Intuitivement, un vecteur décrit le chemin à parcourir pour passer de $A$ à $B$. C'est un déplacement, qu'on appelle translation.
+
+\begin{de}[Translation]
+  Rappel : Une \underline{translation} est une glissade qui transforme un point du plan en un autre. Opérer une translation sur une figure, c'est effectuer \textbf{la même} translation à tous les points de la figure.
+  Opérer une translation sur une figure conserve ses distances, ses angles, son aire, et en général toutes les grandeurs qui ne dépendent que du placement des points de la figure les uns par rapport aux autres. 
+\end{de}
+
+\begin{de}[Vecteur]
+La translation qui transforme le point $A$ en le point $B$. est appelée translation de \underline{vecteur} $\overrightarrow{AB}$.
+\end{de}
+
+On peut noter un vecteur par son point de départ et son point d'arrivée. On peut également lui donner son propre nom, qui est souvent $\overrightarrow{u}$ ou $\overrightarrow{v}$ (ici, $u$ et $v$ sont en minuscule, car on réserve généralement les lettres majuscules  pour les points du plan).
+
+\begin{center}
+\begin{tikzpicture}
+   \draw[->](0,0)node[left]{A}--(2,1)node[right]{B}
+\end{tikzpicture}
+\end{center}
+
+On va commencer par décrire les vecteurs dans le plan muni d'un repère cartésien. Cela facilite les notations. Puis nous verrons les propriétés dans un cadre plus général.
+
+\section{Dans un repère cartésien.}
+
+\subsection{Coordonnées d'un vecteur}
+
+Un vecteur représente un chemin d'un point à un autre du plan En deux dimensions. Si l'on dispose d'un repère cartésien, on peut décrire un vecteur par deux coordonnée : Le déplacement effectué sur l'axe des abscisses, et le déplacement effectué sur l'axe des ordonnées.
+
+
+
+\newcommand*{\Coord}[2]{% 
+  \ensuremath{ 
+    \begin{pmatrix} 
+      #1\\ 
+      #2 
+    \end{pmatrix}}}
+
+\begin{minipage}{0.25\textwidth}
+    
+Pour passer du point $A(1,3)$ au point $B(5,4)$, on se déplace de $+4$ sur l'axe des abscisses et de $+1$ sur l'axe des ordonnées.
+
+Le vecteur $\vec{u}=\vec{AB}$ a donc pour coordonnées $\Coord{4}{1}$.
+
+On peut également le noter $\vec{AB}\Coord{4}{1}$
+
+On peut voir un vecteur comme un plan de route : Pour atteindre $B$ en partant de $A$, avancez de $4$ sur l'axe des abscisses, et de $1$ sur l'axe des ordonnées.
+
+\end{minipage}
+\begin{minipage}{0.7\textwidth}
+    \centering
+    \includegraphics[width=0.9\textwidth]{vecteurExemple.png} 
+\end{minipage}
+
+On note les coordonnées d'un vecteur verticalement. Si la translation diminue les abscisses ou les ordonnées, la coordonnée du vecteur associé sera négative.
+
+\begin{prop}
+    Soient deux points $M(x_M,y_M)$ et $M'(x_{M'},y_{M'})$ dans un repère. Les coordonnées du vecteur $\vec{MM'}$ sont $\Coord{x_{M'}-x_{M}}{y_{M'}-y_{M}}$.
+\end{prop}
+
+Note : C'est simplement la formule de la différence de deux points en deux dimensions.
+
+
+\begin{de}
+    Deux vecteurs sont égaux s'ils ont les mêmes coordonnées. Attention : On peut dessiner deux fois le même vecteur à différents endroits du plan, et ils seront tout de même égaux.
+\end{de}
+
+\subsection{vecteur nul}
+
+\begin{de}
+    Le vecteur nul est le vecteur de coordonnées $\Coord{0}{0}$. Il est le vecteur associé à la transflation identité, qui transforme tout point en lui-même.
+\end{de}
+
+Note : En général, on ne dessine pas le vecteur nul. En tout cas je l'ai jamais vu en dessin.
+
+\subsection{Somme de vecteurs}
+
+Effectuer plusieurs translations d'affilée revient à effectuer une seule translation, associée à un vecteur qui correspond à la somme des vecteurs directeurs des translations : $\vec{u}+\vec{v}$ aura pour coordonnées la somme termes à termes des coordonnées de $\vec{u}$ et de $\vec{v}$.
+
+\begin{de}
+    Soient $\vec{u} \Coord{x_\vec{u}}{y_\vec{u}}$ et $\vec{v} \Coord{x_\vec{v}}{y_\vec{v}}$ deux vecteurs du plan. On note $\vec{u}+\vec{v}$ le vecteur de coordonnées $\Coord{x_\vec{u}+x_\vec{v}}{y_\vec{u}+y_\vec{v}}$
+\end{de}
+
+On va voir tout de suite une expression mathématique du fait que vous connaissez sûrement déjà : Aller de Monaco à Paris puis de Paris à Madrid, c'est aller de Monaco à Madrid.
+
+\begin{prop}[Relation de Chasles]
+  Soient $A$, $B$ et $C$ trois points du plan. \vec{AB} + \vec{BC} = \vec{AC}
+\end{prop}
+
+Démonstration en exercice (Avec des coordonnées)
+
+\subsection{Multiplication par un nombre réel}
+
+En plus d'additionner deux vecteurs, on peut également les additionner
 
 \end{document}
 
