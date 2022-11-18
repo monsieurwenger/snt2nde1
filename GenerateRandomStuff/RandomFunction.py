@@ -99,8 +99,14 @@ def random_truefalse(nb_select=4):
     listquestions+=[(f"Si l'image de ${a}$ par la fonction $h$ est ${b}$, alors $h({b})={a}$",
                     f"Si l'image de ${a}$ par la fonction $h$ est ${b}$,  alors $h({a})={b}$")]
     #Choisir nb_select questions parmi la liste
-    preselection=sample(listquestions,nb_select)
-    selection=[q[randint(0,1)] for q in preselection]
+    if nb_select is not None:
+        preselection=sample(listquestions,nb_select)
+        selection=[q[randint(0,1)] for q in preselection]
+    if nb_select is None:
+        preselection = listquestions[:]
+        selection = []
+        for k in preselection:
+            selection+=[k[0],k[1]]
     return r"\item " + "\n \\item ".join(selection)
 
 texte_individuel=open("Individual_ToRandomize.tex").read()
@@ -121,7 +127,7 @@ for k in range(nb_a_produire):
     a_inserer=texte_individuel
     a_inserer=a_inserer.replace("{w_coords}",dict_to_graph(dico_random))
     a_inserer=a_inserer.replace("{w_xcoords}",dict_to_xlist(dico_random))
-    a_inserer=a_inserer.replace("{w_questions}",random_truefalse())
+    a_inserer=a_inserer.replace("{w_questions}",random_truefalse(nb_select=4 if  nb_a_produire!= 1 else None))
     print(len(a_inserer), len(texte_individuel))
     bodies+=[a_inserer]
 
@@ -136,10 +142,10 @@ nom_fichier_output = f"Output_{nb_a_produire}_{datetime.now().isoformat()}.tex"
 doss_a_creer = nom_fichier_output.split(".")[0]
 os.mkdir(doss_a_creer)
 
-nom_fichier_output = doss_a_creer+"/"+"Output_genere"
+nom_fichier_output = doss_a_creer+"/"+"Output_genere.tex"
 f = open(nom_fichier_output, "w+")
 f.write(texte_final)
 f.close()
 
 
-latex_compile(nom_fichier_output,output_folder=doss_a_creer)
+latex_compile(nom_fichier_output, output_folder=doss_a_creer)
