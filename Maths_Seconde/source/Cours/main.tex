@@ -967,9 +967,9 @@ La translation qui transforme le point $A$ en le point $B$. est appelée transla
 On peut noter un vecteur par son point de départ et son point d'arrivée. On peut également lui donner son propre nom, qui est souvent $\overrightarrow{u}$ ou $\overrightarrow{v}$ (ici, $u$ et $v$ sont en minuscule, car on réserve généralement les lettres majuscules  pour les points du plan).
 
 \begin{center}
-\begin{tikzpicture}
-   \draw[->](0,0)node[left]{A}--(2,1)node[right]{B}
-\end{tikzpicture}
+  \begin{tikzpicture}
+    \draw[->](0,0)node[left]{A}--(2,1)node[right]{B};
+  \end{tikzpicture}
 \end{center}
 
 On va commencer par décrire les vecteurs dans le plan muni d'un repère cartésien. Cela facilite les notations. Puis nous verrons les propriétés dans un cadre plus général.
@@ -993,9 +993,9 @@ Un vecteur représente un chemin d'un point à un autre du plan En deux dimensio
     
 Pour passer du point $A(1,3)$ au point $B(5,4)$, on se déplace de $+4$ sur l'axe des abscisses et de $+1$ sur l'axe des ordonnées.
 
-Le vecteur $\vec{u}=\vec{AB}$ a donc pour coordonnées $\Coord{4}{1}$.
+Le vecteur $\overrightarrow{u}=\overrightarrow{AB}$ a donc pour coordonnées $\Coord{4}{1}$.
 
-On peut également le noter $\vec{AB}\Coord{4}{1}$
+On peut également le noter $\overrightarrow{AB}\Coord{4}{1}$
 
 On peut voir un vecteur comme un plan de route : Pour atteindre $B$ en partant de $A$, avancez de $4$ sur l'axe des abscisses, et de $1$ sur l'axe des ordonnées.
 
@@ -1008,7 +1008,7 @@ On peut voir un vecteur comme un plan de route : Pour atteindre $B$ en partant d
 On note les coordonnées d'un vecteur verticalement. Si la translation diminue les abscisses ou les ordonnées, la coordonnée du vecteur associé sera négative.
 
 \begin{prop}
-    Soient deux points $M(x_M,y_M)$ et $M'(x_{M'},y_{M'})$ dans un repère. Les coordonnées du vecteur $\vec{MM'}$ sont $\Coord{x_{M'}-x_{M}}{y_{M'}-y_{M}}$.
+    Soient deux points $M(x_M,y_M)$ et $M'(x_{M'},y_{M'})$ dans un repère. Les coordonnées du vecteur $\overrightarrow{MM'}$ sont $\Coord{x_{M'}-x_{M}}{y_{M'}-y_{M}}$.
 \end{prop}
 
 Note : C'est simplement la formule de la différence de deux points en deux dimensions.
@@ -1021,23 +1021,27 @@ Note : C'est simplement la formule de la différence de deux points en deux dime
 \subsection{vecteur nul}
 
 \begin{de}
-    Le vecteur nul est le vecteur de coordonnées $\Coord{0}{0}$. Il est le vecteur associé à la transflation identité, qui transforme tout point en lui-même.
+    Le vecteur nul est le vecteur de coordonnées $\Coord{0}{0}$. Il est le vecteur associé à la transflation identité, qui transforme tout point en lui-même. On le note $\overrightarrow{0}$
 \end{de}
 
 Note : En général, on ne dessine pas le vecteur nul. En tout cas je l'ai jamais vu en dessin.
 
 \subsection{Somme de vecteurs}
 
-Effectuer plusieurs translations d'affilée revient à effectuer une seule translation, associée à un vecteur qui correspond à la somme des vecteurs directeurs des translations : $\vec{u}+\vec{v}$ aura pour coordonnées la somme termes à termes des coordonnées de $\vec{u}$ et de $\vec{v}$.
+Effectuer plusieurs translations d'affilée revient à effectuer une seule translation, associée à un vecteur qui correspond à la somme des vecteurs directeurs des translations : $\overrightarrow{u}+\overrightarrow{v}$ aura pour coordonnées la somme termes à termes des coordonnées de $\overrightarrow{u}$ et de $\overrightarrow{v}$.
 
 \begin{de}
-    Soient $\vec{u} \Coord{x_\vec{u}}{y_\vec{u}}$ et $\vec{v} \Coord{x_\vec{v}}{y_\vec{v}}$ deux vecteurs du plan. On note $\vec{u}+\vec{v}$ le vecteur de coordonnées $\Coord{x_\vec{u}+x_\vec{v}}{y_\vec{u}+y_\vec{v}}$
+    Soient $\overrightarrow{u} \Coord{x_{\overrightarrow{u}}}{y_{\overrightarrow{u}}}$ et 
+    $\overrightarrow{v} \Coord{x_{\overrightarrow{v}}}{y_{\overrightarrow{v}}}$ deux vecteurs du plan. 
+    On note $\overrightarrow{u}+\overrightarrow{v}$ le vecteur de coordonnées 
+    $\Coord{x_{\overrightarrow{u}}+x_{\overrightarrow{v}}}{y_{\overrightarrow{u}}+y_{\overrightarrow{v}}}$
 \end{de}
 
 On va voir tout de suite une expression mathématique du fait que vous connaissez sûrement déjà : Aller de Monaco à Paris puis de Paris à Madrid, c'est aller de Monaco à Madrid.
 
 \begin{prop}[Relation de Chasles]
-  Soient $A$, $B$ et $C$ trois points du plan. \vec{AB} + \vec{BC} = \vec{AC}
+  Soient $A$, $B$ et $C$ trois points du plan. 
+  \[ \overrightarrow{AB} + \overrightarrow{BC} = \overrightarrow{AC}\]
 \end{prop}
 
 Démonstration en exercice (Avec des coordonnées)
