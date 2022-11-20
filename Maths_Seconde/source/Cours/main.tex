@@ -1037,6 +1037,10 @@ Effectuer plusieurs translations d'affilée revient à effectuer une seule trans
     $\Coord{x_{\overrightarrow{u}}+x_{\overrightarrow{v}}}{y_{\overrightarrow{u}}+y_{\overrightarrow{v}}}$
 \end{de}
 
+\begin{exo}
+  Comme l'addition de nombres, l'addition de vecteur est commutative (c'est à dire que $\overrightarrow{u}+\overrightarrow{v} = \overrightarrow{v}+\overrightarrow{u}$) et associative. Le montrer.
+\end{exo}
+
 On va voir tout de suite une expression mathématique du fait que vous connaissez sûrement déjà : Aller de Monaco à Paris puis de Paris à Madrid, c'est aller de Monaco à Madrid.
 
 \begin{prop}[Relation de Chasles]
@@ -1048,7 +1052,60 @@ Démonstration en exercice (Avec des coordonnées)
 
 \subsection{Multiplication par un nombre réel}
 
-En plus d'additionner deux vecteurs, on peut également les additionner
+En plus d'additionner deux vecteurs, on peut également les multiplier par un nombre réel. Multiplier un vecteur par le réel $k$, c'est simplement obtenir un chemin $k$ fois plus grand, coordonnée par coordonnée :
+
+\begin{de}
+  Soient $\overrightarrow{u} \Coord{x}{y}$ un vecteur du plan, et $k$ un nombre réel. On appelle $k \overrightarrow{u}$, ou $k \times \overrightarrow{u}$, ou $k \cdot \overrightarrow{u}$ le vecteur de coordonnées $\Coord{kx}{ky}$  
+\end{de}
+
+\begin{prop}
+  Cette multiplication de vecteurs par des réels se comporte comme une multiplication : pour $k$ un réel et $\overrightarrow{u}$ et $\overrightarrow{v}$ deux vecteurs : 
+  \begin{enumerate}
+    \item $1 \times \overrightarrow{u} = \overrightarrow{u}$, $\overrightarrow{u} + \overrightarrow{u} = 2 \overrightarrow{u}$, $0 \cdot \overrightarrow{u}= \overrightarrow{0}$
+    \item $k(\overrightarrow{u} + \overrightarrow{v})$(distributivité par rapport à l'addition)
+    \item $(kk')\overrightarrow{u} = k(k'\overrightarrow{u})$ (Associativité mixte)
+  \end{enumerate}
+\end{prop}
+
+\subsection{Vecteurs colinéaires}
+
+La colinéarité est une relation, c'est à dire qu'elle constitue deux vecteurs. Elle désigne des vecteurs qui pointent dans la même direction (ou dans un direction opposée). 
+On va cependant voir une définition qui utilise le concept de multiplication par un réel
+
+\begin{de}[Colinéarité de deux vecteurs]
+  Deux vecteurs non nuls $\overrightarrow{u}$ et $\overrightarrow{v}$ sont dits \underline{colinéaires} si $\overrightarrow{u}$ est égal à $\overrightarrow{v}$ multiplié par un certain réel $k$. 
+\end{de}
+
+Remarques : 
+\begin{itemize}
+  \item la définition ci-dessus ne traite que des vecteurs non nuls. Si l'un des deux vecteurs $u$ et $v$ est nul, alors les deux vecteurs sont forcément colinéaires. Mais ça n'est pas très intéressant, c'est comme de dire que $0$ est un multiple de tous les nombres entiers $n$ puisque $0=0 \times n$.
+  \item Cas particulier : Multiplier un vecteur $\overrightarrow{u}$ par $-1$ donne un vecteur dont chaque coordonnée 
+  est l'opposé de la coordonnée du vecteur de départ. On appelle le résultat \underline{vecteur opposé} de $\overrightarrow{u}$. On le note $-\overrightarrow{u}$.
+\end{itemize}
+
+\begin{prop}
+  l'opposé d'un vecteur $\overrightarrow{AB}$ est le vecteur $\overrightarrow{BA}$ : Prendre l'opposé d'un vecteur est la même chose que d'inverser le point de départ et d'arrivée. 
+\end{prop}
+
+Démonstration : Par la relation de Chasles, $\overrightarrow{AB} + \overrightarrow{BA} = \overrightarrow{AA} = \overrightarrow{0}$. On a donc $\overrightarrow{AB} = \overrightarrow{AB} + \overrightarrow{BA} - \overrightarrow{BA} = \overrightarrow{0} + \overrightarrow{BA} = \overrightarrow{BA}$.
+
+Remarque : C'était prévisible en considérant le vecteur comme un trajet : L'opposé d'un trajet Strasbourg-Paris, c'est un trajet Paris-Strasbourg.  
+
+\subsection{Norme d'un vecteur}
+
+Comme souvent en mathématiques, on aime calculer la taille des objets, parce que cela exprime une partie des propriétés d'un objet sous la forme d'un nombre. La longueur d'un vecteur s'appelle la norme.
+
+\begin{de}[Norme d'un vecteur]
+  La norme d'un vecteur $\overrightarrow{AB}$ est égale à la longueur du vecteur, c'est à dire à la distance $AB$.
+\end{de}
+
+Pour calculer cette distance quand on dispose des coordonnées, il suffit d'utiliser le bon vieux théorème de Pythagore.
+
+\begin{prop}[Norme d'un vecteur dont on connaît les coordonnées]
+  Soit $\overrightarrow{u}$ un vecteur de coordonnées $\Coord{x}{y}$, la norme de $\overrightarrow{u}$ est égale à $\sqrt{x^2+y^2}$
+\end{prop}
+
+
 
 \end{document}
 
