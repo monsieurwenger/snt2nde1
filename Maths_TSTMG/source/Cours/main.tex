@@ -46,6 +46,12 @@
 \usepackage{amsmath,amsfonts} 
 
 \usepackage{tikz}
+%%%%% Tableaux de variations
+\usepackage{tkz-tab}
+%%%%%
+
+
+
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\D}{\mathbb{D}}
@@ -958,6 +964,159 @@ On représente en règle générale les fonctions dans un repère orthonormé, c
      \node[anchor=north] at (graph1.south) {\scriptsize Courbe représentative de $h(x)= x^ 2$  };
     \end{tikzpicture}
   \end{minipage}
+
+
+\subsubsection{Tableau de variations d'une fonction}
+
+Un \underline{tableau de variations} résume en un seul schéma des informations importantes sur une fonction.
+
+\begin{minipage}{0.7\textwidth}
+    Ainsi, le tableau ci-dessous présente les variations de la fonction $f$ définie sur l'intervalle $[-3;3]$ par $f(x)=2x^3+3x^2-12x$, dont la courbe représentative apparaît à droite.
+    \newline
+    
+    \vspace{1 cm}
+    Tableau de variations de la fonction $f$ : \newline
+    
+    \begin{tikzpicture}
+       \tkzTabInit{$x$ / 1 , $f(x)$ / 2}{$-3$, $-2$, $1$, $3$}
+       \tkzTabVar{-/ $9$, +/ $20$, -/ $-7$ , +/ $45$ }
+    \end{tikzpicture}
+\end{minipage}
+\begin{minipage}{0.25\textwidth}
+    \centering
+    \includegraphics[width=0.9\textwidth]{20221101_CourbeRepTabloVariation.PNG} 
+\end{minipage}
+
+Sur la première ligne d'un tableau de variations d'une fonction figurent les antécédents remarquables par la fonction $f$ :\begin{itemize}
+    \item Les bornes de l'intervalle où la fonction est définie
+    \item Les bornes des intervalles où la fonction est monotone (Ce sont les points où la fonction change de sens de variation)
+\end{itemize}
+
+La deuxième partie d'un tableau de variations indique les intervalles croissants par une flèche qui va vers le haut, et les intervalles décroissants par une flèche qui va vers le bas. Puis, on écrit sous les valeurs de la première ligne leurs images par la fonction.
+
+\subsection{Sens de variation d'une fonction}
+
+\begin{de}
+    Une fonction $f$ est dite \underline{croissante} sur un intervalle $I$ si pour deux nombres $a$ et $b$ de cet intervalle :
+    \vspace{0.3cm}
+    \begin{center}
+    si $a \leq b$,  alors $f(a) \leq f(b)$
+    \end{center}
+\end{de}
+
+Remarques :
+\begin{itemize}
+    \item On dit souvent qu'une fonction croissante sur un intervalle conserve l'ordre : Comparer (au sens de "se demander quel nombre est le plus grand") les images de deux éléments donnera le même résultat que comparer ces deux éléments.
+    \item Graphiquement, la courbe représentative sur un intervalle "montera" : en parcourant la courbe de gauche à droite, l'image en ordonnée devient de plus en plus haute.
+    \item Si l'on peut remplacer les inégalités larges de la définition par des inégalités strictes, on dit que la fonction est \underline{strictement croissante}.
+\end{itemize}
+
+Une fonction décroissante, c'est le contraire :
+
+\begin{de}
+    Une fonction est dite \underline{décroissante} sur un intervalle $I$ si pour deux nombres $a$ et $b$ de cet intervalle :
+    \vspace{0.3cm}
+    \begin{center}
+    si $a \leq b$,  alors $f(a) \geq f(b)$
+    \end{center}
+\end{de}
+
+\begin{itemize}
+    \item On dit souvent qu'une fonction décroissante sur un intervalle inverse l'ordre : Comparer les images de deux éléments donnera le résultat inverse que comparer ces deux éléments.
+    \item Graphiquement, la courbe représentative sur un intervalle "descend" : en parcourant la courbe de gauche à droite, l'image en ordonnée devient de plus en plus basse.
+    \item Sur un intervalle donné, une fonction qui est soit décroissante, soit croissante est dite \underline{monotone}. Attention, la fonction doit garder le même sens de variation tout au long de l'intervalle.
+    \item Si l'on peut remplacer les inégalités larges de la définition par des inégalités strictes, on dit que la fonction est \underline{strictement décroissante}.
+\end{itemize}
+
+\begin{prop}
+    Les fonctions affines sont toutes monotones : elles sont croissantes si le coefficient devant le $x$ est positif, et décroissantes sinon.
+\end{prop}
+
+La fonction $g(x)=2x+1$ définie plus haut est donc croissante, ce qui se voit bien sur sa représentation graphique.
+
+Contrairement aux fonctions affines que vous aviez vu jusqu'à présent, qui gardaient toujours le même sens de variation, une fonction peut être croissante sur certains intervalles et décroissante sur d'autres. 
+
+Par exemple, la fonction carré est croissante sur $\R^+=[0;+\infty[$ c'est à dire sur les réels positifs et décroissante sur $]-\infty;0]$.  En revanche, on ne peut pas dire qu'elle est monotone sur $\R$, car elle ne reste pas monotone sur l'intervalle. La démonstration est laissée en exercice au lecteur.
+
+\subsection{Fonction dérivée}
+
+\subsubsection{Taux de variation}
+
+Le taux de variation d'une fonction est défini comme la vitesse à laquelle la fonction croît où décroît entre deux points. 
+
+\begin{de}
+    Soit une fonction $f$ définie sur un intervalle contenant deux points $a$ et $b$ distincts. Le taux de variation de la fonction $f$ entre $a$ et $b$ est défini comme le quotient :
+
+    \[ \frac{f(b)-f(a)}{b-a}\]
+\end{de}
+
+\begin{prop}
+    Le taux de variation de $f$ entre $a$ et $b$ est le coefficient directeur de la droite qui relie les points d'abscisse $a$ et $b$ de la courbe représentative de $f$.
+\end{prop}
+
+\subsubsection{Nombre dérivé}
+
+Le nombre dérivé d'une fonction en un point (qu'on appelle aussi dérivée de la fonction en un point) représente le coefficient directeur de la tangente à la courbe représentative de la fonction en ce point. 
+On la calcule comme une limite de taux de variation :
+
+\begin{de}
+    Soit $f$ une fonction définie sur un intervalle contenant un nombre $a$. Le \underline{nombre dérivé} $f'(a)$ d'une fonction $f$ en $a$ est la limite quand un nombre réel $h$ tend vers 0 de l'expression 
+
+    \[f'(a)=\frac{f(a+h)-f(a)}{h}\]
+
+\end{de}
+
+C'est bien la limite du taux de variation de $f$ entre $a$ et un point très proche de $a$ quand la distance se rapproche de $0$
+
+\begin{prop}
+    Si la courbe représentative d'une fonction admet une tangente en un point $a$, le coefficient directeur de cette tangente est donné par le nombre dérivé de la fonction $f$ en $a$.
+\end{prop}
+
+\subsubsection{Fonction dérivée}
+
+Au lieu de calculer la tangente en un seul point, on se demande maintenant quel est ce nombre dérivé en chaque point point où $f$ est définie (ou en tout cas sur des intervalles, donc en beaucoup de points)
+
+\begin{de}
+    Soit $f$ une fonction définie sur un intervalle $I$ et admettant des nombres dérivés en chaque point de cet intervalle. On appelle fonction dérivée, qu'on note $f'$, la fonction qui à un point associe le nombre dérivé de la fonction en ce point
+\end{de}
+
+
+La tangente d'une courbe représentative nous donne une information capitale sur la fonction : est-elle croissante ou décroissante autour de ce point. On déduit donc de la propriété ci-dessus le théorème fondamental de la dérivée :
+
+\begin{th}
+    Soit $f$ une fonction qui admet une fonction dérivée sur un intervalle $I$ :
+    \begin{itemize}
+        \item $f$ est croissante sur $I$ si et seulement si $f'(x) \geq 0$ pour tout $x$ de $I$ ($f'$ est positive sur $I$)
+        \item $f$ est décroissante sur $I$ si et seulement si $f'(x) \leq 0$ pour tout $x$ de $I$ ($f'$ est négative sur $I$)
+    \end{itemize}
+\end{th}
+
+Remarque : si la dérivée est strictement positive sur $I$, on peut même en déduire que $f$ est strictement croissante sur $I$. Ce n'est pas un "si et seulement si".
+
+\subsubsection{Dérivées de fonctions connues}
+
+En première STMG, vous avez appris, en plus de la définition d'un nombre dérivé, à calculer les dérivées de : 
+
+\begin{tabular}{|l|c|c|c|}
+    \hline
+    Nom de la fonction & Expression& Degré & Fonction dérivée \\
+    \hline
+    Fonction constante& $f(x) = x^0 = 1$ & $0$ & $f'(x)=0$ \\
+    \hline
+    Fonction identité& $f(x) = x^1 = x$ & $1$ & $f'(x)=1$ \\
+    \hline
+    Fonction constante& $f(x) = x^2$ & $2$ & $f'(x)=2x$ \\
+    \hline
+    Fonction constante& $f(x) = x^3$ & $3$ & $f'(x)=3x^2$ \\
+    \hline
+\end{tabular}
+
+Vous avez également appris à calculer la dérivée des combinaisons linéaires de ces fonctions, c'est à dire que vous savez que :\begin{enumerate}
+    \item Produit par une constante : Pour un réel $k$, et une fonction $f$ dérivable : la dérivée de la fonction $kf$ qui à $x$ associe $k\times f(x)$ est égale à $kf'$
+    \item La dérivée de la somme de deux fonctions est la somme des dérivées : $(f+g)' = f'+g'$
+\end{enumerate}
+
+
 
 
 \end{document}
