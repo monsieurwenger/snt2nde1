@@ -994,6 +994,152 @@ Sur la première ligne d'un tableau de variations d'une fonction figurent les an
 
 La deuxième partie d'un tableau de variations indique les intervalles croissants par une flèche qui va vers le haut, et les intervalles décroissants par une flèche qui va vers le bas. Puis, on écrit sous les valeurs de la première ligne leurs images par la fonction.
 
+
+\subsection{Fonctions et équations}
+
+Soit $f$ une fonction définie sur un sous-ensemble des réels, et $a$ un nombre.
+
+\begin{minipage}{0.5\textwidth}  
+Résoudre $f(x)=a$ c'est trouver tous les antécédents de $a$ par la fonction $f$.  
+\newline ~ \newline
+Graphiquement, c'est trouver toutes les abscisses en lesquelles la courbe représentative de la fonction croise la droite horizontale d'ordonnée $a$.
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+  \begin{tikzpicture}
+   \begin{axis}[
+	 name = graph1,
+     ytick distance = 1,
+     xtick distance = 1,
+     ymin=-1.1, ymax=6.1,
+     xmin=-3.1, xmax=3.1,
+     grid=both,
+     grid style={line width=.1pt,draw=brown!20},
+     major grid style={line width=.2pt,draw=brown!40},
+     minor tick num=9,
+     tick style={draw=none},
+   ]
+     \addplot [domain=-10:10, samples=500, color=gray!90]
+        {x^2};
+     \addplot [domain=-10:10, samples=500, color=blue]
+        {3};
+     \addplot[only marks, mark=x]coordinates{ (1.73205,3)
+		(-1.73205,3)};
+      \draw [thick,dashed] (1.73205,0) -- (1.73205,3);
+      \draw [thick,dashed] (-1.73205,0) -- (-1.73205,3);
+   \end{axis}
+   \node[anchor=north][text width=\textwidth][align=center] at (graph1.south) {\scriptsize Résolution graphique de $x^2=3$ :  les deux solutions valent environ $-1.7$ et $1.7$ };
+  \end{tikzpicture}
+\end{minipage}
+
+
+
+
+\subsubsection{Inéquation}
+
+\begin{de}
+    Une \underline{inéquation}, c'est une inégalité entre deux expressions qui s'expriment chacune en fonction d'une même inconnue. Comme dans le cadre d'une équation, \underline{résoudre une inéquation} c'est trouver toutes les valeurs de l'inconnue qui rendent l'équation vraie.
+\end{de}
+
+On peut appliquer cela à toutes les équations : Les équations à une inconnue, qu'on notera ici $x$, sont toujours de la forme $A(x)=B(x)$ où A et B sont des fonctions, puisque les deux membres de l'égalité sont calculables pour un $x$ donné.
+On peut donc toujours la transformer en une égalité de la forme $f(x)=0$, où $f(x)=A(x)-B(x)$  ($f$ est la différence de deux fonctions, c'est elle même une fonction)
+
+
+\begin{minipage}{0.5\textwidth}  
+Résoudre $f(x) \geq a$ c'est trouver tous les antécédents de nombres plus petits que $a$ par la fonction $f$.
+\newline ~ \newline
+Graphiquement, c'est trouver toutes les abscisses en lesquelles la courbe représentative de la fonction est \textbf{en dessous} de l'ordonnée $a$ (c'est à dire en dessous de la droite d'équation $y=a$.
+\newline ~ \newline
+A l'inverse, Résoudre $f(x) \geq a$ c'est trouver tous les antécédents de nombres plus grands que $a$ par la fonction $f$.
+Graphiquement, c'est trouver toutes les abscisses en lesquelles la courbe représentative de la fonction est \textbf{au dessus} de la droite d'équation $y=a$.
+
+
+\end{minipage}
+\begin{minipage}{0.35\textwidth}
+  \begin{tikzpicture}
+   \begin{axis}[
+	 name = graph1,
+     ytick distance = 1,
+     xtick distance = 1,
+     ymin=-1.1, ymax=2.1,
+     xmin=-3.1, xmax=3.1,
+     grid=both,
+     grid style={line width=.1pt,draw=brown!20},
+     major grid style={line width=.2pt,draw=brown!40},
+     minor tick num=9,
+     tick style={draw=none},
+   ]
+     \addplot [domain=-10:10, samples=500, color=gray!90]
+        {x^2};
+     \addplot [domain=-10:10, samples=500, color=blue]
+        {1};
+     \addplot[only marks, mark=x]coordinates{ (1,1)
+		(-1,1)};
+      \draw [thick,dashed] (1,0) -- (1,1);
+      \draw [thick,dashed] (-1,0) -- (-1,1);
+      \draw[red, line width = 3pt] (-1,0) --(1,0); 
+        \node[red, line width = 3pt] at (-1,0) {$\Big[$};
+        \node[red, line width = 3pt] at (1,0) {$\Big]$};
+   \end{axis}
+   \node[anchor=north][text width=\textwidth][align=center] at (graph1.south) {\scriptsize Résolution graphique de $x^2 \leq 1$ :  Les solutions valides sont les $x$ de $[-1;1]$ };
+\end{tikzpicture}  \begin{tikzpicture}
+   \begin{axis}[
+	 name = graph1,
+     ytick distance = 1,
+     xtick distance = 1,
+     ymin=-1.1, ymax=2.1,
+     xmin=-3.1, xmax=3.1,
+     grid=both,
+     grid style={line width=.1pt,draw=brown!20},
+     major grid style={line width=.2pt,draw=brown!40},
+     minor tick num=9,
+     tick style={draw=none},
+   ]
+     \addplot [domain=-10:10, samples=500, color=gray!90]
+        {x^2};
+     \addplot [domain=-10:10, samples=500, color=blue]
+        {1};
+     \addplot[only marks, mark=x]coordinates{ (1,1)
+		(-1,1)};
+      \draw [thick,dashed] (1,0) -- (1,1);
+      \draw [thick,dashed] (-1,0) -- (-1,1);
+      \draw[red, line width = 3pt] (-3.1,0) --(-1,0);
+      \draw[red, line width = 3pt] (1,0) --(3.1,0); 
+        \node[red, line width = 3pt] at (-1,0) {$\Big]$};
+        \node[red, line width = 3pt] at (1,0) {$\Big[$};
+   \end{axis}
+   \node[anchor=north][text width=\textwidth][align=center] at (graph1.south) {\scriptsize Les solutions valides de $x^2 \geq 1$ sont les $x$ de $]-\infty;1] \cup [1;+\infty[$ };
+  \end{tikzpicture}
+\end{minipage}
+
+\subsubsection{Equation $f(x)=g(x)$, Inéquation $f(x) \geq g(x)$}
+
+soient $f$ et $g$ deux fonctions définies sur le même ensemble $E$.
+
+Résoudre $f(x)=g(x)$, c'est trouver tous les nombres qui ont la même image par la fonction $f$ et la fonction $g$. Ca n'est pas très différent que de résoudre $h(x)=0$ quand $h=f-g$ (h est la différence des deux fonctions).
+
+Cependant, il y a une application graphique intéressante qui est souvent demandée en STMG : 
+
+\begin{prop}
+    Graphiquement, résoudre $f(x)=g(x)$ si l'on dispose des courbes représentatives de $f$ et de $g$, c'est trouver les abscisses de tous les points où la courbe de $f$ croise la courbe de $g$.
+
+    Graphiquement, résoudre $f(x) \geq g(x)$ si l'on dispose des courbes représentatives de $f$ et de $g$, c'est trouver les abscisses de tous les points où la courbe de $f$ est située au dessus de la courbe de $g$.
+
+\end{prop}
+
+\begin{minipage}{0.5\textwidth}
+
+    Exemple : on voit sur le graphique qui représente sur le même repère nos fonctions exemples $g$ et $h$ que $g(x)=h(x)$ a deux solutions, l'une vaut environ $-0.4$, et l'autre environ $2.4$. Si l'on résoud l'équation algébriquement, on peut trouver que les solutions sont $1-\sqrt{2} \approx -0.414$ et $1+\sqrt{2} \approx 2.414$. Notre approximation graphique est donc utile, d'autant que sur une calculatrice, on peut "zoomer" pour avoir une vision plus précise.
+    
+    On peut voir que la solution de l'inéquation $g(x) \geq h(x)$ peut être approchée par l'intervalle $[-0.4,2.4]$.  Dans les faits, on vous fera le plus souvent résoudre des équations graphiquement quand les solutions seront directement sur des carreaux de la grille.
+
+    \end{minipage}
+    \begin{minipage}{0.45\textwidth}
+    
+        \centering
+        \includegraphics[width=0.9\textwidth]{Geogebra_g(x)=h(x).png} 
+    \end{minipage}
+
+
 \subsection{Sens de variation d'une fonction}
 
 \begin{de}
