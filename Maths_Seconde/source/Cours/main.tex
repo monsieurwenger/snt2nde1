@@ -680,8 +680,8 @@ On représente en règle générale les fonctions dans un repère orthonormé, c
         \item Placer les points du tableau de valeur sur le repère
         \item Tracer une courbe qui passe par ces points
     \end{enumerate}
-    
 \end{minipage}
+
 \begin{minipage}{0.35\textwidth}
   \begin{tikzpicture}
    \begin{axis}[
@@ -758,9 +758,8 @@ Graphiquement, c'est trouver toutes les abscisses en lesquelles la courbe repré
 \newline ~ \newline
 A l'inverse, Résoudre $f(x) \geq a$ c'est trouver tous les antécédents de nombres plus grands que $a$ par la fonction $f$.
 Graphiquement, c'est trouver toutes les abscisses en lesquelles la courbe représentative de la fonction est \textbf{au dessus} de la droite d'équation $y=a$.
-
-
 \end{minipage}
+
 \begin{minipage}{0.35\textwidth}
   \begin{tikzpicture}
    \begin{axis}[
@@ -920,6 +919,7 @@ Un \underline{tableau de variations} résume en un seul schéma des informations
        \tkzTabVar{-/ $9$, +/ $20$, -/ $-7$ , +/ $45$ }
     \end{tikzpicture}
 \end{minipage}
+
 \begin{minipage}{0.25\textwidth}
     \centering
     \includegraphics[width=0.9\textwidth]{20221101_CourbeRepTabloVariation.PNG} 
@@ -1000,6 +1000,7 @@ On peut également le noter $\overrightarrow{AB}\Coord{4}{1}$
 On peut voir un vecteur comme un plan de route : Pour atteindre $B$ en partant de $A$, avancez de $4$ sur l'axe des abscisses, et de $1$ sur l'axe des ordonnées.
 
 \end{minipage}
+
 \begin{minipage}{0.7\textwidth}
     \centering
     \includegraphics[width=0.9\textwidth]{vecteurExemple.png} 
@@ -1018,6 +1019,8 @@ Note : C'est simplement la formule de la différence de deux points en deux dime
     Deux vecteurs sont égaux s'ils ont les mêmes coordonnées. Attention : On peut dessiner deux fois le même vecteur à différents endroits du plan, et ils seront tout de même égaux.
 \end{de}
 
+Quand on dessine sur le plan un vecteur $\overrightarrow{AB}$, égal à un certain vecteur $\overrightarrow{u}$, on dit que $\overrightarrow{AB}$ est un représentant de $\overrightarrow{u}$.
+
 On vous demandera souvent de donner l'image d'un point $C$ par une translation correspondant à un vecteur donné $\overrightarrow{u}$. Pour ce faire, il suffit de donner le point d'arrivée du même vecteur que $\overrightarrow{u}$ partant de $C$.
 
 
@@ -1030,9 +1033,9 @@ soit $\overrightarrow{u} \Coord{x_u}{y_u}$ un vecteur, et $C(x_c,y_c)$ un point.
 \end{minipage}
 \begin{minipage}{0.45\textwidth}
   Cela correspond au dessin :
-
     \centering
     \includegraphics[width=0.9\textwidth]{Vecteurs_C+u.png} 
+
 \end{minipage}
 
 
@@ -1088,8 +1091,8 @@ En plus d'additionner deux vecteurs, on peut également les multiplier par un no
 
 \subsection{Vecteurs colinéaires}
 
-La colinéarité est une relation, c'est à dire qu'elle constitue deux vecteurs. Elle désigne des vecteurs qui pointent dans la même direction (ou dans un direction opposée). 
-On va cependant voir une définition qui utilise le concept de multiplication par un réel
+La colinéarité est une relation, c'est à dire qu'elle n'a un sens quand on parle de deux vecteurs (ou plus). Elle désigne des vecteurs qui pointent dans la même direction (ou dans un direction opposée).
+On va cependant voir une définition qui utilise le concept de multiplication par un réel.
 
 \begin{de}[Colinéarité de deux vecteurs]
   Deux vecteurs non nuls $\overrightarrow{u}$ et $\overrightarrow{v}$ sont dits \underline{colinéaires} si $\overrightarrow{u}$ est égal à $\overrightarrow{v}$ multiplié par un certain réel $k$. 
@@ -1100,6 +1103,7 @@ Remarques :
   \item la définition ci-dessus ne traite que des vecteurs non nuls. Si l'un des deux vecteurs $u$ et $v$ est nul, alors les deux vecteurs sont forcément colinéaires. Mais ça n'est pas très intéressant, c'est comme de dire que $0$ est un multiple de tous les nombres entiers $n$ puisque $0=0 \times n$.
   \item Cas particulier : Multiplier un vecteur $\overrightarrow{u}$ par $-1$ donne un vecteur dont chaque coordonnée 
   est l'opposé de la coordonnée du vecteur de départ. On appelle le résultat \underline{vecteur opposé} de $\overrightarrow{u}$. On le note $-\overrightarrow{u}$.
+  \item Deux vecteurs colinéaires sont les supports de droites parallèles. Ca "se voit" sur un dessin, et nous le clarifierons dans la prochaine partie, où nous définirons plus précisément ce qu'est une droite. 
 \end{itemize}
 
 \begin{prop}
@@ -1109,6 +1113,47 @@ Remarques :
 Démonstration : Par la relation de Chasles, $\overrightarrow{AB} + \overrightarrow{BA} = \overrightarrow{AA} = \overrightarrow{0}$. On a donc $\overrightarrow{AB} = \overrightarrow{AB} + \overrightarrow{BA} - \overrightarrow{BA} = \overrightarrow{0} + \overrightarrow{BA} = \overrightarrow{BA}$.
 
 Remarque : C'était prévisible en considérant le vecteur comme un trajet : L'opposé d'un trajet Strasbourg-Paris, c'est un trajet Paris-Strasbourg.  
+
+\subsection{Direction et sens d'un vecteurs}
+
+\begin{de}
+  On dit de deux vecteurs non nuls colinéaires qu'ils ont la même \underline{direction}.
+  
+  Deux vecteurs non nuls $u$ et $v$ non nuls ont donc même direction si et seulement si il existe un entier $k$ tel que u=kv. 
+\end{de}
+
+  On voit effectivement graphiquement dans un repère que les droites $(AB)$ et $(CD)$ sont "orientées de la même manière" si et seulement si $\overrightarrow(AB)$ et $\overrightarrow{CD}$ sont colinéaires. 
+
+On tire de cette vision géométrique (qu'on précisera plus tard dans l'année) des propriétés très utiles pour savoir si des droites sont parallèles :
+
+\begin{prop}[Admise pour l'instant]
+      Soient quatre points $A,B,C$ et $D$. Si $\overrightarrow{AB}$ et $\overrightarrow{CD}$ sont non nuls, et colinéaires entre eux, alors les droites $(AB)$ et $(CD)$ sont parallèles. 
+\end{prop}
+
+Deux droites parallèles qui ont un point commun sont confondues, on tire donc de la propriété essentielle ci-dessus le résultat suivant :
+
+\begin{prop}
+  Soient trois points $A$,$B$ et $C$, les points $A$,$B$ et $C$ sont alignés si et seulement si les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{AC}$ sont colinéaires.
+\end{prop}
+
+Si deux vecteurs ont la même direction, on peut alors se demander s'ils ont le même sens. Concrètement, cela veut dire que les flèches apparaissent dans le même sens sur un représentant de chaque vecteur.
+
+\begin{de}
+  Si $u$ et $v$ sont deux vecteurs de même direction, c'est à dire que pour un certain $k$ réel, $u=kv$, alors : 
+  \begin{itemize}
+    \item Si $k>0$, alors ont dit que $u$ et $v$ ont \textbf{même sens}. 
+    \item Si $k<0$, alors on dit que $u$ et $v$ ont un \textbf{sens opposé}
+  \end{itemize}
+\end{de}
+
+Exemples : les vecteurs dessinés sur la figure \ref{fig:DirectionSens}.
+
+\begin{figure}
+  \centering
+\includegraphics[width=1.0\textwidth]{Vecteurs-DirectionSens.png}
+\caption{\textcolor{red}{Les vecteurs $u$ et $u'$ n'ont pas la même direction}, \textcolor{blue}{les vecteurs $v$ et $v'$ ont même direction et même sens}, \textcolor{green}{les vecteurs $w$ et $w'$ ont même direction, mais un sens opposé}.}
+\label{fig:DirectionSens}
+\end{figure}
 
 \subsection{Norme d'un vecteur}
 
@@ -1125,6 +1170,74 @@ Pour calculer cette distance quand on dispose des coordonnées, il suffit d'util
 \end{prop}
 
 
+\chapter{Vecteurs et droites}
+
+\subsection{Vecteurs directeurs et équations d'une droite}
+
+Préparez-vous mentalement, cette sous-partie contient des concepts qui lient absolument \textbf{toutes} les notions vues depuis le début de l'année : Ensembles de nombres, fonctions, équations et vecteurs.
+
+\subsubsection{Exprimer une droite du plan dans un repère}
+
+Dans un repère, on peut exprimer presque toutes les droites sous la forme de l'équation \textbf{réduite} $y=ax+b$ (avec $a$ et $b$ des nombre réels). C'est à dire que presque toutes les droites sont des courbes représentatives de fonctions affines, c'est à dire des fonctions de forme $f : x \mapsto ax+b$. Mais il nous manque un type de droite si on se contente de cette paramétrisation : les droites verticales ne représentent pas des fonctions (car une fonction a toujours au maximum un point sur une ligne verticale), on ne peut donc les représenter sous la forme de cette équation.
+
+\begin{de}[\'Equation d'un ensemble de points du plan]
+    Au même titre qu'un sous-ensemble de la droite réelle peut être exprimée par une ou plusieurs équations, un sous-ensemble du plan peut être exprimé par une équation à deux inconnues, qui expriment les valeurs de (x,y) qui doivent être dessinées.
+\end{de}
+
+Exemples : \begin{itemize}
+  \item Sur une droite réelle, l'équation $x \geq 4$ est représentable par tous les points d'abscisse supérieure ou égale à 4 (Cf chapitre sur les intervalle)
+  \item Dans le plan, on a vu que toute fonction $f(x)$ admet une représentation graphique, qui est l'ensemble des points $(x,y)$ qui vérifient $y=f(x)$. Par exemple pour la fonction carré, on dessine tous les points tels que l'ordonnée est le carré de l'abscisse, soit $y=x^2$, et seulement ceux-ci.
+  \item Toujours dans le plan, une fonction affine $f(x)=ax+b$ a pour représentation graphique une droite, qui admet pour équation réduite $y=ax+b$ : les seuls points dessinés sont les points dont les coordonnées $(x;y)$ vérifient l'équation.
+  \item Une droite verticale (c'est à dire parallèle à l'axe des abscisses) a pour équation $x=a$ avec a un certain nombre réel. On voit que la variable $y$ n'apparaît pas dans cette équation.
+  \item Dans un repère orthonormé, un cercle autour de l'origine de rayon $1$ est l'ensemble des points situés à une distance de $1$ de l'origine, c'est à dire l'ensemble des points vérifiant $x^2+y^2=1$. C'est l'équation d'un cercle.
+\end{itemize}
+
+
+Attention : Une équation n'est pas unique : on a vu de nombreuses manières d'exprimer une équation sous la forme équivalente.  Pour avoir une seule expression, il faut plus de contraintes
+
+
+\begin{de}[\'Equation réduite d'une droite]
+  Toute droite qui n'est pas parallèle à l'axe des ordonnées dans un repère admet une seule équation de la forme $y=ax+b$ avec $a$ et $b$ des réels. On appelle cette équation l'\underline{équation réduite} de la droite.
+\end{de}
+
+Pour obtenir une forme d'équation qui permette d'exprimer \textbf{toutes} les droites du plan, on fait appel à une nouvelle forme d'équation : l'équation cartésienne
+
+\begin{de}[\'Equation cartésienne d'une droite]
+  Toute droite dans un repère peut être exprimée comme l'ensemble des points vérifiant une équation de forme $ax+by+c=0$ où $a,b$ et $c$ sont des constantes réelles. 
+
+  Réciproquement, toute équation de cette forme où $a$ et $b$ ne sont pas tous deux égaux à $0$ est l'équation d'une droite du plan.
+\end{de}
+
+Exemples :\begin{itemize}
+  \item La droite d'équation réduite $y=3x+2$ s'exprime sous la forme $3x-y+2=0$, qui est bien de la forme $ax+by+c=0$
+  \item La droite d'équation $x=2$ s'exprime sous la forme $x+0 \times y-2=0$, qui est bien de la forme $ax+by+c=0$
+\end{itemize}
+
+Attention : \begin{itemize}
+  \item Si $a$ et $b$ sont tous deux nuls, l'équation devient $c=0$ et est donc vérifiée soit par aucun couple $(x,y)$ soit par tous les couples $(x,y)$ du plan. Ce n'est donc pas une droite
+  \item Une équation cartésienne n'est pas unique : $2x+3y+4=0$ est une équation équivalente à $4x+6y+8=0$ (On a multiplié les deux termes de l'égalité par 2, ce qui préserve l'équivalence comme vu dans le cours sur les équations)
+\end{itemize}
+
+\subsubsection{Vecteur directeur d'une droite}
+
+\begin{de}
+Dans le plan, tout vecteur non nul tel que l'image d'un point d'une droite par ce vecteur est un autre point de cette droite est appelé \underline{vecteur directeur} de cette droite.
+\end{de}
+
+Une définition alternative est : Soient deux points $A$ et $B$ du plan. Le vecteur $\overrightarrow{AB}$, et donc tout vecteur qui lui est égal est appelé vecteur directeur de la droite $(AB)$
+
+Il existe un lien profond entre vecteur directeur d'une droite et équation cartésienne de la droite :
+
+\begin{prop}
+  Soit $\overrightarrow{u} \Coord(a,b)$ un vecteur non nul. Toute droite ayant $\overrightarrow{u}$ pour vecteur directeur 
+  admet une équation cartésienne de la forme $bx-ay+c=0$, où $c$ est un nombre réel.
+\end{prop}
+
+Remarques: 
+  \begin{itemize}
+  \item Ici, l'expression est unique car on ne peut plus multiplier l'équation par un réel sinon on perd les a et les b.
+  \item \textbf{Attention} : Pour retenir cette formule, il faut se rappeler que l'abscisse du vecteur est devant le $y$ de l'équation, et l'ordonnée devant le $x$. Il y a donc une inversion de l'ordre naturel entre les deux expressions. De plus, un signe moins fait son apparition.
+  \end{itemize}
 
 \end{document}
 
