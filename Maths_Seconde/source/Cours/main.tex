@@ -1000,7 +1000,6 @@ On peut également le noter $\overrightarrow{AB}\Coord{4}{1}$
 On peut voir un vecteur comme un plan de route : Pour atteindre $B$ en partant de $A$, avancez de $4$ sur l'axe des abscisses, et de $1$ sur l'axe des ordonnées.
 
 \end{minipage}
-
 \begin{minipage}{0.7\textwidth}
     \centering
     \includegraphics[width=0.9\textwidth]{vecteurExemple.png} 
@@ -1043,10 +1042,10 @@ soit $\overrightarrow{u} \Coord{x_u}{y_u}$ un vecteur, et $C(x_c,y_c)$ un point.
 \subsection{vecteur nul}
 
 \begin{de}
-    Le vecteur nul est le vecteur de coordonnées $\Coord{0}{0}$. Il est le vecteur associé à la transflation identité, qui transforme tout point en lui-même. On le note $\overrightarrow{0}$
+    Le vecteur nul est le vecteur de coordonnées $\Coord{0}{0}$. Il est le vecteur associé à la translation qui transforme tout point en lui-même. On le note $\overrightarrow{0}$
 \end{de}
 
-Note : En général, on ne dessine pas le vecteur nul. En tout cas je l'ai jamais vu en dessin.
+Note : En général, on ne dessine pas le vecteur nul.
 
 \subsection{Somme de vecteurs}
 
@@ -1094,16 +1093,31 @@ En plus d'additionner deux vecteurs, on peut également les multiplier par un no
 La colinéarité est une relation, c'est à dire qu'elle n'a un sens quand on parle de deux vecteurs (ou plus). Elle désigne des vecteurs qui pointent dans la même direction (ou dans un direction opposée).
 On va cependant voir une définition qui utilise le concept de multiplication par un réel.
 
+
 \begin{de}[Colinéarité de deux vecteurs]
   Deux vecteurs non nuls $\overrightarrow{u}$ et $\overrightarrow{v}$ sont dits \underline{colinéaires} si $\overrightarrow{u}$ est égal à $\overrightarrow{v}$ multiplié par un certain réel $k$. 
 \end{de}
+
+Ainsi, les vecteurs $\overrightarrow{a} \Coord{2}{1}$ et $\overrightarrow{b} \Coord{4}{2}$ sont colinéaires, car $\vec{b}=2\vec{a}$
+
+\begin{prop}
+  Deux vecteurs non nuls $\overrightarrow{u} \Coord{x}{y}$ et $\overrightarrow{v} \Coord{x'}{y'}$ sont colinéaires si et seulement si le tableau de leurs coordonnées est un tableau de proportionnalité.
+\end{prop}
+
+Toujours avec les mêmes vecteurs $\overrightarrow{a}$ et $\overrightarrow{b}$ qu'à l'exemple précédent,
+\begin{tabular}{|c|c|}
+  \hline 2 & 4 \\
+  \hline 1 & 2\\
+  \hline
+\end{tabular}  est bien un tableau de proportionnalité.
+
 
 Remarques : 
 \begin{itemize}
   \item la définition ci-dessus ne traite que des vecteurs non nuls. Si l'un des deux vecteurs $u$ et $v$ est nul, alors les deux vecteurs sont forcément colinéaires. Mais ça n'est pas très intéressant, c'est comme de dire que $0$ est un multiple de tous les nombres entiers $n$ puisque $0=0 \times n$.
   \item Cas particulier : Multiplier un vecteur $\overrightarrow{u}$ par $-1$ donne un vecteur dont chaque coordonnée 
   est l'opposé de la coordonnée du vecteur de départ. On appelle le résultat \underline{vecteur opposé} de $\overrightarrow{u}$. On le note $-\overrightarrow{u}$.
-  \item Deux vecteurs colinéaires sont les supports de droites parallèles. Ca "se voit" sur un dessin, et nous le clarifierons dans la prochaine partie, où nous définirons plus précisément ce qu'est une droite. 
+  \item Deux vecteurs colinéaires sont les supports de droites parallèles. Cela "se voit" sur un dessin, nous l'énoncerons formellement dans la prochaine partie, et nous clarifierons plus tard dans l'année quand on énoncera plus précisément ce qu'est une droite. 
 \end{itemize}
 
 \begin{prop}
