@@ -1032,16 +1032,11 @@ Graphiquement, c'est trouver toutes les abscisses en lesquelles la courbe repré
 \end{minipage}
 
 
-
-
 \subsubsection{Inéquation}
 
 \begin{de}
-    Une \underline{inéquation}, c'est une inégalité entre deux expressions qui s'expriment chacune en fonction d'une même inconnue. Comme dans le cadre d'une équation, \underline{résoudre une inéquation} c'est trouver toutes les valeurs de l'inconnue qui rendent l'équation vraie.
+    Une \underline{inéquation}, c'est une inégalité entre deux expressions qui s'expriment chacune en fonction d'une même inconnue. Comme dans le cadre d'une équation, \underline{résoudre une inéquation} c'est trouver toutes les valeurs de l'inconnue qui rendent l'inégalité vraie.
 \end{de}
-
-On peut appliquer cela à toutes les équations : Les équations à une inconnue, qu'on notera ici $x$, sont toujours de la forme $A(x)=B(x)$ où A et B sont des fonctions, puisque les deux membres de l'égalité sont calculables pour un $x$ donné.
-On peut donc toujours la transformer en une égalité de la forme $f(x)=0$, où $f(x)=A(x)-B(x)$  ($f$ est la différence de deux fonctions, c'est elle même une fonction)
 
 
 \begin{minipage}{0.5\textwidth}  
@@ -1184,7 +1179,55 @@ Contrairement aux fonctions affines que vous aviez vu jusqu'à présent, qui gar
 
 Par exemple, la fonction carré est croissante sur $\R^+=[0;+\infty[$ c'est à dire sur les réels positifs et décroissante sur $]-\infty;0]$.  En revanche, on ne peut pas dire qu'elle est monotone sur $\R$, car elle ne reste pas monotone sur l'intervalle. La démonstration est laissée en exercice au lecteur.
 
-\subsection{Fonction dérivée}
+\subsection{Fonction affine}
+
+\begin{prop}
+    Les fonctions affines (de forme $f(x)=ax+b$ avec $a,b \in \R$) sont les fonctions dont la courbe représentative est une droite. De plus, elles ont un taux de variation constant égal à $a$, entre deux points distincts quelconques.
+\end{prop}
+
+Chaque droite qui n'est pas verticale est une représentations de fonctions affines. On peut donc associer à chaque fonction affine $f(x)=ax+b$ 
+la droite d'équation $y=ax+b$ qui est sa courbe représentative.
+
+Les coefficients $a$ et $b$ peuvent être lus géométriquement à partir de la droite représentative :
+\begin{itemize}
+    \item Le coefficient $a$ est la distance verticale (en ordonnée) qui sépare deux points distants de 1 horizontalement (en abscisse). On l'appelle \underline{coefficient directeur} (ou pente) de la droite $y=ax+b$
+    \item Le coefficient $b$ est la valeur de la fonction en $0$, c'est donc le point où la droite représentative croise l'axe des abscisses. On l'appelle \underline{ordonnée à l'origine} de la droite
+\end{itemize}
+
+
+Par exemple pour notre fonction $g(x)=2x+1$
+
+\begin{minipage}{0.5\textwidth}
+    \begin{tikzpicture} {scale = 3 }
+     \begin{axis}[
+       name = graph1,
+       ytick distance = 1,
+       xtick distance = 1,
+       ymin=-1.1, ymax=5.1,
+       xmin=-1.1, xmax=3.1,
+       grid=both,
+       grid style={line width=.1pt,draw=brown!20},
+       major grid style={line width=.2pt,draw=brown!40},
+       tick style={draw=none},
+     ]
+       \addplot [domain=-10:10, samples=500, color=gray!90]
+          {2*x+1};
+      \addplot[domain=0:2,samples=3,only marks, mark=x, blue] {2*x+1}; 
+      \draw [<->, red] (1,3) -- node[below, red]{$+1$} (2,3);
+      \draw [<->, red] (2,3) -- node[right, red]{$+2$} (2,5);
+    \end{axis}
+     \node[anchor=north] at (graph1.south) {\scriptsize Courbe représentative de $g(x)= 2x+1$  };
+    \end{tikzpicture}
+\end{minipage}
+\begin{minipage}{0.47\textwidth}
+    On peut voir que le coefficient $a=2$ est l'augmentation de la droite entre deux points dont l'écart horizontal est de $1$.
+
+    La droite croise la droite des ordonnées au point d'ordonnée $1$, on a donc $b=1$.
+
+\end{minipage}
+
+
+\subsection{Nombre dérivé, fonction dérivée}
 
 \subsubsection{Taux de variation}
 
@@ -1196,9 +1239,54 @@ Le taux de variation d'une fonction est défini comme la vitesse à laquelle la 
     \[ \frac{f(b)-f(a)}{b-a}\]
 \end{de}
 
+Note :  C'est le rapport   $\frac{\text{De combien bouge l'image quand la variable passe de a à b?}}{\text{De combien bouge la variable pour passer de a à b?}}$
+
+\begin{prop}
+    Les fonctions affines de forme $f(x)=ax+b$ ont un taux de variation constant égal à $a$, entre deux points distincts quelconques.
+\end{prop}
+
+En effet, si f est une fonction affine $f : x \mapsto ax+b$, pour tout $x,y \in \R$ tels que $x \neq y$, on a   
+\[\frac{f(x)-f(y)}{x-y} = \frac{ax+b-(ay+b)}{x-y} =  \frac{ax+b-ay-b}{x-y} = \frac{a(x-y)}{x-y} = a\]
+
+On en déduit la propriété suivante : il existe toujours une droite qui relie deux points distincts de la courbe représentative d'une fonction,
+et on a appris au paragraphe précédent à lire un coefficient directeur de droite. 
+
 \begin{prop}
     Le taux de variation de $f$ entre $a$ et $b$ est le coefficient directeur de la droite qui relie les points d'abscisse $a$ et $b$ de la courbe représentative de $f$.
 \end{prop}
+
+
+\begin{minipage}{0.45\textwidth}
+On peut ainsi lire graphiquement le taux de variation d'une fonction entre deux points, en traçant la droite qui relie ces deux points sur la courbe représentative, puis en regardant l'accroissement vertical de la droite entre deux points séparés d'une distance horizontale de 1. 
+\vspace{1cm}
+
+Ici, on a tracé en rouge la droite qui relie les points d'abscisse $-1$ et $3$ sur la courbe représentative de la fonction $h(x)=x^2$. La droite rouge représente une fonction dont l'image augmente de $2$ quand on augmente la variable de $1$. 
+Elle a donc une pente (ou coefficient directeur) de $2$.  On retrouve bien ce taux d'accroissement en utilisant la formule :  $\frac{h(3)-h(-1)}{3-(-1)}=\frac{9-1}{3+1}=\frac{8}{4}=2$ 
+\end{minipage}
+\begin{minipage}{0.52\textwidth}
+    \begin{tikzpicture}[scale=1.7]
+       \begin{axis}[
+         name = graph1,
+         ytick distance = 1,
+         xtick distance = 1,
+         ymin=-3.1, ymax=10.1,
+         xmin=-6.1, xmax=4.1,
+         grid=both,
+         major grid style={line width=.2pt,draw=black!40},
+         tick style={draw=none}
+       ]
+         \addplot [domain=-10:10, samples=500, color=blue, line width=1pt]
+            {x^2};
+         \addplot [domain=-10:10, samples=500, color=red, line width=1pt]
+            {(x+1)*2.0 + 1};
+         \addplot[only marks, mark size=3pt, mark=x]coordinates{ (-1,1)
+            (3,9)};
+        \draw [<->, purple] (0,3) -- node[below, purple,scale=.5]{$+1$} (1,3);
+        \draw [<->, purple] (1,3) -- node[right, purple,scale=0.5]{$+2$} (1,5);
+       \end{axis}
+    \end{tikzpicture} 
+    \end{minipage}
+
 
 \subsubsection{Nombre dérivé}
 
@@ -1258,11 +1346,11 @@ En première STMG, vous avez appris, en plus de la définition d'un nombre déri
 \end{tabular}
 
 Vous avez également appris à calculer la dérivée des combinaisons linéaires de ces fonctions, c'est à dire que vous savez que :\begin{enumerate}
-    \item Produit par une constante : Pour un réel $k$, et une fonction $f$ dérivable : la dérivée de la fonction $kf$ qui à $x$ associe $k\times f(x)$ est égale à $kf'$
+    \item Produit par une constante : Pour un réel $k$, et une fonction $f$ dérivable de dérivée $f'$ : la dérivée de la fonction $kf$ qui à $x$ associe $k\times f(x)$ est égale à $kf'$
     \item La dérivée de la somme de deux fonctions est la somme des dérivées : $(f+g)' = f'+g'$
 \end{enumerate}
 
 
-
+\section{Fonction inverse}
 
 \end{document}
