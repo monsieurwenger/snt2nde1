@@ -9,12 +9,12 @@
 \usepackage[left=2cm, right=2cm, bottom=1.85cm, top=1.5cm]{geometry}
 
 \usepackage{fancyhdr}
+\usepackage{multicol}
 \pagestyle{fancy}
 
 %\renewcommand{\headrulewidth}{1pt}
 %\fancyhead[C]{\textbf{page \thepage}} 
-\fancyhead[L]{Chapitre 1}
-\fancyhead[R]{Seconde}
+\fancyhead[R]{Seconde 1}
 
 \renewcommand{\footrulewidth}{1pt}
 \fancyfoot[C]{\textbf{page \thepage}} 
@@ -300,5 +300,220 @@ Ecrire $10^{n}$ pour $n\in\{-5;-4;-3;-2;-1;0;1;2;3;4;5\}$. On rappelle que si $n
     \end{tabular}
     \end{center}
 \end{exo}
+\setcounter{chapter}{3}
+\newpage
+
+\setcounter{section}{2}
+\setcounter{exo}{0}
+\section{Vecteurs}
+
+\subsection{Dans un repère}
+
+
+\begin{exo}
+    Dans la figure ci-contre, représenter : \begin{enumerate}
+        \item Dessiner le vecteur $\overrightarrow{AB}$
+        \item Placer le point D, image de C par la translation de vecteur $\overrightarrow{AB}$
+        \item Placer le point E, image de C par la translation de vecteur $\overrightarrow{BA}$
+        \item Placer le point F, image de B par la translation de vecteur $\overrightarrow{AC}$
+        \item Placer le point G, image de C par la translation de vecteur $\overrightarrow{AC}$
+        \item Placer le point H, image de A par la translation de vecteur $\overrightarrow{u}$
+        
+    \end{enumerate}
+    \center
+    \includegraphics[width=0.7\textwidth]{assets/Exo1-vecteurs.png} 
+
+\end{exo}
+
+\begin{exo}
+    \begin{enumerate}
+        \item Sur une droite réelle que vous dessinerez, où 1 carreau représente 1 unité, placez les nombres $A=-2$, $B=4$ et $C=1$.
+        \item Placez sur la droite le nombre $D$ qui est l'image de $C$ par la translation de vecteur $\overrightarrow{AB}$.
+        \item Que vaut D? Que peut-on dire de la distance $CD$?
+        \item Félicitations, vous savez calculer l'image d'un vecteur en 1 dimension. Le faire en 2 dimensions consistera juste à mener le même raisonnement sur l'abscisse puis l'ordonnée de points, qui auront deux coordonnées au lieu d'en avoir une. Ceci n'est pas une question, relisez juste les 2 premiers paragraphes du cours sur les vecteurs.
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    \begin{enumerate}
+        \item Dessinez un repère orthonormé
+        \item Placez les points $A$ de coordonnées $(1,5)$ et le point $B$ de coordonnées $(3,2)$.
+        \item Dessinez le vecteur $\overrightarrow{AB}$. Quelles sont les coordonnées de ce vecteur?
+    \end{enumerate}
+\end{exo}
+
+\newcommand*{\Coord}[2]{% 
+  \ensuremath{ 
+    \begin{pmatrix} 
+      #1\\ 
+      #2 
+    \end{pmatrix}}}
+
+
+\begin{exo}
+    Soient les points $A(0,1)$, $B(2,3)$, $C(2,1)$, $D(-2,0)$, $E(3,0)$. Calculer les coordonnées des vecteurs
+    \begin{multicols}{3}
+        \begin{enumerate}
+            \item $\overrightarrow{AB}$
+            \item $\overrightarrow{BA}$
+            \item $\overrightarrow{BC}$
+            \item $\overrightarrow{AC}$
+            \item $\overrightarrow{CD}$
+            \item $\overrightarrow{AD}$
+            \item $\overrightarrow{DE}$
+            \item $\overrightarrow{AE}$
+            \item $\overrightarrow{EA}$
+        \end{enumerate}
+    \end{multicols}
+\end{exo}
+
+\begin{exo}
+    Sur un repère orthonormé que vous tracerez, placer :
+    \begin{enumerate}
+            \item Le point $A(1,1)$ et son image $A'$ par la translation de vecteur de coordonnées $\Coord{2}{4}$
+            \item Le point $B(-1,1)$ et son image $B'$ par la translation de vecteur de coordonnées  $\Coord{-3}{2}$
+            \item Le point $C(-1,2)$ et son image $C'$ par la translation de vecteur de coordonnées  $\Coord{2}{-1}$
+            \item Le point $D(-2,-2)$ et son image $D'$ par la translation de vecteur de coordonnées  $\Coord{0}{-4}$
+            \item Le point $E(4,2)$ et son image $E'$ par la translation de vecteur $\overrightarrow{0}$
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Dans chacun des cas suivants, donner les coordonnées du point $C'$, image de $C$ par la translation de vecteur $\overrightarrow{AB}$ :
+    \begin{enumerate}
+        \item $A$ a pour coordonnées $(2,1)$, $B$ a pour coordonnées $(3,4)$ et $C$ a pour coordonnées $(1,1)$
+        \item $A$ a pour coordonnées $(5,2)$, $B$ a pour coordonnées $(3,3)$ et $C$ a pour coordonnées $(2,1)$
+        \item $A$ a pour coordonnées $(-1,2)$, $B$ a pour coordonnées $(3,0)$ et $C$ a pour coordonnées $(6,4)$
+        \item $A$ a pour coordonnées $(6,8)$, $B$ a pour coordonnées $(1,2)$ et $C$ a pour coordonnées $(0,3)$
+        \item $A$ a pour coordonnées $(\frac{3}{2},\frac{1}{3})$, $B$ a pour coordonnées $(\frac{1}{2},\frac{7}{3})$ et $C$ a pour coordonnées $(1,1)$
+        \item $A$ a pour coordonnées $(\frac{1}{2},2)$, $B$ a pour coordonnées $(\frac{1}{3},\frac{7}{2})$ et $C$ a pour coordonnées $(0,\frac{1}{3})$
+        \item $A$ a pour coordonnées $(\sqrt{2},\pi)$, $B$ a pour coordonnées $(2,\frac{2}{7})$ et $C$ a pour coordonnées $(1,1)$
+    \end{enumerate}
+\end{exo}
+
+
+\begin{exo}
+    Sur chacun des dessins suivants, construire le vecteur $\overrightarrow{AC}$ tel que $\overrightarrow{AC}=\overrightarrow{u}+\overrightarrow{v}$
+\end{exo}
+\begin{tabular}{|c|c|c|}
+    \hline
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{assets/Cap1.PNG} 
+    \end{minipage} & 
+    \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{assets/Cap2.PNG} 
+    \end{minipage} & \begin{minipage}{0.3\textwidth}
+        \includegraphics[width=\textwidth]{assets/Cap3.PNG} 
+    \end{minipage}\\
+    \hline
+\end{tabular}
+
+\begin{exo}
+    \begin{enumerate}
+        \item Soient $\overrightarrow{u}$ le vecteur de coordonnées $\Coord{-6}{8}$ et $\overrightarrow{v}$ de coordonnées $\Coord{4}{5}$. Quelles sont les coordonnées de $\overrightarrow{u}+\overrightarrow{v}$ ?
+        \item On pose des points $A$,$B$,$C$ et $D$ de coordonnées $A(4,2)$, $B(-2,3)$, $C(-4,-1)$ et $D(2,0)$. Donnez les coordonnées des vecteurs 
+        \begin{multicols}{3}
+            \begin{enumerate}
+                \item $\overrightarrow{AB}$
+                \item $\overrightarrow{CD}$
+                \item $\overrightarrow{AB}+\overrightarrow{CD}$
+                \item $-\overrightarrow{AB}$
+                \item $\overrightarrow{DC}$
+                \item $\overrightarrow{BA}+\overrightarrow{DC}$
+                \item $\overrightarrow{DC}+\overrightarrow{AB}$
+                \item $2 \times \overrightarrow{AB}$
+                \item $-2 \times \overrightarrow{AB}$
+            \end{enumerate}
+        \end{multicols}
+    \end{enumerate}
+\end{exo}
+
+\begin{exo}
+    Recopiez et complétez les égalités suivantes en utilisant la relation de Chasles :
+    \begin{multicols}{2}
+        \begin{enumerate}
+            \item $\overrightarrow{AC} + \overrightarrow{CE} = \dots$
+            \item $\overrightarrow{AD} + \overrightarrow{\dots E} = \overrightarrow{AE}$
+            \item $\overrightarrow{D\dots} + \overrightarrow{BC} = \overrightarrow{DC}$
+            \item $\overrightarrow{\dots K} + \overrightarrow{KL} = \overrightarrow{PL}$
+            \item $\overrightarrow{AC} + \overrightarrow{CF} + \overrightarrow{FG} = \dots$
+            \item $\overrightarrow{MB} + \overrightarrow{CM} = \dots$
+            \item $\overrightarrow{DG} + \overrightarrow{GD} = \dots$
+            \item $\overrightarrow{AB} - \overrightarrow{AB} = \dots$
+        \end{enumerate}
+        
+    \end{multicols}
+\end{exo}
+
+\begin{exo}[Démonstration de la relation de Chasles]
+    Soient $A(x_A,y_A)$, $B(x_B,y_B)$, $C(x_C,y_C)$.  Déterminez les coordonnées de $\overrightarrow{AB}$,$\overrightarrow{BC}$ et $\overrightarrow{AC}$.  En déduire que $\overrightarrow{AB}+\overrightarrow{BC}=\overrightarrow{AC}$
+\end{exo}
+
+\newpage
+
+
+\begin{minipage}{0.35\textwidth}
+    \begin{exo}
+        \begin{enumerate}
+            \item         Dans le dessin ci-contre, donnez toutes les relations de colinéarité existant entre les vecteurs.
+            \item Parmi les vecteurs qui sont colinéaires, lesquels ont le même sens?
+            \item Soient u,v et w des vecteurs non nuls tels que u est colinéaire à v, et v colinéaire à w. Montrer que u est colinéaire à w. On pourra revenir à la définition de la colinéarité du cours.
+        \end{enumerate}
+    \end{exo}
+\end{minipage}
+\begin{minipage}{0.62\textwidth}
+    \center
+    \includegraphics[width=0.95\textwidth]{assets/ExoColineaires-Vecteurs.png}
+\end{minipage}
+
+\begin{exo}
+    Parmi les vecteurs suivants dont on donne les coordonnées, faites des groupes de vecteurs colinéaires, en justifiant votre classement. : 
+    \begin{multicols}{3}
+        \begin{enumerate}
+            \item  $\overrightarrow{a} \Coord{-1}{2}$
+            \item  $\overrightarrow{b} \Coord{1}{1}$
+            \item  $\overrightarrow{c} \Coord{3}{-6}$
+            \item  $\overrightarrow{d} \Coord{-5}{-5}$
+            \item  $\overrightarrow{e} \Coord{3}{2}$
+            \item  $\overrightarrow{f} \Coord{2}{1}$
+            \item  $\overrightarrow{g} \Coord{-2}{0}$
+            \item  $\overrightarrow{h} \Coord{4}{2}$
+            \item  $\overrightarrow{i} \Coord{1}{0}$
+        \end{enumerate}
+    \end{multicols}
+\end{exo}
+
+\begin{exo}
+    On va ici démontrer une propriété du cours à l'aide de propriétés vues les années précédentes sur les parallélogrammes.
+    
+    Soient $A,B,C$ et $D$ quatre points tels que $\overrightarrow{AB}$=$\overrightarrow{CD}$.
+    
+    \begin{enumerate}
+        \item faites un dessin, représentant A,B,C et D qui vérifient la condition de l'énoncé.
+        \item Montrez que les longueurs des segments $[AB]$ et $[CD]$ sont égales.
+        \item En utilisant la relation de Chasles, montrez que $\overrightarrow{AC}=\overrightarrow{BD}$. En déduire une relation entre les longueurs des segments $[AC]$ et $[BD]$.  (Pour la première partie de la question, on pourra décomposer le vecteur $\overrightarrow{AD}$ de deux manières différentes)
+        \item Rappelez les différentes manières de montrer qu'un quadrilatère est un parallélogramme
+        \item Démontrez, en utilisant une des méthodes de la réponse précédente, que ABDC est un parallélogramme.
+    \end{enumerate}
+    
+\end{exo}
+
+
+
+\newpage
+
+\section{Trucs plus balaises pour plus tard}
+
+
+Celui ci nécessite les équations cartésiennes de droites.
+\begin{exo}
+    Le but de cet exercice est de démontrer le théorème du cours qui fait le lien entre colinéarité de vecteurs et alignements de points ou parallélisme de droites. Soient des points $A$,$B$ deux points distincts du plan et un vecteur $\overrightarrow{u}$ non nul.
+    \begin{enumerate}
+        \item Montrez que s'il existe un point $C$ du plan et deux réels $k$ et $k'$ tel que $\overrightarrow{AC}=k\overrightarrow{u}$ et $\overrightarrow{AC}=k'\overrightarrow{u}$, alors $\overrightarrow{AB}$ est colinéaire à $\overrightarrow{u}$.  (On posera les coordonnées des points et des vecteurs définis, et on appliquera la définition de la colinéarité). Puis donnez l'équation d'une droite qui contient les points $A, B$ et $C$.
+        \item On suppose maintenant que des points $E$ et $F$ sont tels que $\overrightarrow{EF}$ et $\overrightarrow{u}$ ne sont pas colinéaires. On pose $E'$ l'image de $E$ par la translation de vecteur $\overrightarrow{u}$ et $F'$ l'image de $F$ par la même translation.  Montrez que les droites $(EE')$ et $(FF')$ sont parallèles 
+    \end{enumerate}
+\end{exo}
+
+La même sur le parallélogramme : non pour celui là j'ai besoin juste des distances et de Chasles...
 
 \end{document}
