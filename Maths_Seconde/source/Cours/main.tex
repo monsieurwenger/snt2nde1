@@ -1203,6 +1203,18 @@ On a déjà vu que multiplier un vecteur par un réel $k$ (différent de $0$) co
   soit $k$ un nombre réel et $\vec{u}$ un vecteur,  $\Vert k \times \vec{u} \Vert = |k| \times \Vert \vec{u} \Vert$ 
 \end{prop}
 
+On déduit de tout ceci le théorème suivant.
+
+\begin{theo}
+ Soient A, B, C et D quatre points du plan.  $ABCD$ est un parallélogramme si et seulement si $\overrightarrow{AB}=\overrightarrow{DC}$.
+\end{theo}
+
+Un sens est montré en exercice, la partie "seulement si" est plus ardue : Si ABCD est un parallélogramme, il est facile de montrer que $\overrightarrow{AB}$ et $\overrightarrow{DC}$ ont même norme (car les côtés opposés d'un parallélogramme ont même longueur), 
+et ont même direction (car les côtés opposés du parallélogramme), on ne dispose pas vraiment d'argument formel pour dire qu'ils ont même sens, hormis "ça se voit, sinon le quadrilatère ABCD serait croisé".
+
+Attention, le parallélogramme ainsi défini peut être aplati, si les points A,B,C et D sont alignés.
+
+
 
 \chapter{Vecteurs et droites}
 
@@ -1212,10 +1224,11 @@ Préparez-vous mentalement, cette sous-partie contient des concepts qui lient ab
 
 \subsubsection{Exprimer une droite du plan dans un repère}
 
-Dans un repère, on peut exprimer presque toutes les droites sous la forme de l'équation \textbf{réduite} $y=ax+b$ (avec $a$ et $b$ des nombre réels). C'est à dire que presque toutes les droites sont des courbes représentatives de fonctions affines, c'est à dire des fonctions de forme $f : x \mapsto ax+b$. Mais il nous manque un type de droite si on se contente de cette paramétrisation : les droites verticales ne représentent pas des fonctions (car une fonction a toujours au maximum un point sur une ligne verticale), on ne peut donc les représenter sous la forme de cette équation.
+Dans un repère, on peut exprimer presque toutes les droites sous la forme de l'équation \textbf{réduite} $y=ax+b$ (avec $a$ et $b$ des nombre réels). C'est à dire que presque toutes les droites sont des courbes représentatives de fonctions affines, c'est à dire des fonctions de forme $f : x \mapsto ax+b$. 
+Mais il nous manque un type de droite si on se contente de cette paramétrisation : les droites verticales ne représentent pas des fonctions (car une fonction a toujours au maximum un point sur une ligne verticale), on ne peut donc les représenter sous la forme de cette équation.
 
 \begin{de}[\'Equation d'un ensemble de points du plan]
-    Au même titre qu'un sous-ensemble de la droite réelle peut être exprimée par une ou plusieurs équations, un sous-ensemble du plan peut être exprimé par une équation à deux inconnues, qui expriment les valeurs de (x,y) qui doivent être dessinées.
+    Au même titre qu'un sous-ensemble de la droite réelle peut être exprimée par une ou plusieurs équations, un sous-ensemble du plan peut être exprimé par une équation à deux inconnues, qui expriment les valeurs de (x,y) qui doivent être dessinées : on dessine le point $(x,y)$ si et seulement si le couple $(x,y)$ est solution de l'équation.
 \end{de}
 
 Exemples : \begin{itemize}
