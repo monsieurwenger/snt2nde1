@@ -741,14 +741,16 @@ Graphiquement, c'est trouver toutes les abscisses en lesquelles la courbe repré
   \end{tikzpicture}
 \end{minipage}
 
+On peut appliquer cela à toutes les équations : Les équations à une inconnue, qu'on notera ici $x$, sont toujours de la forme $A(x)=B(x)$ où A et B sont des fonctions, puisque les deux membres de l'égalité sont calculables pour un $x$ donné.
+On peut donc toujours la transformer en une égalité de la forme $f(x)=0$, où $f(x)=A(x)-B(x)$  ($f$ est la différence de deux fonctions, c'est donc elle même une fonction)
+
+
 \subsection{Inéquation}
 
 \begin{de}
-    Une \underline{inéquation}, c'est une inégalité entre deux expressions qui s'expriment chacune en fonction d'une même inconnue. Comme dans le cadre d'une équation, \underline{résoudre une inéquation} c'est trouver toutes les valeurs de l'inconnue qui rendent l'équation vraie.
+    Une \underline{inéquation}, c'est une inégalité entre deux expressions qui s'expriment chacune en fonction d'une même inconnue. Comme dans le cadre d'une équation, \underline{résoudre une inéquation} c'est trouver toutes les valeurs de l'inconnue qui rendent l'inégalité vraie.
 \end{de}
 
-On peut appliquer cela à toutes les équations : Les équations à une inconnue, qu'on notera ici $x$, sont toujours de la forme $A(x)=B(x)$ où A et B sont des fonctions, puisque les deux membres de l'égalité sont calculables pour un $x$ donné.
-On peut donc toujours la transformer en une égalité de la forme $f(x)=0$, où $f(x)=A(x)-B(x)$  ($f$ est la différence de deux fonctions, c'est elle même une fonction)
 
 
 \begin{minipage}{0.5\textwidth}  
@@ -1080,10 +1082,10 @@ En plus d'additionner deux vecteurs, on peut également les multiplier par un no
 \end{de}
 
 \begin{prop}
-  Cette multiplication de vecteurs par des réels se comporte comme une multiplication : pour $k$ un réel et $\overrightarrow{u}$ et $\overrightarrow{v}$ deux vecteurs : 
+  Cette multiplication de vecteurs par des réels se comporte comme une multiplication traditionnelle: pour $k$ et $k'$ des nombres réels et $\overrightarrow{u}$ et $\overrightarrow{v}$ deux vecteurs : 
   \begin{enumerate}
     \item $1 \times \overrightarrow{u} = \overrightarrow{u}$, $\overrightarrow{u} + \overrightarrow{u} = 2 \overrightarrow{u}$, $0 \cdot \overrightarrow{u}= \overrightarrow{0}$
-    \item $k(\overrightarrow{u} + \overrightarrow{v})$(distributivité par rapport à l'addition)
+    \item $k(\overrightarrow{u} + \overrightarrow{v}) = k\overrightarrow{u} + k\overrightarrow{v}$(distributivité par rapport à l'addition)
     \item $(kk')\overrightarrow{u} = k(k'\overrightarrow{u})$ (Associativité mixte)
   \end{enumerate}
 \end{prop}
@@ -1136,7 +1138,7 @@ Remarque : C'était prévisible en considérant le vecteur comme un trajet : L'o
   Deux vecteurs non nuls $u$ et $v$ non nuls ont donc même direction si et seulement si il existe un entier $k$ tel que u=kv. 
 \end{de}
 
-  On voit effectivement graphiquement dans un repère que les droites $(AB)$ et $(CD)$ sont "orientées de la même manière" si et seulement si $\overrightarrow(AB)$ et $\overrightarrow{CD}$ sont colinéaires. 
+  On voit effectivement graphiquement dans un repère que les droites $(AB)$ et $(CD)$ sont "orientées de la même manière" si et seulement si $\overrightarrow{AB}$ et $\overrightarrow{CD}$ sont colinéaires. 
 
 On tire de cette vision géométrique (qu'on précisera plus tard dans l'année) des propriétés très utiles pour savoir si des droites sont parallèles :
 
@@ -1165,7 +1167,9 @@ Exemples : les vecteurs dessinés sur la figure \ref{fig:DirectionSens}.
 \begin{figure}
   \centering
 \includegraphics[width=1.0\textwidth]{Vecteurs-DirectionSens.png}
-\caption{\textcolor{red}{Les vecteurs $u$ et $u'$ n'ont pas la même direction}, \textcolor{blue}{les vecteurs $v$ et $v'$ ont même direction et même sens}, \textcolor{green}{les vecteurs $w$ et $w'$ ont même direction, mais un sens opposé}.}
+\caption{\textcolor{red}{Les vecteurs $\vec{u}$ et $\vec{u'}$ n'ont pas la même direction}, 
+\textcolor{blue}{les vecteurs $\vec{v}$ et $\vec{v'}$ ont même direction et même sens}, 
+\textcolor{green}{les vecteurs $\vec{w}$ et $\vec{w'}$ ont même direction, mais un sens opposé}.}
 \label{fig:DirectionSens}
 \end{figure}
 
@@ -1174,13 +1178,29 @@ Exemples : les vecteurs dessinés sur la figure \ref{fig:DirectionSens}.
 Comme souvent en mathématiques, on aime calculer la taille des objets, parce que cela exprime une partie des propriétés d'un objet sous la forme d'un nombre. La longueur d'un vecteur s'appelle la norme.
 
 \begin{de}[Norme d'un vecteur]
-  La norme d'un vecteur $\overrightarrow{AB}$ est égale à la longueur du vecteur, c'est à dire à la distance $AB$.
+  La norme d'un vecteur $\overrightarrow{AB}$ est égale à la longueur du vecteur, c'est à dire à la distance $AB$. On la note $\Vert \overrightarrow{AB} \Vert$
 \end{de}
 
 Pour calculer cette distance quand on dispose des coordonnées, il suffit d'utiliser le bon vieux théorème de Pythagore.
 
 \begin{prop}[Norme d'un vecteur dont on connaît les coordonnées]
-  Soit $\overrightarrow{u}$ un vecteur de coordonnées $\Coord{x}{y}$, la norme de $\overrightarrow{u}$ est égale à $\sqrt{x^2+y^2}$
+  Soit $\overrightarrow{u}$ un vecteur de coordonnées $\Coord{x}{y}$, la norme de $\overrightarrow{u}$ est donnée par la formule  \[ \Vert \vec{u} \Vert = \sqrt{x^2+y^2} \]
+\end{prop}
+
+Note : La norme est donc toujours positive, et même toujours strictement positive si le vecteur n'est pas nul : $\vec{0}$ est le seul vecteur qui a une norme nulle.
+
+On dispose maintenant des trois éléments caractéristiques d'un vecteur : 
+
+\begin{prop}
+  Deux vecteurs non nuls sont égaux si et seulement si ils ont même \textbf{direction}, même \textbf{sens}, et même \textbf{norme}.
+\end{prop}
+
+Exercice : dessiner deux vecteurs qui ont même norme mais pas même direction, deux autres même direction et norme mais pas même sens, et enfin deux qui ont même direction et sens mais pas même norme.
+
+On a déjà vu que multiplier un vecteur par un réel $k$ (différent de $0$) conservait la direction du vecteur, et conservait le sens si $k>0$ (et l'inverse si $k<0$). On va voir que la multiplication par un réel a aussi un effet simple sur la norme du vecteur :
+
+\begin{prop}
+  soit $k$ un nombre réel et $\vec{u}$ un vecteur,  $\Vert k \times \vec{u} \Vert = |k| \times \Vert \vec{u} \Vert$ 
 \end{prop}
 
 
