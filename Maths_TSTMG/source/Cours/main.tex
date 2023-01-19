@@ -44,7 +44,7 @@
  \usepackage{graphicx}
 %MATHEMATIQUES
 \usepackage{amsmath,amsfonts} 
-
+\usepackage{multicol}
 \usepackage{tikz}
 %%%%% Tableaux de variations
 \usepackage{tkz-tab}
@@ -1351,6 +1351,305 @@ Vous avez également appris à calculer la dérivée des combinaisons linéaires
 \end{enumerate}
 
 
-\section{Fonction inverse}
+\section{Fonction exponentielle}
+
+\subsection{Rappels sur les puissances}
+
+\subsubsection{puissances entières positives}
+
+On sait depuis la troisième calculer les puissances entières positives d'un nombre $a$.
+
+\begin{de}
+    Soit $a$ un nombre, et $n$ un entier positif. La quantité $a^n$ (prononcée "a puissance n") est le nombre :
+
+    \[
+        \underbrace{a \times a \times \dots \times a \times a}_{\text{Le nombre $a$ apparaît $n$ fois}}  
+    \]
+\end{de}
+
+Exemples :  \begin{itemize}
+    \item $7^1 = 7$.
+    \item $7^2 = 7 \times 7$. On appelle $a^2$ a au carré (c'est l'aire d'un carré de côté $a$ si $a>0$).
+    \item $7^3 = 7 \times 7 \times 7$. On appelle $a^3$ a au cube (c'est le volume d'un cube de côté $a$ si $a>0$).
+    \item $10^5 = 10 \times 10 \times 10 \times 10 \times 10 = 100\,000$. En général, $10^n$ vaut le chiffre  $1$ suivi de $n$ zéros.  
+\end{itemize}
+
+
+Les pusisances ont des propriétés agréables avec la multiplication : Par exemple, si l'on essaye de calculer $2^4 \times 2^3$ :
+
+\begin{tabular}{ccc}
+    $2^4$ & $\times$ & $2^3$ \\
+    \multicolumn{3}{c}{On utilise la formule de la puissance}\\
+    $\underbrace{2 \times 2 \times 2 \times 2}_{\text{Le nombre $2$ apparaît $4$ fois}}$& $\times $ & $\underbrace{2 \times 2 \times 2}_{\text{Le nombre $2$ apparaît $3$ fois}}$\\ 
+    \multicolumn{3}{c}{Au final, on a un produit où le terme 2 apparaît $4+3$=7 fois}\\
+    \multicolumn{3}{c}{$\underbrace{2 \times 2 \times 2 \times 2 \times 2 \times 2 \times 2 }_{\text{Le nombre 2 apparaît 7 fois}}$}\\
+    \multicolumn{3}{c}{Ceci vaut (toujours par la définition) : }\\
+    \multicolumn{3}{c}{$2^7$}\\
+      
+\end{tabular}
+
+Cette propriété reste vraie pour n'importe quel nombre dont on fait la puissance, et n'importe quelles puissances:
+
+\begin{prop}
+    pour $a \in \R$ et $n,m \in \N$, on a :   $a^n \times a^m = a^{n+m}$
+\end{prop}
+
+
+Une autre propriété utile est quand on met un produit à une certaine puissance :
+
+\begin{tabular}{rcl}
+$(2 \times 3)^4$&$ =$&$ (2 \times 3)  \times (2 \times 3)  \times (2 \times 3) \times (2 \times 3)$ \\
+& $=$ & $2 \times 3  \times 2 \times 3  \times 2 \times 3 \times 2 \times 3$ \\
+& $=$ & $2 \times 2  \times 2 \times 2  \times 3 \times 3 \times 3 \times 3$\\
+& $=$ & $(2 \times 2  \times 2 \times 2)  \times (3 \times 3 \times 3 \times 3)$\\
+& $=$ & $2^4  \times 3^4$\\
+\end{tabular}
+
+Cette propriété est également vraie pour toutes les valeurs des nombres :
+
+\begin{prop}
+    pour $a \in \R$, $b \in \R$ et $n \in \N$, on a :   $(a \times b)^n = a^{n} \times b^n$
+\end{prop}
+
+\subsubsection{puissances nulles et négatives} 
+
+La première propriété vue au-dessus nous assure que $2^{n+1} = 2 \times 2^n$. 
+On voit donc que pour passer d'une puissance de $2$ à la puissance suivante, on multiplie par 2 (c'est littéralement une suite géométrique). 
+On peut donc passer d'une puissance à la puissance précédente en divisant par $2$, c'est à dire en multipliant par $\frac{1}{2}$ : $2^2 = 2^3 \times \frac{1}{2}$
+
+On peut donc compléter le tableau dans les deux sens (vers la droite, mais aussi vers la gauche), en partant de $2^1=2$ 
+
+{
+\centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        $2^{-2}$ & $2^{-1}$ & $2^0$ & $2^1$  & $2^2$ & \ldots \\
+        \hline
+         $\frac{1}{2\times 2} = \frac{1}{4} = \frac{1}{2^2}\insertph{n1}$ & $\insertph{n2}\frac{1}{2}\insertph{n3}$ & $\insertph{n4}\frac{2}{2}=1\insertph{n5}$ & $\insertph{n6}2\insertph{n7}$ &  \ $\insertph{n8}2 \times 2 = 4$  & \ldots \\ 
+        \hline
+    \end{tabular}\par
+}
+
+\tikz[remember picture,overlay]\draw[<-,red] ([yshift=-2mm] n1.south) to  [out=-45,in=-150] node[below]{$\times \frac{1}{2}$} ([yshift=-2mm] n2.south) ; 
+\tikz[remember picture,overlay]\draw[<-,red] ([yshift=-2mm]n3.south) to[out=-45,in=-150] node[below]{$\times \frac{1}{2}$}  ([yshift=-2mm]n4.south); 
+\tikz[remember picture,overlay]\draw[<-,red] ([yshift=-2mm]n5.south) to[out=-45,in=-150] node[below]{$\times \frac{1}{2}$} ([yshift=-2mm]n6.south); 
+\tikz[remember picture,overlay]\draw[->,blue] ([yshift=-2mm]n7.south) to[out=-45,in=-150] node[below]{$\times 2$} ([yshift=-2mm]n8.south); 
+\vspace{20 mm}
+
+On remarque qu'on peut étendre la définition d'une puissance aux nombres nuls et négatifs :  $2^0$ est égal à $1$. 
+
+De plus, pour tout entier $n$, $2^{-n}=\frac{1}{2^n}$
+
+Cette propriété reste vraie pour tout nombre non nul dont on prend une puissance : 
+
+\begin{prop}
+    Pour tout nombre $a$ non nul, et tout entier $n$ positif :
+
+    \[ a^0 = 1\]
+
+    \[ a^{-n} = \frac{1}{a^n} \]
+\end{prop}
+
+Note : Les propriétés $a^{n+m} = a^n a^m$  et $(ab)^n = a^n b^n$, vues plus haut, restent vraies pour n nul ou négatif, quand ces expressions sont bien définies.
+
+On remarque notamment qu'en utilisant la première propriété, on a pour tout nombre $a$ non nul : 
+
+$a^{n} \times a^{-n} = a^{n+(-n)} = a^0 = 1$.   On a donc $a^n \times a^{-n} = 1$, ce qui est la même chose que de dire que $a^{-n} = \frac{1}{a^n}$. 
+
+\subsubsection{Puissances non-entières}
+
+On a maintenant étendu à toutes les valeurs entières de $n$ la définition de $a^n$,  que $n$ soit positif ou négatif. 
+Maintenant, on veut étendre cette définition même aux valeurs non entières. Pour ne pas l'étendre n'importe comment, on veut que cette extension préserve 
+la précieuse égalité :  $a^(x+y) = a^x \times a^y$
+
+Commençons doucement : Que pourrait valoir le nombre $x = 2^{\frac{1}{2}}$ ?   Si on utilise la première propriété, et qu'on met $x$ au carré, on obtient :
+
+\[ x^2 = 2^{\frac{1}{2}} \times 2^{\frac{1}{2}} = 2^{\frac{1}{2} + \frac{1}{2}} = 2^1 = 2\]
+
+$2^{\frac{1}{2}}$ mis au carré vaut donc 2.  Il est donc légitime d'attribuer à $2^{\frac{1}{2}}$ la valeur de $\sqrt{2}$
+
+En utilisant cette méthode, on peut attribuer une valeur à $a^x$ pour toute valeur positive de $a$, et pour toute valeur rationnelle de $x$. On peut ensuite étendre à toute valeur réelle de $x$ pour obtenir les fonctions exponentielles
+
+\subsection{Fonction exponentielle}
+
+\begin{de}
+    Soit $a$ un nombre réel strictement positif. On appelle \underline{fonction exponentielle de base $a$} la fonction définie sur $\R$ :
+
+    \[ \begin{array}{ccccc}
+        \text{exp}_a & : & \R & \to & \R \\
+         & & x & \mapsto & a^x \\
+        \end{array}\]
+\end{de}
+
+
+\begin{prop}
+    Les propriétés des puissances entières restent vraies pour les puissances non entières pour $a$ et $b$ réels positifs,  et $x,y$ réels quelconque : 
+    \begin{multicols}{2}
+        \begin{enumerate}
+            \item $a^{x+y} = a^x \times a^y$
+            \item $a^{-x} = \frac{1}{a^x}$
+            \item $a^{xy} = (a^{x})^y$
+            \item $(ab)^{x} = a^{x}b^x$
+        \end{enumerate}
+    \end{multicols}
+\end{prop}
+
+
+\begin{minipage}{0.4\textwidth}
+    \begin{tikzpicture}
+     \begin{axis}[
+       name = graph1,
+       ytick distance = 1,
+       xtick distance = 1,
+       ymin=-1.1, ymax=16.1,
+       xmin=-6.1, xmax=5.1,
+       grid=both,
+       grid style={line width=.1pt,draw=brown!20},
+       major grid style={line width=.2pt,draw=brown!40},
+       tick style={draw=none},
+     ]
+  
+       \addplot [domain=-10:10, samples=500, color=red!90]
+          {2^x};
+      \addplot[domain=1:10,samples=10,only marks, mark=x, blue] {2^x}; 
+     \end{axis}
+     \node[anchor=north] at (graph1.south) {\scriptsize Courbe représentative de $exp_2(x)= 2^x$  };
+    \end{tikzpicture}
+\end{minipage}
+\begin{minipage}{0.58\textwidth}
+    Une fonction exponentielle de base $a$ est en fait le prolongement d'une suite géométrique de raison $a$ à toutes les valeurs non réelles : 
+    \begin{itemize}
+        \item les croix bleues du graphique à gauche sont les termes de la suite $u_n = 2^n$ pour $n \leq 1$
+        \item La courbe rouge est la courbe représentative de la fonction exponentielle de base 2 : qui à $x$ associe $2^x$
+    \end{itemize}
+\end{minipage}
+
+\subsubsection{Sens de variation et courbe représentative}
+
+Il n'est pas surprenant que le sens de variation d'une fonction exponentielle soit la même que celle 
+d'une suite géométrique. 
+
+\begin{prop}[Sens de variation de la fonction exponentielle $x \mapsto a^x$]
+Quand le nombre $a$ est strictement supérieur à $1$, la fonction exponentielle de base $a$  
+est strictement croissante. 
+
+Quand le nombre $a$ est égal à 1, la fonction est constante.
+
+Quand le nombre $a$ est strictement compris entre 0 et 1, la fonction est décroissante.
+\end{prop}
+
+\begin{minipage}{0.32\textwidth}
+    \begin{tikzpicture}
+     \begin{axis}[
+       name = graph1,
+       ytick distance = 1,
+       xtick distance = 1,
+       ymin=-1.1, ymax=10.1,
+       xmin=-5.1, xmax=5.1,
+       grid=both,
+       grid style={line width=.1pt,draw=brown!20},
+       major grid style={line width=.2pt,draw=brown!40},
+       tick style={draw=none},
+     ]
+  
+       \addplot [domain=-10:10, samples=500, color=red!90]
+          {1.5^x};
+     \end{axis}
+     \node[anchor=north] at (graph1.south) {\scriptsize Courbe représentative de $x \mapsto 1{,}5^x$  };
+    \end{tikzpicture}
+\end{minipage}
+\begin{minipage}{0.32\textwidth}
+    \begin{tikzpicture}
+     \begin{axis}[
+       name = graph1,
+       ytick distance = 1,
+       xtick distance = 1,
+       ymin=-1.1, ymax=10.1,
+       xmin=-5.1, xmax=5.1,
+       grid=both,
+       grid style={line width=.1pt,draw=brown!20},
+       major grid style={line width=.2pt,draw=brown!40},
+       tick style={draw=none},
+     ]
+  
+       \addplot [domain=-10:10, samples=500, color=blue!90]
+          {1^x};
+     \end{axis}
+     \node[anchor=north] at (graph1.south) {\scriptsize Courbe représentative de $exp_1(x)= 1^x = 1$  };
+    \end{tikzpicture}
+\end{minipage}
+\begin{minipage}{0.32\textwidth}
+    \begin{tikzpicture}
+     \begin{axis}[
+       name = graph1,
+       ytick distance = 1,
+       xtick distance = 1,
+       ymin=-1.1, ymax=10.1,
+       xmin=-5.1, xmax=5.1,
+       grid=both,
+       grid style={line width=.1pt,draw=brown!20},
+       major grid style={line width=.2pt,draw=brown!40},
+       tick style={draw=none},
+     ]
+     =
+       \addplot [domain=-10:10, samples=500, color=green!90]
+          {.66667^x};
+     \end{axis}
+     \node[anchor=north] at (graph1.south) {\scriptsize Courbe représentative de $exp_{\frac{2}{3}}(x)= \frac{2}{3}^x$  };
+    \end{tikzpicture}
+\end{minipage}
+
+
+\subsubsection{Produit d'une exponentielle par une constante}
+
+Quand on multiplie une fonction par une constante $k$:
+\begin{itemize}
+    \item Si $k$ est positif, la fonction conserve son sens de variation
+    \item Si $k$ est négatif, la fonction change de sens de variation (Une fonction croissante devient décroissante et vice-versa)    
+\end{itemize}
+
+\begin{minipage}{0.5\textwidth}
+    Dans le cas de la fonction exponentielle :
+    \begin{itemize}
+        \item Si $k$ est positif, la fonction conserve son sens de variation
+        \item Si $k$ est négatif, la fonction change de sens de variation (Une fonction croissante devient décroissante et vice-versa)    
+    \end{itemize}
+
+    Ci-contre, $1{,}1 > 1$ donc $exp_{1{,}1}$ est croissante.  $2$ étant positif et $-2$ négatif, la fonction $f_1(x)= 2 \times {1,1}^x$ est strictement croissante
+    et la fonction $f_2(x)= -2 \times {1,1}^x$ est décroissante.
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+    \begin{tikzpicture}
+     \begin{axis}[
+       name = graph1,
+       ytick distance = 1,
+       xtick distance = 1,
+       ymin=-5.1, ymax=5.1,
+       xmin=-10.1, xmax=10.1,
+       grid=both,
+       grid style={line width=.1pt,draw=brown!20},
+       major grid style={line width=.2pt,draw=brown!40},
+       tick style={draw=none},
+     ]
+  
+       \addplot [domain=-10:10, samples=500, color=red!90]
+          {2 * 1.1^x};
+        \addplot [domain=-10:10, samples=500, color=blue!90]
+             {-2 * 1.1^x};
+     \end{axis}
+     \node[anchor=north] at (graph1.south) {\scriptsize Courbe représentative de $f_1(x)= 2 \times {1,1}^x$ et $f_2(x)= -2 \times {1,1}^x$  };
+    \end{tikzpicture}
+\end{minipage}
+
+
+
+\section{Fonction logarithme}
+
+\subsection{Fonction réciproque}
+
+Parfois, juste en connaissant l'image d'un nombre par une certaine fonction, on peut deviner ce nombre. 
+
+
+
 
 \end{document}
