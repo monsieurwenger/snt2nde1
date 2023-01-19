@@ -1215,6 +1215,190 @@ et ont même direction (car les côtés opposés du parallélogramme), on ne dis
 Attention, le parallélogramme ainsi défini peut être aplati, si les points A,B,C et D sont alignés.
 
 
+\chapter{Informations chiffrées}
+
+\section{Proportion et pourcentage}
+
+\subsection{pourcentage}
+
+\begin{de}
+  Un pourcentage est un nombre, $t\% = \frac{t}{100}$  (On prononce "t pour cent"). Il peut s'exprimer sous forme de pourcentage, mais aussi sous forme de fraction ou sous forme décimale.
+\end{de}
+
+Remarque importante : Un pourcentage est un nombre, mais vous le verrez toujours comme étant un pourcentage \textbf{de} quelque chose. 
+
+\begin{de}
+  Pour calculer $t\%$ d'une quantité, on multiplie cette quantité par $\frac{t}{100}$. Il peut s'exprimer sous forme de pourcentage, mais aussi sous forme de fraction ou sous forme décimale.
+\end{de}
+
+
+\subsection{Proportion : vocabulaire}
+
+\begin{de}
+  Une \underline{population} est un ensemble d'éléments appelés \underline{individus}.
+  
+  Une \underline{sous-population} est un sous-ensemble de la population.
+
+  On appelle \underline{effectif} de la population le nombre d'individus de la population 
+\end{de}
+
+Une fois ces termes (très employés dans les statistiques) définis, on peut définir la proportion :
+
+\begin{de}
+  La proportion d'une sous-population dans une population est égal au rapport du nombre d'individus : On note $T$ la population (et $n_T$ son effectif), et $A$ la sous-population (et $n_A$ son effectif). La proportion $p$ de A dans T est donnée par la formule :
+  
+  \[ p = \frac{n_A}{n_T} = \frac{\text{nombre d'individus dans la sous-population}}{\text{nombre d'individus dans la sous-population}}\]
+
+\end{de}
+
+Une proportion est un nombre, compris entre $0$ et $1$, qui peut être exprimé comme une fraction, un nombre décimal, ou un pourcentage.
+
+Exemple : Une classe de 24 élèves comporte 9 élèves qui portent des lunettes. La proportion d'élèves qui portent des lunettes dans la classe est de $\frac{24}{32}=\frac{3}{4}$ (écriture fractionnaire), ou $0{,}75$ (écriture décimale) ou $75\%$ (écriture en pourcentage)
+
+
+On vous demandera souvent de calculer la proportion à partir des effectifs, mais aussi de calculer un effectif manquant (de la population ou de la sous-population) à partir d'un effectif et de la proportion.
+
+Pour cela, on peut calculer relativement facilement les formules correspondantes pour calculer :\begin{itemize}
+  \item $n_A$ en fonction de $n_T$ et $p$ :  $n_A = n_T \times p$
+  \item $n_T$ en fonction de $n_A$ et $p$ :  $n_T = \frac{p}{n_A}$
+\end{itemize}
+
+\subsection{Proportion d'une proportion}
+
+Cette propriété permet de tisser des liens entre 3 populations imbriquées les unes dans les autres.
+
+
+\begin{prop}
+  Soit T une population, et A une sous-population non vide de T. Soit B une sous-population de A.
+
+  On note $p_{A,T}$ la proportion de $A$ dans $T$, $p_{B,A}$ la proportion de $B$ dans $A$.   
+
+  La proportion $P_{B,T}$ d'individus de B dans T est égale à  $P_{B,T}= P_{B,A} \times P_{A,T}$
+\end{prop}
+
+\begin{demo}
+  On utilise les notations et hypothèses du théorème : 
+  \begin{enumerate}
+    \item On appelle $n_T$, $n_A$ et $n_B$ les effectifs respectifs de T, A et B. Exprimer $p_{B,T}$ en fonction de ces variables.
+    \item Faire de même pour $p_{A,T}$ et $p_{B,A}$
+    \item Exprimer $p_{B,A} \times p_{A,T}$ sous la forme d'une fraction. 
+    \item Montrer que $p_{A,T} \times p_{B,A} = p_{B,T}$
+  \end{enumerate}
+\end{demo}
+
+
+\section{Evolution}
+
+
+\subsection{Variation absolue et relative}
+
+Quand une quantité évolue, elle passe d'une valeur initiale à une valeur finale.
+
+\begin{de}
+  On appelle : \begin{itemize}
+    \item \underline{Variation absolue} le nombre :   $\text{valeur finale} - \text{valeur initiale}$
+    \item \underline{Variation relative} le nombre :   $\frac{\text{valeur finale} - \text{valeur initiale}}{\text{valeur initiale}}$
+  \end{itemize}
+\end{de}
+
+La variation absolue s'exprime dans la même unité que la quantité à laquelle elle se rapporte.  La variation relative est un nombre sans unité. On l'exprime sous forme décimale, de fraction, ou de pourcentage.
+
+La variation relative est aussi appelée \underline{taux d'évolution}.
+
+
+\subsection{Variation en pourcentage, coefficient multiplicateur}
+
+
+Augmenter une quantité $q$ de $t\%$, c'est lui faire subir une variation relative de $t\%$, c'est à dire lui ajouter $t\%$ de ce que la quantité $q$ valait avant l'augmentation. 
+
+Si on appelle $q'$ la quantité obtenue, on a donc :
+
+\[q' = q + q \times \frac{t}{100}\]
+
+On peut mettre q en facteur :
+
+\[q' = q(1 + \frac{t}{100})\]
+
+$q'$ est donc égal à $q$ multiplié par un nombre qui ne dépend pas de $q$. On appelle ce nombre coefficient multiplicateur.
+
+
+\begin{prop}
+  Augmenter une quantité $V_I$ de $t\%$, c'est la \textbf{multiplier} par $1 + \frac{t}{100}$. Le nombre $1 + \frac{t}{100}$ est appelé coefficient multiplicateur.
+
+  Diminuer une quantité $V_I$ de $t\%$, c'est la \textbf{multiplier} par $1 - \frac{t}{100}$. Le nombre $1 - \frac{t}{100}$ est appelé coefficient multiplicateur.
+\end{prop}
+
+
+\begin{prop}
+  Coefficient multiplicateur = 1 + taux d'évolution
+
+  taux d'évolution = Coefficient multiplicateur - 1
+\end{prop}
+
+Si l'on définit le coefficient multiplicateur, c'est parce qu'il est pratique de voir les évolutions en pourcentage comme des multiplications, comme le montrent les deux propriétés suivantes :
+
+\subsection{Evolutions successives}
+
+Pour appliquer deux évolutions successives (l'une puis l'autre) à une quantité, on la multiplie successivement par les deux coefficients multiplicateurs :
+
+On peut donc à partir de là calculer le taux d'évolution associé à plusieurs évolutions successives : 
+
+Le prix d'une 
+
+
+\begin{prop}
+  Une quantité subit  deux évolutions successives de taux d'évolution $t_1$ et $t_2$.
+
+  Elle est donc multipliée par  $(1+t_1)$  puis par $(1+t_2)$  (Passage aux coefficients multiplicateurs en ajoutant 1 au taux d'évolution)
+  
+  Elle est donc au total multipliée par $(1+t_1)(1+t_2)$ 
+
+  Elle subit donc au total une évolution de $(1+t_1)(1+t_2) -1$  (Passage au taux d'évolution en retirant 1 au coefficient multiplicateur)
+
+\end{prop}
+
+
+En développant, on obtient : $(1+t_1)(1+t_2) -1 = 1+t_2 + t_1 (1 + t_2) - 1 = 1 + t_2 + t_1 + t_1t_2 -1 = t_1 + t_2 + t_1t_2$
+
+Deux évolutions successives de $t_1$ puis $t_2$ n'est donc en général pas la même chose qu'une évolution de t_1 + t_2.
+
+
+\subsection{Evolution réciproque}
+
+\begin{de}
+  Soit une évolution qui permet de passer de la valeur $V_I$ à la valeur $V_F$. Son \underline{évolution réciproque} est définie comme l'évolution qui permet de passer de la valeur $V_F$ à la valeur $V_I$.
+\end{de}
+
+
+L'essence, qui valait $2$€, subit une augmentation de $25\%$.  
+Elle vaut donc  maintenant $(1+\frac{25}{100}) \times 2$ € $= 2{,50}$ €
+
+On se demande quelle évolution lui rendrait sa valeur de départ.  La question à se poser c'est : "Par combien dois-je la multiplier pour obtenir la valeur de départ ?"
+
+Pour ça, il faudrait un coefficient multiplicateur total de $1$. 
+
+On veut donc, si l'on appelle $c$ le coefficient multiplicateur de la deuxième évolution :  $1{,}25 \times c = 1$,  c'est à dire   c = \frac{1}{1{,}25}
+
+On obtient $c=0{,}8$, et on en déduit que l'évolution réciproque (celle qui ramène au résultat de départ) d'une hausse de 25\% est celle qui correspond à un coefficient multiplicateur de $0{,}8$, à savoir une baisse de $20\%$ 
+
+Comme pour le cas des évolutions successives, il est plus simple de travailler sur les coefficients multiplicateurs pour trouver une évolution réciproque : il suffit d'inverser le coefficient multiplicateur
+
+
+\begin{prop}
+  Si une évolution a pour coefficient multiplicateur $C$, son évolution réciproque a pour coefficient multiplicateur $\frac{1}{C}$
+\end{prop}
+
+On réutilise les formules de passage du taux d'évolution au coefficient multiplicateur pour trouver le taux correspondant à l'évolution réciproque d'un taux donné :
+
+\begin{prop}
+  Si une évolution a pour taux d'évolution le nombre $t$, son évolution réciproque a pour taux d'évolution $\frac{1}{1+t} - 1$
+\end{prop}
+
+Démonstration : Le coefficient multiplicateur de l'évolution de taux $t$ est $1+t$. 
+Son évolution réciproque a donc pour coefficient multiplicateur $\frac{1}{1+t}$, et donc un taux d'évolution de $\frac{1}{1+t}-1$.
+
+
+
 
 \chapter{Vecteurs et droites}
 
