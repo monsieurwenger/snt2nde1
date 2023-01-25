@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{book}
+\documentclass[10pt,a4paper,oneside]{book}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -73,6 +73,9 @@
 \newcommand{\K}{\mathbb{K}}
 \newcommand{\F}{\mathbb{F}}
 
+%%%%% Tableaux de variations
+\usepackage{tkz-tab}
+%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -537,7 +540,7 @@ Exemple : \begin{itemize}
     \begin{minipage}{0.3\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{Venn0100.png}
-        \caption{Différence : E \setminus F}
+        \caption{Différence : $E \setminus F$}
     \end{minipage}
 \end{figure}
    
@@ -636,10 +639,6 @@ Pour la fonction carré, présentée ci-dessus, un tableau de valeur se présent
     \end{tabular}
 \end{center}
 
-
-
-
-
 \section{Représentation graphique}
 
 Avant de pouvoir tracer la courbe représentative d'une fonction, il nous faut savoir associer à des coordonnées un point du plan, et vice-versa. Pour cela, on utilise un repère.
@@ -681,8 +680,8 @@ On représente en règle générale les fonctions dans un repère orthonormé, c
         \item Placer les points du tableau de valeur sur le repère
         \item Tracer une courbe qui passe par ces points
     \end{enumerate}
-    
 \end{minipage}
+
 \begin{minipage}{0.35\textwidth}
   \begin{tikzpicture}
    \begin{axis}[
@@ -742,14 +741,16 @@ Graphiquement, c'est trouver toutes les abscisses en lesquelles la courbe repré
   \end{tikzpicture}
 \end{minipage}
 
+On peut appliquer cela à toutes les équations : Les équations à une inconnue, qu'on notera ici $x$, sont toujours de la forme $A(x)=B(x)$ où A et B sont des fonctions, puisque les deux membres de l'égalité sont calculables pour un $x$ donné.
+On peut donc toujours la transformer en une égalité de la forme $f(x)=0$, où $f(x)=A(x)-B(x)$  ($f$ est la différence de deux fonctions, c'est donc elle même une fonction)
+
+
 \subsection{Inéquation}
 
 \begin{de}
-    Une \underline{inéquation}, c'est une inégalité entre deux expressions qui s'expriment chacune en fonction d'une même inconnue. Comme dans le cadre d'une équation, \underline{résoudre une inéquation} c'est trouver toutes les valeurs de l'inconnue qui rendent l'équation vraie.
+    Une \underline{inéquation}, c'est une inégalité entre deux expressions qui s'expriment chacune en fonction d'une même inconnue. Comme dans le cadre d'une équation, \underline{résoudre une inéquation} c'est trouver toutes les valeurs de l'inconnue qui rendent l'inégalité vraie.
 \end{de}
 
-On peut appliquer cela à toutes les équations : Les équations à une inconnue, qu'on notera ici $x$, sont toujours de la forme $A(x)=B(x)$ où A et B sont des fonctions, puisque les deux membres de l'égalité sont calculables pour un $x$ donné.
-On peut donc toujours la transformer en une égalité de la forme $f(x)=0$, où $f(x)=A(x)-B(x)$  ($f$ est la différence de deux fonctions, c'est elle même une fonction)
 
 
 \begin{minipage}{0.5\textwidth}  
@@ -759,9 +760,8 @@ Graphiquement, c'est trouver toutes les abscisses en lesquelles la courbe repré
 \newline ~ \newline
 A l'inverse, Résoudre $f(x) \geq a$ c'est trouver tous les antécédents de nombres plus grands que $a$ par la fonction $f$.
 Graphiquement, c'est trouver toutes les abscisses en lesquelles la courbe représentative de la fonction est \textbf{au dessus} de la droite d'équation $y=a$.
-
-
 \end{minipage}
+
 \begin{minipage}{0.35\textwidth}
   \begin{tikzpicture}
    \begin{axis}[
@@ -819,43 +819,6 @@ Graphiquement, c'est trouver toutes les abscisses en lesquelles la courbe repré
   \end{tikzpicture}
 \end{minipage}
 
-
-
-\section{Sens de variation}
-
-\begin{de}
-    Une fonction $f$ est dite croissante sur un intervalle $I$ si pour deux nombres $a$ et $b$ de cet intervalle :
-    \vspace{0.3cm}
-    \begin{center}
-    si $a \leq b$,  alors $f(a) \leq f(b)$
-    \end{center}
-\end{de}
-
-Remarques :
-\begin{itemize}
-    \item On dit souvent qu'une fonction croissante sur un intervalle conserve l'ordre : Comparer (au sens de "se demander quel nombre est le plus grand") les images de deux éléments donnera le même résultat que comparer ces deux éléments.
-    \item Graphiquement, la courbe représentative sur un intervalle "montera" : en parcourant la courbe de gauche à droite, l'image en ordonnée devient de plus en plus haute.
-\end{itemize}
-
-Une fonction décroissante, c'est le contraire :
-
-\begin{de}
-    Une fonction est dite décroissante sur un intervalle $I$ si pour deux nombres $a$ et $b$ de cet intervalle :
-    \vspace{0.3cm}
-    \begin{center}
-    si $a \leq b$,  alors $f(a) \geq f(b)$
-    \end{center}
-\end{de}
-
-\begin{itemize}
-    \item On dit souvent qu'une fonction croissante sur un intervalle inverse l'ordre : Comparer (au sens de "se demander quel nombre est le plus grand") les images de deux éléments donnera le résultat inverse que comparer ces deux éléments.
-    \item Graphiquement, la courbe représentative sur un intervalle "descend" : en parcourant la courbe de gauche à droite, l'image en ordonnée devient de plus en plus basse.
-\end{itemize}
-
-Contrairement aux fonctions affines que vous aviez vu jusqu'à présent, qui gardaient toujours le même sens de variation, une fonction peut être croissante sur certains intervalles et décroissante sur d'autres. 
-
-La fonction carrée est croissante sur $\R^+=[0;+\infty[$ c'est à dire sur les réels positifs et décroissante sur $]-\infty;0]$
-
 \section{Parité d'une fonction}
 
 Ces propriétés permettent notamment de tracer le graphique d'une fonction sur les entiers négatifs, elles divisent donc la quantité de travail par 2.
@@ -864,7 +827,7 @@ Ces propriétés permettent notamment de tracer le graphique d'une fonction sur 
     Une fonction $f$ est dite paire si l'image de l'opposé de tout nombre de son ensemble de définition est égale à l'image de ce nombre. Pour tout nombre $x$ tel que $f(x)$ est défini  alors $f(-x)$ est défini et 
     \vspace{0.3cm}
     \begin{center}
-    \newline $f(x)=f(-x)$
+    $f(x)=f(-x)$
     \end{center}
 \end{de}
 
@@ -877,7 +840,7 @@ Par exemple, la fonction carré est paire : pour tout $x$ réel, $x^2=(-x)^2$
     Une fonction $f$ est dite impaire si l'image de l'opposé de tout nombre de son ensemble de définition est égale à l'opposé de l'image de ce nombre. Pour tout nombre $x$ tel que $f(x)$ est défini  alors $f(-x)$ est défini et 
     \vspace{0.3cm}
     \begin{center}
-    \newline $f(-x)=-f(x)$
+    $f(-x)=-f(x)$
     \end{center}
 \end{de}
 
@@ -905,6 +868,607 @@ Par exemple, la fonction inverse, qui à tout $x$ non nul associe $\frac{1}{x}$ 
    \node[anchor=north] at (graph1.south) {\scriptsize La Courbe représentative de $g(x)= \frac{1}{x}$ est impaire  };
   \end{tikzpicture}
 \end{center}
+
+\section{Sens de variation d'une fonction}
+
+\begin{de}
+    Une fonction $f$ est dite \underline{croissante} sur un intervalle $I$ si pour deux nombres $a$ et $b$ de cet intervalle :
+    \vspace{0.3cm}
+    \begin{center}
+    si $a \leq b$,  alors $f(a) \leq f(b)$
+    \end{center}
+\end{de}
+
+Remarques :
+\begin{itemize}
+    \item On dit souvent qu'une fonction croissante sur un intervalle conserve l'ordre : Comparer (au sens de "se demander quel nombre est le plus grand") les images de deux éléments donnera le même résultat que comparer ces deux éléments.
+    \item Graphiquement, la courbe représentative sur un intervalle "montera" : en parcourant la courbe de gauche à droite, l'image en ordonnée devient de plus en plus haute.
+\end{itemize}
+
+Une fonction décroissante, c'est le contraire :
+
+\begin{de}
+    Une fonction est dite \underline{décroissante} sur un intervalle $I$ si pour deux nombres $a$ et $b$ de cet intervalle :
+    \vspace{0.3cm}
+    \begin{center}
+    si $a \leq b$,  alors $f(a) \geq f(b)$
+    \end{center}
+\end{de}
+
+\begin{itemize}
+    \item On dit souvent qu'une fonction décroissante sur un intervalle inverse l'ordre : Comparer les images de deux éléments donnera le résultat inverse que comparer ces deux éléments.
+    \item Graphiquement, la courbe représentative sur un intervalle "descend" : en parcourant la courbe de gauche à droite, l'image en ordonnée devient de plus en plus basse.
+    \item Sur un intervalle donné, une fonction qui est soit décroissante, soit croissante est dite \underline{monotone}. Attention, la fonction doit garder le même sens de variation tout au long de l'intervalle.
+\end{itemize}
+
+Contrairement aux fonctions affines que vous aviez vu jusqu'à présent, qui gardaient toujours le même sens de variation, une fonction peut être croissante sur certains intervalles et décroissante sur d'autres. 
+
+La fonction carré est croissante sur $\R^+=[0;+\infty[$ c'est à dire sur les réels positifs et décroissante sur $]-\infty;0]$.  En revanche, on ne peut pas dire qu'elle est monotone sur $\R$, car elle ne reste pas monotone sur l'intervalle.
+
+\section{Tableau de variations d'une fonction}
+
+Un \underline{tableau de variations} résume en un seul schéma des informations importantes sur une fonction.
+
+\begin{minipage}{0.7\textwidth}
+    Ainsi, le tableau ci-dessous présente les variations de la fonction $f$ définie sur l'intervalle $[-3;3]$ par $f(x)=2x^3+3x^2-12x$, dont la courbe représentative apparaît à droite.
+    \newline
+    
+    \vspace{1 cm}
+    Tableau de variations de la fonction $f$ : \newline
+    
+    \begin{tikzpicture}
+       \tkzTabInit{$x$ / 1 , $f(x)$ / 2}{$-3$, $-2$, $1$, $3$}
+       \tkzTabVar{-/ $9$, +/ $20$, -/ $-7$ , +/ $45$ }
+    \end{tikzpicture}
+\end{minipage}
+
+\begin{minipage}{0.25\textwidth}
+    \centering
+    \includegraphics[width=0.9\textwidth]{20221101_CourbeRepTabloVariation.PNG} 
+\end{minipage}
+
+Sur la première ligne d'un tableau de variations d'une fonction figurent les antécédents remarquables par la fonction $f$ :\begin{itemize}
+    \item Les bornes de l'intervalle où la fonction est définie
+    \item Les bornes des intervalles où la fonction est monotone (Ce sont les points où la fonction change de sens de variation)
+\end{itemize}
+
+La deuxième partie d'un tableau de variations indique les intervalles croissants par une flèche qui va vers le haut, et les intervalles décroissants par une flèche qui va vers le bas. Puis, on écrit sous les valeurs de la première ligne leurs images par la fonction.
+
+\subsection{Extremums d'une fonction}
+
+Un extremum est une valeur extrême, prise par une fonction sur un intervalle donné. Cela peut être un minimum ou un maximum.
+
+\begin{de}
+    On dit que $f$ admet un \underline{maximum} sur l'intervalle $I$ en la valeur $a \in I$ si pour tout $x \in I,  f(x)\leq f(a)$.
+    On dit que $f$ admet un \underline{minimum} sur l'intervalle $I$ en la valeur $a \in I$ si pour tout $x \in I, f(x) \geq f(a)$. 
+\end{de}
+
+Si l'intervalle $I$ est l'ensemble sur lequel la fonction est défini, on parle de maximum (ou minimum) \textbf{global}. Sinon, on parle de maximum (ou minimum) \textbf{local}.
+
+Les valeurs au bord des intervalles fermés qui apparaissent dans des tableaux de variation sont des extremums locaux.
+
+Par exemple, dans le tableau ci-dessus\begin{itemize}
+    \item 
+$f(-2)=20$ est la valeur maximum prise par la fonction sur l'intervalle $[-3;1]$. $f$ admet un maximum local en $-2$ qui vaut $20$. 
+\item $f$ admet un minimum global en $1$, en lequel elle prend la valeur de $-7$.
+\end{itemize} 
+
+\chapter{Vecteurs du plan}
+
+Dans un repère, on place deux points $A$ et $B$. Intuitivement, un vecteur décrit le chemin à parcourir pour passer de $A$ à $B$. C'est un déplacement, qu'on appelle translation.
+
+\begin{de}[Translation]
+  Rappel : Une \underline{translation} est une glissade qui transforme un point du plan en un autre. Opérer une translation sur une figure, c'est effectuer \textbf{la même} translation à tous les points de la figure.
+  Opérer une translation sur une figure conserve ses distances, ses angles, son aire, et en général toutes les grandeurs qui ne dépendent que du placement des points de la figure les uns par rapport aux autres. 
+\end{de}
+
+\begin{de}[Vecteur]
+La translation qui transforme le point $A$ en le point $B$. est appelée translation de \underline{vecteur} $\overrightarrow{AB}$.
+\end{de}
+
+On peut noter un vecteur par son point de départ et son point d'arrivée. On peut également lui donner son propre nom, qui est souvent $\overrightarrow{u}$ ou $\overrightarrow{v}$ (ici, $u$ et $v$ sont en minuscule, car on réserve généralement les lettres majuscules  pour les points du plan).
+
+\begin{center}
+  \begin{tikzpicture}
+    \draw[->](0,0)node[left]{A}--(2,1)node[right]{B};
+  \end{tikzpicture}
+\end{center}
+
+On va commencer par décrire les vecteurs dans le plan muni d'un repère cartésien. Cela facilite les notations. Puis nous verrons les propriétés dans un cadre plus général.
+
+\section{Dans un repère cartésien.}
+
+\subsection{Coordonnées d'un vecteur}
+
+Un vecteur représente un chemin d'un point à un autre du plan En deux dimensions. Si l'on dispose d'un repère cartésien, on peut décrire un vecteur par deux coordonnée : Le déplacement effectué sur l'axe des abscisses, et le déplacement effectué sur l'axe des ordonnées.
+
+
+
+\newcommand*{\Coord}[2]{% 
+  \ensuremath{ 
+    \begin{pmatrix} 
+      #1\\ 
+      #2 
+    \end{pmatrix}}}
+
+\begin{minipage}{0.25\textwidth}
+    
+Pour passer du point $A(1,3)$ au point $B(5,4)$, on se déplace de $+4$ sur l'axe des abscisses et de $+1$ sur l'axe des ordonnées.
+
+Le vecteur $\overrightarrow{u}=\overrightarrow{AB}$ a donc pour coordonnées $\Coord{4}{1}$.
+
+On peut également le noter $\overrightarrow{AB}\Coord{4}{1}$
+
+On peut voir un vecteur comme un plan de route : Pour atteindre $B$ en partant de $A$, avancez de $4$ sur l'axe des abscisses, et de $1$ sur l'axe des ordonnées.
+
+\end{minipage}
+\begin{minipage}{0.7\textwidth}
+    \centering
+    \includegraphics[width=0.9\textwidth]{vecteurExemple.png} 
+\end{minipage}
+
+On note les coordonnées d'un vecteur verticalement. Si la translation diminue les abscisses ou les ordonnées, la coordonnée du vecteur associé sera négative.
+
+\begin{prop}
+    Soient deux points $M(x_M,y_M)$ et $M'(x_{M'},y_{M'})$ dans un repère. Les coordonnées du vecteur $\overrightarrow{MM'}$ sont $\Coord{x_{M'}-x_{M}}{y_{M'}-y_{M}}$.
+\end{prop}
+
+Note : C'est simplement la formule de la différence de deux points en deux dimensions.
+
+
+\begin{de}
+    Deux vecteurs sont égaux s'ils ont les mêmes coordonnées. Attention : On peut dessiner deux fois le même vecteur à différents endroits du plan, et ils seront tout de même égaux.
+\end{de}
+
+Quand on dessine sur le plan un vecteur $\overrightarrow{AB}$, égal à un certain vecteur $\overrightarrow{u}$, on dit que $\overrightarrow{AB}$ est un représentant de $\overrightarrow{u}$.
+
+On vous demandera souvent de donner l'image d'un point $C$ par une translation correspondant à un vecteur donné $\overrightarrow{u}$. Pour ce faire, il suffit de donner le point d'arrivée du même vecteur que $\overrightarrow{u}$ partant de $C$.
+
+
+\begin{minipage}{0.5\textwidth}
+
+La formule est donnée par :
+
+soit $\overrightarrow{u} \Coord{x_u}{y_u}$ un vecteur, et $C(x_c,y_c)$ un point. L'image $C'$ de $C$ par la translation de vecteur $u$ a pour coordonnées $C'(x_c+x_u, y_c+ y_u)$.
+
+\end{minipage}
+\begin{minipage}{0.45\textwidth}
+  Cela correspond au dessin :
+    \centering
+    \includegraphics[width=0.9\textwidth]{Vecteurs_C+u.png} 
+
+\end{minipage}
+
+
+
+\subsection{vecteur nul}
+
+\begin{de}
+    Le vecteur nul est le vecteur de coordonnées $\Coord{0}{0}$. Il est le vecteur associé à la translation qui transforme tout point en lui-même. On le note $\overrightarrow{0}$
+\end{de}
+
+Note : En général, on ne dessine pas le vecteur nul.
+
+\subsection{Somme de vecteurs}
+
+Effectuer plusieurs translations d'affilée revient à effectuer une seule translation, associée à un vecteur qui correspond à la somme des vecteurs directeurs des translations : $\overrightarrow{u}+\overrightarrow{v}$ aura pour coordonnées la somme termes à termes des coordonnées de $\overrightarrow{u}$ et de $\overrightarrow{v}$.
+
+\begin{de}
+    Soient $\overrightarrow{u} \Coord{x_{\overrightarrow{u}}}{y_{\overrightarrow{u}}}$ et 
+    $\overrightarrow{v} \Coord{x_{\overrightarrow{v}}}{y_{\overrightarrow{v}}}$ deux vecteurs du plan. 
+    On note $\overrightarrow{u}+\overrightarrow{v}$ le vecteur de coordonnées 
+    $\Coord{x_{\overrightarrow{u}}+x_{\overrightarrow{v}}}{y_{\overrightarrow{u}}+y_{\overrightarrow{v}}}$
+\end{de}
+
+\begin{exo}
+  Comme l'addition de nombres, l'addition de vecteur est commutative (c'est à dire que $\overrightarrow{u}+\overrightarrow{v} = \overrightarrow{v}+\overrightarrow{u}$) et associative. Le montrer.
+\end{exo}
+
+On va voir tout de suite une expression mathématique du fait que vous connaissez sûrement déjà : Aller de Monaco à Paris puis de Paris à Madrid, c'est aller de Monaco à Madrid.
+
+\begin{prop}[Relation de Chasles]
+  Soient $A$, $B$ et $C$ trois points du plan. 
+  \[ \overrightarrow{AB} + \overrightarrow{BC} = \overrightarrow{AC}\]
+\end{prop}
+
+Démonstration en exercice (Avec des coordonnées)
+
+\subsection{Multiplication par un nombre réel}
+
+En plus d'additionner deux vecteurs, on peut également les multiplier par un nombre réel. Multiplier un vecteur par le réel $k$, c'est simplement obtenir un chemin $k$ fois plus grand, coordonnée par coordonnée :
+
+\begin{de}
+  Soient $\overrightarrow{u} \Coord{x}{y}$ un vecteur du plan, et $k$ un nombre réel. On appelle $k \overrightarrow{u}$, ou $k \times \overrightarrow{u}$, ou $k \cdot \overrightarrow{u}$ le vecteur de coordonnées $\Coord{kx}{ky}$  
+\end{de}
+
+\begin{prop}
+  Cette multiplication de vecteurs par des réels se comporte comme une multiplication traditionnelle: pour $k$ et $k'$ des nombres réels et $\overrightarrow{u}$ et $\overrightarrow{v}$ deux vecteurs : 
+  \begin{enumerate}
+    \item $1 \times \overrightarrow{u} = \overrightarrow{u}$, $\overrightarrow{u} + \overrightarrow{u} = 2 \overrightarrow{u}$, $0 \cdot \overrightarrow{u}= \overrightarrow{0}$
+    \item $k(\overrightarrow{u} + \overrightarrow{v}) = k\overrightarrow{u} + k\overrightarrow{v}$(distributivité par rapport à l'addition)
+    \item $(kk')\overrightarrow{u} = k(k'\overrightarrow{u})$ (Associativité mixte)
+  \end{enumerate}
+\end{prop}
+
+\subsection{Vecteurs colinéaires}
+
+La colinéarité est une relation, c'est à dire qu'elle n'a un sens quand on parle de deux vecteurs (ou plus). Elle désigne des vecteurs qui pointent dans la même direction (ou dans un direction opposée).
+On va cependant voir une définition qui utilise le concept de multiplication par un réel.
+
+
+\begin{de}[Colinéarité de deux vecteurs]
+  Deux vecteurs non nuls $\overrightarrow{u}$ et $\overrightarrow{v}$ sont dits \underline{colinéaires} si $\overrightarrow{u}$ est égal à $\overrightarrow{v}$ multiplié par un certain réel $k$. 
+\end{de}
+
+Ainsi, les vecteurs $\overrightarrow{a} \Coord{2}{1}$ et $\overrightarrow{b} \Coord{4}{2}$ sont colinéaires, car $\vec{b}=2\vec{a}$
+
+\begin{prop}
+  Deux vecteurs non nuls $\overrightarrow{u} \Coord{x}{y}$ et $\overrightarrow{v} \Coord{x'}{y'}$ sont colinéaires si et seulement si le tableau de leurs coordonnées est un tableau de proportionnalité.
+\end{prop}
+
+Toujours avec les mêmes vecteurs $\overrightarrow{a}$ et $\overrightarrow{b}$ qu'à l'exemple précédent,
+\begin{tabular}{|c|c|}
+  \hline 2 & 4 \\
+  \hline 1 & 2\\
+  \hline
+\end{tabular}  est bien un tableau de proportionnalité.
+
+
+Remarques : 
+\begin{itemize}
+  \item la définition ci-dessus ne traite que des vecteurs non nuls. Si l'un des deux vecteurs $u$ et $v$ est nul, alors les deux vecteurs sont forcément colinéaires. Mais ça n'est pas très intéressant, c'est comme de dire que $0$ est un multiple de tous les nombres entiers $n$ puisque $0=0 \times n$.
+  \item Cas particulier : Multiplier un vecteur $\overrightarrow{u}$ par $-1$ donne un vecteur dont chaque coordonnée 
+  est l'opposé de la coordonnée du vecteur de départ. On appelle le résultat \underline{vecteur opposé} de $\overrightarrow{u}$. On le note $-\overrightarrow{u}$.
+  \item Deux vecteurs colinéaires sont les supports de droites parallèles. Cela "se voit" sur un dessin, nous l'énoncerons formellement dans la prochaine partie, et nous clarifierons plus tard dans l'année quand on énoncera plus précisément ce qu'est une droite. 
+\end{itemize}
+
+\begin{prop}
+  l'opposé d'un vecteur $\overrightarrow{AB}$ est le vecteur $\overrightarrow{BA}$ : Prendre l'opposé d'un vecteur est la même chose que d'inverser le point de départ et d'arrivée. 
+\end{prop}
+
+Démonstration : Par la relation de Chasles, $\overrightarrow{AB} + \overrightarrow{BA} = \overrightarrow{AA} = \overrightarrow{0}$. On a donc $\overrightarrow{AB} = \overrightarrow{AB} + \overrightarrow{BA} - \overrightarrow{BA} = \overrightarrow{0} + \overrightarrow{BA} = \overrightarrow{BA}$.
+
+Remarque : C'était prévisible en considérant le vecteur comme un trajet : L'opposé d'un trajet Strasbourg-Paris, c'est un trajet Paris-Strasbourg.  
+
+\subsection{Direction et sens d'un vecteurs}
+
+\begin{de}
+  On dit de deux vecteurs non nuls colinéaires qu'ils ont la même \underline{direction}.
+  
+  Deux vecteurs non nuls $u$ et $v$ non nuls ont donc même direction si et seulement si il existe un entier $k$ tel que u=kv. 
+\end{de}
+
+  On voit effectivement graphiquement dans un repère que les droites $(AB)$ et $(CD)$ sont "orientées de la même manière" si et seulement si $\overrightarrow{AB}$ et $\overrightarrow{CD}$ sont colinéaires. 
+
+On tire de cette vision géométrique (qu'on précisera plus tard dans l'année) des propriétés très utiles pour savoir si des droites sont parallèles :
+
+\begin{prop}[Admise pour l'instant]
+      Soient quatre points $A,B,C$ et $D$. Si $\overrightarrow{AB}$ et $\overrightarrow{CD}$ sont non nuls, et colinéaires entre eux, alors les droites $(AB)$ et $(CD)$ sont parallèles. 
+\end{prop}
+
+Deux droites parallèles qui ont un point commun sont confondues, on tire donc de la propriété essentielle ci-dessus le résultat suivant :
+
+\begin{prop}
+  Soient trois points $A$,$B$ et $C$, les points $A$,$B$ et $C$ sont alignés si et seulement si les vecteurs $\overrightarrow{AB}$ et $\overrightarrow{AC}$ sont colinéaires.
+\end{prop}
+
+Si deux vecteurs ont la même direction, on peut alors se demander s'ils ont le même sens. Concrètement, cela veut dire que les flèches apparaissent dans le même sens sur un représentant de chaque vecteur.
+
+\begin{de}
+  Si $u$ et $v$ sont deux vecteurs de même direction, c'est à dire que pour un certain $k$ réel, $u=kv$, alors : 
+  \begin{itemize}
+    \item Si $k>0$, alors ont dit que $u$ et $v$ ont \textbf{même sens}. 
+    \item Si $k<0$, alors on dit que $u$ et $v$ ont un \textbf{sens opposé}
+  \end{itemize}
+\end{de}
+
+Exemples : les vecteurs dessinés sur la figure \ref{fig:DirectionSens}.
+
+\begin{figure}
+  \centering
+\includegraphics[width=1.0\textwidth]{Vecteurs-DirectionSens.png}
+\caption{\textcolor{red}{Les vecteurs $\vec{u}$ et $\vec{u'}$ n'ont pas la même direction}, 
+\textcolor{blue}{les vecteurs $\vec{v}$ et $\vec{v'}$ ont même direction et même sens}, 
+\textcolor{green}{les vecteurs $\vec{w}$ et $\vec{w'}$ ont même direction, mais un sens opposé}.}
+\label{fig:DirectionSens}
+\end{figure}
+
+\subsection{Norme d'un vecteur}
+
+Comme souvent en mathématiques, on aime calculer la taille des objets, parce que cela exprime une partie des propriétés d'un objet sous la forme d'un nombre. La longueur d'un vecteur s'appelle la norme.
+
+\begin{de}[Norme d'un vecteur]
+  La norme d'un vecteur $\overrightarrow{AB}$ est égale à la longueur du vecteur, c'est à dire à la distance $AB$. On la note $\Vert \overrightarrow{AB} \Vert$
+\end{de}
+
+Pour calculer cette distance quand on dispose des coordonnées, il suffit d'utiliser le bon vieux théorème de Pythagore.
+
+\begin{prop}[Norme d'un vecteur dont on connaît les coordonnées]
+  Soit $\overrightarrow{u}$ un vecteur de coordonnées $\Coord{x}{y}$, la norme de $\overrightarrow{u}$ est donnée par la formule  \[ \Vert \vec{u} \Vert = \sqrt{x^2+y^2} \]
+\end{prop}
+
+Note : La norme est donc toujours positive, et même toujours strictement positive si le vecteur n'est pas nul : $\vec{0}$ est le seul vecteur qui a une norme nulle.
+
+On dispose maintenant des trois éléments caractéristiques d'un vecteur : 
+
+\begin{prop}
+  Deux vecteurs non nuls sont égaux si et seulement si ils ont même \textbf{direction}, même \textbf{sens}, et même \textbf{norme}.
+\end{prop}
+
+Exercice : dessiner deux vecteurs qui ont même norme mais pas même direction, deux autres même direction et norme mais pas même sens, et enfin deux qui ont même direction et sens mais pas même norme.
+
+On a déjà vu que multiplier un vecteur par un réel $k$ (différent de $0$) conservait la direction du vecteur, et conservait le sens si $k>0$ (et l'inverse si $k<0$). On va voir que la multiplication par un réel a aussi un effet simple sur la norme du vecteur :
+
+\begin{prop}
+  soit $k$ un nombre réel et $\vec{u}$ un vecteur,  $\Vert k \times \vec{u} \Vert = |k| \times \Vert \vec{u} \Vert$ 
+\end{prop}
+
+On déduit de tout ceci le théorème suivant.
+
+\begin{theo}
+ Soient A, B, C et D quatre points du plan.  $ABCD$ est un parallélogramme si et seulement si $\overrightarrow{AB}=\overrightarrow{DC}$.
+\end{theo}
+
+Un sens est montré en exercice, la partie "seulement si" est plus ardue : Si ABCD est un parallélogramme, il est facile de montrer que $\overrightarrow{AB}$ et $\overrightarrow{DC}$ ont même norme (car les côtés opposés d'un parallélogramme ont même longueur), 
+et ont même direction (car les côtés opposés du parallélogramme), on ne dispose pas vraiment d'argument formel pour dire qu'ils ont même sens, hormis "ça se voit, sinon le quadrilatère ABCD serait croisé".
+
+Attention, le parallélogramme ainsi défini peut être aplati, si les points A,B,C et D sont alignés.
+
+
+\chapter{Informations chiffrées}
+
+\section{Proportion et pourcentage}
+
+\subsection{pourcentage}
+
+\begin{de}
+  Un pourcentage est un nombre, $t\% = \frac{t}{100}$  (On prononce "t pour cent"). Il peut s'exprimer sous forme de pourcentage, mais aussi sous forme de fraction ou sous forme décimale.
+\end{de}
+
+Remarque importante : Un pourcentage est un nombre, mais vous le verrez toujours comme étant un pourcentage \textbf{de} quelque chose. 
+
+\begin{de}
+  Pour calculer $t\%$ d'une quantité, on multiplie cette quantité par $\frac{t}{100}$. Il peut s'exprimer sous forme de pourcentage, mais aussi sous forme de fraction ou sous forme décimale.
+\end{de}
+
+
+\subsection{Proportion : vocabulaire}
+
+\begin{de}
+  Une \underline{population} est un ensemble d'éléments appelés \underline{individus}.
+  
+  Une \underline{sous-population} est un sous-ensemble de la population.
+
+  On appelle \underline{effectif} de la population le nombre d'individus de la population 
+\end{de}
+
+Une fois ces termes (très employés dans les statistiques) définis, on peut définir la proportion :
+
+\begin{de}
+  La proportion d'une sous-population dans une population est égal au rapport du nombre d'individus : On note $T$ la population (et $n_T$ son effectif), et $A$ la sous-population (et $n_A$ son effectif). La proportion $p$ de A dans T est donnée par la formule :
+  
+  \[ p = \frac{n_A}{n_T} = \frac{\text{nombre d'individus dans la sous-population}}{\text{nombre d'individus dans la sous-population}}\]
+
+\end{de}
+
+Une proportion est un nombre, compris entre $0$ et $1$, qui peut être exprimé comme une fraction, un nombre décimal, ou un pourcentage.
+
+Exemple : Une classe de 24 élèves comporte 9 élèves qui portent des lunettes. La proportion d'élèves qui portent des lunettes dans la classe est de $\frac{24}{32}=\frac{3}{4}$ (écriture fractionnaire), ou $0{,}75$ (écriture décimale) ou $75\%$ (écriture en pourcentage)
+
+
+On vous demandera souvent de calculer la proportion à partir des effectifs, mais aussi de calculer un effectif manquant (de la population ou de la sous-population) à partir d'un effectif et de la proportion.
+
+Pour cela, on peut calculer relativement facilement les formules correspondantes pour calculer :\begin{itemize}
+  \item $n_A$ en fonction de $n_T$ et $p$ :  $n_A = n_T \times p$
+  \item $n_T$ en fonction de $n_A$ et $p$ :  $n_T = \frac{p}{n_A}$
+\end{itemize}
+
+\subsection{Proportion d'une proportion}
+
+Cette propriété permet de tisser des liens entre 3 populations imbriquées les unes dans les autres.
+
+
+\begin{prop}
+  Soit T une population, et A une sous-population non vide de T. Soit B une sous-population de A.
+
+  On note $p_{A,T}$ la proportion de $A$ dans $T$, $p_{B,A}$ la proportion de $B$ dans $A$.   
+
+  La proportion $P_{B,T}$ d'individus de B dans T est égale à  $P_{B,T}= P_{B,A} \times P_{A,T}$
+\end{prop}
+
+\begin{demo}
+  On utilise les notations et hypothèses du théorème : 
+  \begin{enumerate}
+    \item On appelle $n_T$, $n_A$ et $n_B$ les effectifs respectifs de T, A et B. Exprimer $p_{B,T}$ en fonction de ces variables.
+    \item Faire de même pour $p_{A,T}$ et $p_{B,A}$
+    \item Exprimer $p_{B,A} \times p_{A,T}$ sous la forme d'une fraction. 
+    \item Montrer que $p_{A,T} \times p_{B,A} = p_{B,T}$
+  \end{enumerate}
+\end{demo}
+
+
+\section{Evolution}
+
+
+\subsection{Variation absolue et relative}
+
+Quand une quantité évolue, elle passe d'une valeur initiale à une valeur finale.
+
+\begin{de}
+  On appelle : \begin{itemize}
+    \item \underline{Variation absolue} le nombre :   $\text{valeur finale} - \text{valeur initiale}$
+    \item \underline{Variation relative} le nombre :   $\frac{\text{valeur finale} - \text{valeur initiale}}{\text{valeur initiale}}$
+  \end{itemize}
+\end{de}
+
+La variation absolue s'exprime dans la même unité que la quantité à laquelle elle se rapporte.  La variation relative est un nombre sans unité. On l'exprime sous forme décimale, de fraction, ou de pourcentage.
+
+La variation relative est aussi appelée \underline{taux d'évolution}.
+
+
+\subsection{Variation en pourcentage, coefficient multiplicateur}
+
+
+Augmenter une quantité $q$ de $t\%$, c'est lui faire subir une variation relative de $t\%$, c'est à dire lui ajouter $t\%$ de ce que la quantité $q$ valait avant l'augmentation. 
+
+Si on appelle $q'$ la quantité obtenue, on a donc :
+
+\[q' = q + q \times \frac{t}{100}\]
+
+On peut mettre q en facteur :
+
+\[q' = q(1 + \frac{t}{100})\]
+
+$q'$ est donc égal à $q$ multiplié par un nombre qui ne dépend pas de $q$. On appelle ce nombre coefficient multiplicateur.
+
+
+\begin{prop}
+  Augmenter une quantité $V_I$ de $t\%$, c'est la \textbf{multiplier} par $1 + \frac{t}{100}$. Le nombre $1 + \frac{t}{100}$ est appelé coefficient multiplicateur.
+
+  Diminuer une quantité $V_I$ de $t\%$, c'est la \textbf{multiplier} par $1 - \frac{t}{100}$. Le nombre $1 - \frac{t}{100}$ est appelé coefficient multiplicateur.
+\end{prop}
+
+
+\begin{prop}
+  Coefficient multiplicateur = 1 + taux d'évolution
+
+  taux d'évolution = Coefficient multiplicateur - 1
+\end{prop}
+
+Si l'on définit le coefficient multiplicateur, c'est parce qu'il est pratique de voir les évolutions en pourcentage comme des multiplications, comme le montrent les deux propriétés suivantes :
+
+\subsection{Evolutions successives}
+
+Pour appliquer deux évolutions successives (l'une puis l'autre) à une quantité, on la multiplie successivement par les deux coefficients multiplicateurs :
+
+On peut donc à partir de là calculer le taux d'évolution associé à plusieurs évolutions successives : 
+
+Le prix d'une 
+
+
+\begin{prop}
+  Une quantité subit  deux évolutions successives de taux d'évolution $t_1$ et $t_2$.
+
+  Elle est donc multipliée par  $(1+t_1)$  puis par $(1+t_2)$  (Passage aux coefficients multiplicateurs en ajoutant 1 au taux d'évolution)
+  
+  Elle est donc au total multipliée par $(1+t_1)(1+t_2)$ 
+
+  Elle subit donc au total une évolution de $(1+t_1)(1+t_2) -1$  (Passage au taux d'évolution en retirant 1 au coefficient multiplicateur)
+
+\end{prop}
+
+
+En développant, on obtient : $(1+t_1)(1+t_2) -1 = 1+t_2 + t_1 (1 + t_2) - 1 = 1 + t_2 + t_1 + t_1t_2 -1 = t_1 + t_2 + t_1t_2$
+
+Deux évolutions successives de $t_1$ puis $t_2$ n'est donc en général pas la même chose qu'une évolution de t_1 + t_2.
+
+
+\subsection{Evolution réciproque}
+
+\begin{de}
+  Soit une évolution qui permet de passer de la valeur $V_I$ à la valeur $V_F$. Son \underline{évolution réciproque} est définie comme l'évolution qui permet de passer de la valeur $V_F$ à la valeur $V_I$.
+\end{de}
+
+
+L'essence, qui valait $2$€, subit une augmentation de $25\%$.  
+Elle vaut donc  maintenant $(1+\frac{25}{100}) \times 2$ € $= 2{,50}$ €
+
+On se demande quelle évolution lui rendrait sa valeur de départ.  La question à se poser c'est : "Par combien dois-je la multiplier pour obtenir la valeur de départ ?"
+
+Pour ça, il faudrait un coefficient multiplicateur total de $1$. 
+
+On veut donc, si l'on appelle $c$ le coefficient multiplicateur de la deuxième évolution :  $1{,}25 \times c = 1$,  c'est à dire   c = \frac{1}{1{,}25}
+
+On obtient $c=0{,}8$, et on en déduit que l'évolution réciproque (celle qui ramène au résultat de départ) d'une hausse de 25\% est celle qui correspond à un coefficient multiplicateur de $0{,}8$, à savoir une baisse de $20\%$ 
+
+Comme pour le cas des évolutions successives, il est plus simple de travailler sur les coefficients multiplicateurs pour trouver une évolution réciproque : il suffit d'inverser le coefficient multiplicateur
+
+
+\begin{prop}
+  Si une évolution a pour coefficient multiplicateur $C$, son évolution réciproque a pour coefficient multiplicateur $\frac{1}{C}$
+\end{prop}
+
+On réutilise les formules de passage du taux d'évolution au coefficient multiplicateur pour trouver le taux correspondant à l'évolution réciproque d'un taux donné :
+
+\begin{prop}
+  Si une évolution a pour taux d'évolution le nombre $t$, son évolution réciproque a pour taux d'évolution $\frac{1}{1+t} - 1$
+\end{prop}
+
+Démonstration : Le coefficient multiplicateur de l'évolution de taux $t$ est $1+t$. 
+Son évolution réciproque a donc pour coefficient multiplicateur $\frac{1}{1+t}$, et donc un taux d'évolution de $\frac{1}{1+t}-1$.
+
+
+
+
+\chapter{Vecteurs et droites}
+
+\subsection{Vecteurs directeurs et équations d'une droite}
+
+Préparez-vous mentalement, cette sous-partie contient des concepts qui lient absolument \textbf{toutes} les notions vues depuis le début de l'année : Ensembles de nombres, fonctions, équations et vecteurs.
+
+\subsubsection{Exprimer une droite du plan dans un repère}
+
+Dans un repère, on peut exprimer presque toutes les droites sous la forme de l'équation \textbf{réduite} $y=ax+b$ (avec $a$ et $b$ des nombre réels). C'est à dire que presque toutes les droites sont des courbes représentatives de fonctions affines, c'est à dire des fonctions de forme $f : x \mapsto ax+b$. 
+Mais il nous manque un type de droite si on se contente de cette paramétrisation : les droites verticales ne représentent pas des fonctions (car une fonction a toujours au maximum un point sur une ligne verticale), on ne peut donc les représenter sous la forme de cette équation.
+
+\begin{de}[\'Equation d'un ensemble de points du plan]
+    Au même titre qu'un sous-ensemble de la droite réelle peut être exprimée par une ou plusieurs équations, un sous-ensemble du plan peut être exprimé par une équation à deux inconnues, qui expriment les valeurs de (x,y) qui doivent être dessinées : on dessine le point $(x,y)$ si et seulement si le couple $(x,y)$ est solution de l'équation.
+\end{de}
+
+Exemples : \begin{itemize}
+  \item Sur une droite réelle, l'équation $x \geq 4$ est représentable par tous les points d'abscisse supérieure ou égale à 4 (Cf chapitre sur les intervalle)
+  \item Dans le plan, on a vu que toute fonction $f(x)$ admet une représentation graphique, qui est l'ensemble des points $(x,y)$ qui vérifient $y=f(x)$. Par exemple pour la fonction carré, on dessine tous les points tels que l'ordonnée est le carré de l'abscisse, soit $y=x^2$, et seulement ceux-ci.
+  \item Toujours dans le plan, une fonction affine $f(x)=ax+b$ a pour représentation graphique une droite, qui admet pour équation réduite $y=ax+b$ : les seuls points dessinés sont les points dont les coordonnées $(x;y)$ vérifient l'équation.
+  \item Une droite verticale (c'est à dire parallèle à l'axe des abscisses) a pour équation $x=a$ avec a un certain nombre réel. On voit que la variable $y$ n'apparaît pas dans cette équation.
+  \item Dans un repère orthonormé, un cercle autour de l'origine de rayon $1$ est l'ensemble des points situés à une distance de $1$ de l'origine, c'est à dire l'ensemble des points vérifiant $x^2+y^2=1$. C'est l'équation d'un cercle.
+\end{itemize}
+
+
+Attention : Une équation n'est pas unique : on a vu de nombreuses manières d'exprimer une équation sous la forme équivalente.  Pour avoir une seule expression, il faut plus de contraintes
+
+
+\begin{de}[\'Equation réduite d'une droite]
+  Toute droite qui n'est pas parallèle à l'axe des ordonnées dans un repère admet une seule équation de la forme $y=ax+b$ avec $a$ et $b$ des réels. On appelle cette équation l'\underline{équation réduite} de la droite.
+\end{de}
+
+Pour obtenir une forme d'équation qui permette d'exprimer \textbf{toutes} les droites du plan, on fait appel à une nouvelle forme d'équation : l'équation cartésienne
+
+\begin{de}[\'Equation cartésienne d'une droite]
+  Toute droite dans un repère peut être exprimée comme l'ensemble des points vérifiant une équation de forme $ax+by+c=0$ où $a,b$ et $c$ sont des constantes réelles. 
+
+  Réciproquement, toute équation de cette forme où $a$ et $b$ ne sont pas tous deux égaux à $0$ est l'équation d'une droite du plan.
+\end{de}
+
+Exemples :\begin{itemize}
+  \item La droite d'équation réduite $y=3x+2$ s'exprime sous la forme $3x-y+2=0$, qui est bien de la forme $ax+by+c=0$
+  \item La droite d'équation $x=2$ s'exprime sous la forme $x+0 \times y-2=0$, qui est bien de la forme $ax+by+c=0$
+\end{itemize}
+
+Attention : \begin{itemize}
+  \item Si $a$ et $b$ sont tous deux nuls, l'équation devient $c=0$ et est donc vérifiée soit par aucun couple $(x,y)$ soit par tous les couples $(x,y)$ du plan. Ce n'est donc pas une droite
+  \item Une équation cartésienne n'est pas unique : $2x+3y+4=0$ est une équation équivalente à $4x+6y+8=0$ (On a multiplié les deux termes de l'égalité par 2, ce qui préserve l'équivalence comme vu dans le cours sur les équations)
+\end{itemize}
+
+\subsubsection{Vecteur directeur d'une droite}
+
+\begin{de}
+Dans le plan, tout vecteur non nul tel que l'image d'un point d'une droite par ce vecteur est un autre point de cette droite est appelé \underline{vecteur directeur} de cette droite.
+\end{de}
+
+Une définition alternative est : Soient deux points $A$ et $B$ du plan. Le vecteur $\overrightarrow{AB}$, et donc tout vecteur qui lui est égal est appelé vecteur directeur de la droite $(AB)$
+
+Il existe un lien profond entre vecteur directeur d'une droite et équation cartésienne de la droite :
+
+\begin{prop}
+  Soit $\overrightarrow{u} \Coord(a,b)$ un vecteur non nul. Toute droite ayant $\overrightarrow{u}$ pour vecteur directeur 
+  admet une équation cartésienne de la forme $bx-ay+c=0$, où $c$ est un nombre réel.
+\end{prop}
+
+Remarques: 
+  \begin{itemize}
+  \item Ici, l'expression est unique car on ne peut plus multiplier l'équation par un réel sinon on perd les a et les b.
+  \item \textbf{Attention} : Pour retenir cette formule, il faut se rappeler que l'abscisse du vecteur est devant le $y$ de l'équation, et l'ordonnée devant le $x$. Il y a donc une inversion de l'ordre naturel entre les deux expressions. De plus, un signe moins fait son apparition.
+  \end{itemize}
 
 \end{document}
 

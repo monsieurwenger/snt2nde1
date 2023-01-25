@@ -1,0 +1,7 @@
+*.aux
+*.log
+*.pyc
+*.out
+*.thm
+*.toc
+*.rubbercache
